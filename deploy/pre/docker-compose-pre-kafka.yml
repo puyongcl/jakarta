@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.7.1
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - TZ=Asia/Shanghai
+    networks:
+      - jakarta_net
+
+  kafka:
+    image: docker.io/bitnami/kafka:3.3.1
+    container_name: kafka
+    ports:
+      - "9093:9093"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://10.0.0.29:9093
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=false
+      - TZ=Asia/Shanghai
+    networks:
+      - jakarta_net
+    depends_on:
+      - zookeeper
+
+networks:
+  jakarta_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16
+
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local

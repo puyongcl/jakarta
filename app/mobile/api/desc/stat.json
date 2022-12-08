@@ -1,0 +1,203 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "stat",
+    "description": "stat",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "mobile/v1/stat/newuser/selectspec/save": {
+      "post": {
+        "summary": "保存新用户选择的新手引导XX标签",
+        "operationId": "saveNewUserSelectSpec",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveNewUserSelectSpecResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SaveNewUserSelectSpecReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "stat"
+        ]
+      }
+    },
+    "mobile/v1/stat/user/ecr": {
+      "post": {
+        "summary": "获取成人依恋量表测试结果",
+        "operationId": "getAdultQuizECR",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetAdultQuizECRResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetAdultQuizECRReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "stat"
+        ]
+      }
+    },
+    "mobile/v1/stat/user/ecr/save": {
+      "post": {
+        "summary": "保存成人依恋量表测试结果",
+        "operationId": "saveAdultQuizECR",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveAdultQuizECRResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SaveAdultQuizECRReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "stat"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "GetAdultQuizECRReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetAdultQuizECRReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "GetAdultQuizECRResp": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetAdultQuizECRResp",
+      "required": [
+        "result"
+      ]
+    },
+    "SaveAdultQuizECRReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "answer": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "result": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "SaveAdultQuizECRReq",
+      "required": [
+        "uid",
+        "answer",
+        "result"
+      ]
+    },
+    "SaveAdultQuizECRResp": {
+      "type": "object",
+      "title": "SaveAdultQuizECRResp"
+    },
+    "SaveNewUserSelectSpecReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "spec": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "channel": {
+          "type": "string"
+        }
+      },
+      "title": "SaveNewUserSelectSpecReq",
+      "required": [
+        "uid",
+        "spec"
+      ]
+    },
+    "SaveNewUserSelectSpecResp": {
+      "type": "object",
+      "title": "SaveNewUserSelectSpecResp"
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

@@ -1,0 +1,637 @@
+syntax = "v1"
+
+info(
+    title: "XXX"
+    desc: "XXX"
+    author: ""
+    email: ""
+)
+
+// XXX看到自己的资料
+type ListenerSeeOwnProfile {
+    listenerUid int64 `json:"listenerUid"`                                                 //用户id
+    NickName string `json:"nickName"`                                                      //名字
+    ListenerName string `json:"listenerName"`                                              //姓名
+    Avatar string `json:"avatar"`                                                          //大图头像
+    MaritalStatus int64 `json:"maritalStatus"`                                             //婚姻状态
+    PhoneNumber string `json:"phoneNumber"`                                                //手机号
+    Constellation int64 `json:"constellation"`                                             //星座
+    Province string `json:"province"`                                                      //省级大区
+    City string `json:"city"`                                                              //地区市
+    Job string `json:"job"`                                                                //工作
+    Education int64 `json:"education"`                                                     //教育水平
+    Gender int64 `json:"gender"`                                                           //性别
+    Birthday string `json:"birthday"`                                                      //出生年-月-日
+    IdNo string `json:"idNo"`                                                              //身份证号
+    IdPhoto1 string `json:"idPhoto1"`                                                      //正面身份证（国徽）
+    IdPhoto2 string `json:"idPhoto2"`                                                      //反面身份证
+    IdPhoto3 string `json:"idPhoto3"`                                                      //手持身份证
+    Specialties []int64 `json:"specialties"`                                               //擅长领域
+    Introduction string `json:"introduction"`                                              //个人介绍
+    VoiceFile string `json:"voiceFile"`                                                    //声音文件
+    Experience1 string `json:"experience1"`                                                //个人经历1
+    Experience2 string `json:"experience2"`                                                //个人经历2
+    CertType int64 `json:"certType"`                                                       //资质类型 2 职业技能证书 4 其他平台从业记录
+    OtherPlatformAccount string `json:"otherPlatformAccount"`                              // 用户在其他平台的账户信息
+    CertFiles1 string `json:"certFiles1"`                                                  //附加材料1 格式：名称#文件名
+    CertFiles2 string `json:"certFiles2"`                                                  //附加材料2 格式：名称#文件名
+    CertFiles3 string `json:"certFiles3"`                                                  //附加材料3 格式：名称#文件名
+    CertFiles4 string `json:"certFiles4"`                                                  //附加材料4 格式：名称#文件名
+    CertFiles5 string `json:"certFiles5"`                                                  //附加材料5 格式：名称#文件名
+    AutoReplyNew string `json:"autoReplyNew"`                                              //新人 休息中自动回复
+    AutoReplyProcessing string `json:"autoReplyProcessing"`                                //服务中 休息中用户自动回复
+    AutoReplyFinish string `json:"autoReplyFinish"`                                        //服务结束 休息中自动回复
+    TextChatPrice int64 `json:"textChatPrice"`                                             //文字聊天价格
+    VoiceChatPrice int64 `json:"voiceChatPrice"`                                           //语音聊天价格
+    TextChatSwitch int64 `json:"textChatSwitch"`                                           // 文字服务开关
+    VoiceChatSwitch int64 `json:"voiceChatSwitch"`                                         // 语音服务开关
+    CheckFailField []string `json:"checkFailField"`                                        //审核失败的字段
+    CheckingField []string `json:"checkingField"`                                          //审核中的字段
+    CheckStatus int64 `json:"checkStatus"`                                                 //当前审核状态
+    DraftVersion int64 `json:"draftVersion"`                                               // 草稿版本
+}
+
+// 其他用户看到的XXX资料
+type UserSeeListenerProfile {
+    listenerUid int64 `json:"listenerUid"`                                                 //用户id
+    NickName string `json:"nickName"`                                                      //名字
+    Avatar string `json:"avatar"`                                                          //大图头像
+    MaritalStatus int64 `json:"maritalStatus"`                                             //婚姻状态
+    Constellation int64 `json:"constellation"`                                             //星座
+    Province string `json:"province"`                                                      //省级大区
+    City string `json:"city"`                                                              //地区市
+    Job string `json:"job"`                                                                //工作
+    Education int64 `json:"education"`                                                     //教育水平
+    Gender int64 `json:"gender"`                                                           //性别
+    Age int64 `json:"age"`                                                                 //年龄
+    Specialties []int64 `json:"specialties"`                                               //擅长领域
+    Introduction string `json:"introduction"`                                              //个人介绍
+    VoiceFile string `json:"voiceFile"`                                                    //声音文件
+    Experience1 string `json:"experience1"`                                                //个人经历1
+    Experience2 string `json:"experience2"`                                                //个人经历2
+    CertType int64 `json:"certType"`
+    CertFiles1 string `json:"certFiles1"`                                                  //附加证书1 格式：名称#文件名
+    CertFiles2 string `json:"certFiles2"`                                                  //附加证书1 格式：名称#文件名
+    CertFiles3 string `json:"certFiles3"`                                                  //附加证书1 格式：名称#文件名
+    CertFiles4 string `json:"certFiles4"`                                                  //附加证书1 格式：名称#文件名
+    CertFiles5 string `json:"certFiles5"`                                                  //附加证书1 格式：名称#文件名
+    TextChatPrice int64 `json:"textChatPrice"`                                             //文字聊天价格
+    VoiceChatPrice int64 `json:"voiceChatPrice"`                                           //语音聊天价格
+    TextChatSwitch int64 `json:"textChatSwitch"`                                           // 文字服务开关
+    VoiceChatSwitch int64 `json:"voiceChatSwitch"`                                         // 语音服务开关
+    UserCount int64 `json:"userCount"`                                                     // 服务人数
+    ChatDuration int64 `json:"chatDuration"`                                               // 累计服务时长分钟
+    RatingSum int64 `json:"ratingSum"`                                                     // 评价总数
+    FiveStar int64 `json:"fiveStar"`                                                       // 好评数
+    WorkState int64 `json:"workState"`                                                     // 工作状态
+    OpenId string `json:"openId"`                                                          // 微信openid
+    ShowPrice int64 `json:"showPrice"`                                                     // 展示原价
+    ShowActualPrice int64 `json:"showActualPrice"`                                         // 展示优惠后的价格
+    FreeFlag string `json:"freeFlag"`                                                      // 优惠标志
+    FreeMinute int64 `json:"freeMinute"`                                                   // 免费分钟数
+    NewUserDiscount int64 `json:"newUserDiscount"`                                         // 新用户订单费用折扣(千分之几)
+    AutoReplyNew string `json:"autoReplyNew"`                                              //新人 休息中自动回复
+    AutoReplyProcessing string `json:"autoReplyProcessing"`                                //服务中 休息中用户自动回复
+    AutoReplyFinish string `json:"autoReplyFinish"`                                        //服务结束 休息中自动回复
+}
+
+
+// 历史服务概况
+type ListenerOrderHistory {
+    UserCount int64 `json:"userCount"`       // 服务人数
+    ChatDuration int64 `json:"chatDuration"` // 累计服务时长分钟
+    RatingSum int64 `json:"ratingSum"`       // 评价总数
+    FiveStar int64 `json:"fiveStar"`         // 好评数
+}
+
+// 订单反馈评价回复详情
+type ListenerOrderOpinionDetail {
+    Uid int64 `json:"uid"`                              // 用户id
+    ListenerUid int64 `json:"listenerUid"`              // XXX用户id
+    OrderId string `json:"orderId"`                     // 订单id
+    CommentTime int64 `json:"commentTime"`              //用户评价时间
+    UserComment string `json:"comment"`                 // 用户评论
+    Star int64 `json:"star"`                            // 好评 1 不满意 3 一般 5 满意
+    ReplyTime int64 `json:"replyTime"`                  //XXX回复时间
+    ListenerReply string `json:"listenerReply"`         //XXX回复内容
+    FeedbackTime int64 `json:"feedbackTime"`            //XXX反馈的时间
+    ListenerFeedback string `json:"listenerFeedback"`   //XXX对用户的反馈
+}
+
+// 订单评价和回复
+type ListenerOrderOpinion {
+    Uid int64 `json:"uid"`                               // 用户id
+    ListenerUid int64 `json:"listenerUid"`               // XXX用户id
+    ListenerNickName string `json:"listenerNickName"`    // XXX昵称
+    ListenerAvatar string `json:"listenerAvatar"`        // XXX头像
+    OrderId string `json:"orderId"`                      // 订单id
+    OrderType int64 `json:"orderType"`                   // 订单类型
+    Avatar string `json:"avatar"`                        // 用户头像
+    NickName string `json:"nickName"`                    // 用户昵称
+    CommentTime string `json:"commentTime"`              //用户评价时间
+    Comment string `json:"comment"`                      // 用户评论
+    CommentTag []int64 `json:"commentTag"`               // 评价标签
+    Star int64 `json:"star"`                             // 总体评价 1 不满意 3 一般 5 满意
+    ReplyTime int64 `json:"replyTime"`                   //XXX回复时间
+    Reply string `json:"reply"`                          //XXX回复内容
+    FeedbackTime string `json:"feedbackTime"`            // XXX反馈时间
+    Feedback string `json:"feedback"`                    // XXX反馈
+}
+
+// XXX个人资料填写和编辑
+type (
+    EditListenerProfileReq {
+        listenerUid int64 `json:"listenerUid"`                                                 //用户id
+        NickName string `json:"nickName"`                                                      //名字
+        ListenerName string `json:"listenerName"`                                              // 姓名
+        Avatar string `json:"avatar"`                                                          //大图头像
+        MaritalStatus int64 `json:"maritalStatus"`                                             //婚姻状态
+        PhoneNumber string `json:"phoneNumber"`                                                //手机号
+        Constellation int64 `json:"constellation"`                                             //星座
+        Province string `json:"province"`                                                      //省级大区
+        City string `json:"city"`                                                              //地区市
+        Job string `json:"job"`                                                                //工作
+        Education int64 `json:"education"`                                                     //教育水平
+        Gender int64 `json:"gender"`                                                           //性别
+        Birthday string `json:"birthday"`                                                      //出生年-月-日
+        IdNo string `json:"idNo"`                                                              //身份证号
+        IdPhoto1 string `json:"idPhoto1"`                                                      //正面身份证（国徽）
+        IdPhoto2 string `json:"idPhoto2"`                                                      //反面身份证
+        IdPhoto3 string `json:"idPhoto3"`                                                      //手持身份证
+        Specialties []int64 `json:"specialties"`                                               //擅长领域
+        Introduction string `json:"introduction"`                                              //个人介绍
+        VoiceFile string `json:"voiceFile"`                                                    //声音文件
+        Experience1 string `json:"experience1"`                                                //个人经历1
+        Experience2 string `json:"experience2"`                                                //个人经历2
+        CertType int64 `json:"certType"`                                                       //资质类型 2 职业技能证书 4 其他平台从业记录
+        OtherPlatformAccount string `json:"otherPlatformAccount"`                              // 用户在其他平台的账户信息
+        CertFiles1 string `json:"certFiles1"`                                                  //附加材料1 格式：名称#文件名
+        CertFiles2 string `json:"certFiles2"`                                                  //附加材料2 格式：名称#文件名
+        CertFiles3 string `json:"certFiles3"`                                                  //附加材料3 格式：名称#文件名
+        CertFiles4 string `json:"certFiles4"`                                                  //附加材料4 格式：名称#文件名
+        CertFiles5 string `json:"certFiles5"`                                                  //附加材料5 格式：名称#文件名
+        AutoReplyNew string `json:"autoReplyNew"`                                              //新人 休息中自动回复
+        AutoReplyProcessing string `json:"autoReplyProcessing"`                                //服务中 休息中用户自动回复
+        AutoReplyFinish string `json:"autoReplyFinish"`                                        //服务结束 休息中自动回复
+        TextChatPrice int64 `json:"textChatPrice"`                                             //文字聊天价格
+        VoiceChatPrice int64 `json:"voiceChatPrice"`                                           //语音聊天价格
+        TextChatSwitch int64 `json:"textChatSwitch"`                                           // 文字服务开关
+        VoiceChatSwitch int64 `json:"voiceChatSwitch"`                                         // 语音服务开关
+        DraftVersion int64 `json:"draftVersion"`                                               // 草稿版本 首次为0
+    }
+    EditListenerProfileResp {
+        DraftVersion int64 `json:"draftVersion"`                                               // 草稿版本 首次为0
+    }
+)
+
+// 申请成为XXX提交审核接口
+type (
+    NewListenerCommitCheckReq {
+        Uid int64 `json:"uid"`
+        CheckStatus int64 `json:"checkStatus"`                                                 // 当前审核状态 1 初次申请编辑资料 2 初次申请提交审核 5 成为XXX之后修改资料并提交审核
+    }
+    NewListenerCommitCheckResp {
+
+    }
+)
+
+// XXX获取自己的资料
+type (
+    GetListenerOwnInfoReq {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    GetListenerOwnInfoResp {
+        Info *ListenerSeeOwnProfile `json:"info"`
+    }
+)
+
+// 普通用户获取XXX资料
+type (
+    GetListenerInfoReq {
+        Uid int64 `json:"uid"`                                                                 // 用户uid
+        NickName string `json:"nickName"`                                                      //用户名字
+        Avatar string `json:"avatar"`                                                          //用户头像
+        ListenerUid int64 `json:"listenerUid"`                                                 // XXXuid
+    }
+    ListenerChatState {
+        FreeChatCnt int64 `json:"freeChatCnt"`                // 免费聊天次数
+        TextChatExpiryTime string `json:"textChatExpiryTime"` // 文字聊天到期时间
+        VoiceChatMinute int64 `json:"voiceChatMinute"`        // 语音聊天当前剩余时长
+    }
+    GetListenerInfoResp {
+        Info *UserSeeListenerProfile `json:"info"` // XXX个人资料
+        State *ListenerChatState `json:"state"`    // 和XXX的聊天状态
+    }
+)
+
+
+// 反馈
+type (
+    FeedbackOrderReq {
+        OrderId string `json:"orderId"`
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+        Feedback string `json:"feedback"`
+        SendMsg int64 `json:"sendMsg"` // 是否同步发送到聊天 2 是 4 否
+    }
+    FeedbackOrderResp {
+    }
+)
+
+// 评价服务
+type (
+    CommentOrderReq {
+        OrderId string `json:"orderId"`
+        Uid int64 `json:"uid"`
+        Comment string `json:"comment"`        // 评价内容
+        CommentTag []int64 `json:"commentTag"` // 评价标签
+        Star int64 `json:"star"`               //总体评价 1 不满意 3 一般 5 满意
+        SendMsg int64 `json:"sendMsg"`         // 是否同步发送到聊天 2 是 4 否
+    }
+    CommentOrderResp {
+    }
+)
+
+// 回复
+type (
+    ReplyCommentReq {
+        OrderId string `json:"orderId"`
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+        Reply string `json:"reply"` // XXX回复
+    }
+    ReplyCommentResp {
+    }
+)
+
+// 备注
+type (
+    ListenerRemarkUserReq {
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+        Remark string `json:"remark"`      // XXX备注
+        UserDesc string `json:"userDesc"`  // 描述
+    }
+    ListenerRemarkUserResp {
+    }
+)
+
+// 获取备注
+type (
+    GetListenerRemarkUserReq {
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    GetListenerRemarkUserResp {
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+        Remark string `json:"remark"`      // XXX备注
+        UserDesc string `json:"userDesc"`  // 描述
+    }
+)
+
+// 获取XXX评价列表
+type (
+    GetListenerRatingListReq {
+        ListenerUid int64 `json:"listenerUid"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+        Star int64 `json:"star"`
+    }
+    GetListenerRatingListResp {
+        List []*ListenerOrderOpinion `json:"list"`
+    }
+)
+
+// 修改XXX状态
+type (
+    ChangeWorkStateReq {
+        ListenerUid int64 `json:"listenerUid"`
+        WorkState int64 `json:"workState"`
+        RestingTimeEnable int64 `json:"restingTimeEnable"`
+        StopWorkTime string `json:"stopWorkTime"`
+        StartWorkTime string `json:"startWorkTime"`
+        WorkDays []int64 `json:"workDays"`
+    }
+    ChangeWorkStateResp {
+
+    }
+)
+
+// 获取XXX设置的状态
+type (
+    GetWorkStateReq {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    GetWorkStateResp {
+        WorkState int64 `json:"workState"`
+        RestingTimeEnable int64 `json:"restingTimeEnable"`
+        StopWorkTime string `json:"stopWorkTime"`
+        StartWorkTime string `json:"startWorkTime"`
+        WorkDays []int64 `json:"workDays"`
+    }
+)
+
+// 获取XXX专业领域 banner 推荐筛选条件
+type (
+    Pair {
+        Id int64 `json:"id"`
+        Name string `json:"name"`
+    }
+    Banner {
+        Id int64 `json:"id"`
+        Name string `json:"name"`
+        Pic string `json:"pic"`
+        Child []*Pair `json:"child"`
+        Url string `json:"url"`
+    }
+    GetDefineBusinessConfigReq {
+        uid int64 `json:"uid"`
+    }
+    GetDefineBusinessConfigResp {
+        UserBanner []*Banner `json:"userBanner"`                 // 用户首页顶部大图banner
+        ListenerBanner []*Banner `json:"listenerBanner"`         // XXX首页banner
+        Specialties []*Banner `json:"specialties"`               // 专业领域
+        ChatTypeFilter []*Pair `json:"chatTypeFilter"`           // 聊天类型
+        GenderFileter []*Pair `json:"genderFileter"`             // 性别
+        AgeFilter []*Pair `json:"ageFilter"`                     // 年龄
+        WorkStateFilter []*Pair `json:"workStateFilter"`         // 工作状态
+        SortOrderFilter []*Pair `json:"sortOrderFilter"`         // 排序字段 默认正序
+        CommentTag []*Banner `json:"commentTag"`                 // 评价标签
+        RefundReasonTag []*Pair `json:"refundReasonTag"`         // 退款标签
+        ReportTag []*Pair `json:"reportTag"`                     // 用户上报标签
+        AdviserWords []string `json:"adviserWords"`              // 顾问常用语
+    }
+)
+
+// 推荐
+type (
+    UserSeeRecommendListenerProfile {
+        listenerUid int64 `json:"listenerUid"`                                                 //用户id
+        NickName string `json:"nickName"`                                                      //名字
+        Avatar string `json:"avatar"`                                                          //大图头像
+        MaritalStatus int64 `json:"maritalStatus"`                                             //婚姻状态
+        Constellation int64 `json:"constellation"`                                             //星座
+        Job string `json:"job"`                                                                //工作
+        Education int64 `json:"education"`                                                     //教育水平
+        Gender int64 `json:"gender"`                                                           //性别
+        Age int64 `json:"age"`                                                                 //年龄
+        Specialties []int64 `json:"specialties"`                                               //擅长领域
+        Introduction string `json:"introduction"`                                              //个人介绍
+        VoiceFile string `json:"voiceFile"`                                                    //声音文件
+        TextChatPrice int64 `json:"textChatPrice"`                                             //文字聊天单价格
+        VoiceChatPrice int64 `json:"voiceChatPrice"`                                           //语音聊天单价格
+        TextChatActualPrice int64 `json:"textChatActualPrice"`                                 //优惠后的文字单价格
+        VoiceChatActualPrice int64 `json:"voiceChatActualPrice"`                               //优惠后的语音单价格
+        TextChatSwitch int64 `json:"textChatSwitch"`                                           // 文字服务开关
+        VoiceChatSwitch int64 `json:"voiceChatSwitch"`                                         // 语音服务开关
+        FreeFlag string `json:"freeFlag"`                                                      // 优惠标志
+        RatingSum int64 `json:"ratingSum"`                                                     // 评价总数
+        FiveStar int64 `json:"fiveStar"`                                                       // 好评数
+        ShowPrice int64 `json:"showPrice"`                                                     // 展示原价
+        ShowActualPrice int64 `json:"showActualPrice"`                                         // 展示优惠后的价格
+        FreeMinute int64 `json:"freeMinute"`                                                   // 免费分钟
+        NewUserDiscount int64 `json:"newUserDiscount"`                                         // 新用户订单费用折扣(千分之几)
+    }
+    RecommendListenerReq {
+        Uid int64 `json:"uid"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+        Specialties int64 `json:"specialties"`
+        ChatType int64 `json:"chatType"`
+        Gender int64 `json:"gender"`
+        Age int64 `json:"age"`
+        SortOrder int64 `json:"sortOrder"`
+        WorkState []int64 `json:"workState,optional"` // 可接单 [2] 不可接单 [3,4]
+    }
+    RecommendListenerResp {
+        Listener []*UserSeeRecommendListenerProfile `json:"listener"`
+    }
+)
+
+// 获取绑定的银行卡
+type (
+    GetBankCardReq {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    GetBankCardResp {
+        ListenerName string `json:"listenerName"`
+        PhoneNumber string `json:"phoneNumber"`
+        IdNo string `json:"idNo"`
+        BankCardNo string `json:"bankCardNo"`
+        ListenerUid int64 `json:"listenerUid"`
+    }
+)
+
+// 设置或修改绑定的银行卡
+type (
+    SetBankCardReq {
+        ListenerName string `json:"listenerName"`
+        PhoneNumber string `json:"phoneNumber"`
+        IdNo string `json:"idNo"`
+        BankCardNo string `json:"bankCardNo"`
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    SetBankCardResp {
+
+    }
+)
+
+// 申请提现接口
+type (
+    ListenerMoveCashReq {
+        ListenerUid int64 `json:"listenerUid"`
+        Amount int64 `json:"amount"`
+    }
+    ListenerMoveCashResp {
+    }
+)
+
+// 获取提现记录
+type (
+    GetListenerCashListReq {
+        ListenerUid int64 `json:"listenerUid"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    MoveCashDetail {
+        CreateTime string `json:"createTime"`
+        Amount int64 `json:"amount"`
+        SettleType int64 `json:"settleType"` // 提现状态
+        OutId string `json:"outId"`
+        Remark string `json:"remark"`
+    }
+    GetListenerCashListResp {
+        List []*MoveCashDetail `json:"list"`
+    }
+)
+
+// 获取收益记录
+type (
+    GetListenerIncomeListReq {
+        ListenerUid int64 `json:"listenerUid"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    ListenerIncomeDetail {
+        CreateTime string `json:"createTime"`
+        Amount int64 `json:"amount"`
+        SettleType int64 `json:"settleType"` // 提现状态
+        OutId string `json:"outId"`
+        Remark string `json:"remark"`
+    }
+    GetListenerIncomeListResp {
+        List []*ListenerIncomeDetail `json:"list"`
+    }
+)
+
+// 获取XXX钱包
+type (
+    GetListenerWalletReq {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    GetListenerWalletResp {
+        ListenerUid int64 `json:"listenerUid"`
+        WaitConfirmAmount int64 `json:"waitConfirmAmount"`             // 等待确认的金额（分）
+        Amount int64 `json:"amount"`                                   // 已经确认的收益金额（分）
+        RefundSumAmount int64 `json:"refundSumAmount"`                 // 累计退款金额 (分)
+        CashSumAmount int64 `json:"cashSumAmount"`                     // 累计提现金额 （分）
+        ApplyCashAmount int64 `json:"applyCashAmount"`                 // 当前申请的提现金额
+        CurrentMonthAmount int64 `json:"currentMonthAmount"`           // 当月累计收益
+        CurrentMonthOrderAmount int64 `json:"currentMonthOrderAmount"` // 当月订单金额
+    }
+)
+
+// 获取XXX评价情况统计
+type (
+    GetListenerRatingStatReq {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    CommentTagPair {
+        Tag int64 `json:"tag"`
+        Cnt int64 `json:"cnt"`
+    }
+    GetListenerRatingStatResp {
+        RatingSum int64 `json:"RatingSum"`
+        FiveStar int64 `json:"FiveStar"`
+        ThreeStar int64 `json:"ThreeStar"`
+        OneStar int64 `json:"OneStar"`
+        UserCount int64 `json:"userCount"`
+        ChatDuration int64 `json:"chatDuration"`
+        CommentTagStat []*CommentTagPair `json:"commentTagStat"`
+    }
+)
+
+// 获取常用语
+type (
+    GetListenerWordsReq {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    GetListenerWordsResp {
+        Words1 string `json:"words1"`
+        Words2 string `json:"words2"`
+        Words3 string `json:"words3"`
+        Words4 string `json:"words4"`
+        Words5 string `json:"words5"`
+        Words6 string `json:"words6"`
+        Words7 string `json:"words7"`
+        Words8 string `json:"words8"`
+        Words9 string `json:"words9"`
+        Words10 string `json:"words10"`
+        ListenerUid int64 `json:"listenerUid"`
+        WordsSort []int64 `json:"wordsSort"`
+    }
+)
+// 编辑常用语
+type (
+    EditListenerWordsReq {
+        Words1 string `json:"words1"`
+        Words2 string `json:"words2"`
+        Words3 string `json:"words3"`
+        Words4 string `json:"words4"`
+        Words5 string `json:"words5"`
+        Words6 string `json:"words6"`
+        Words7 string `json:"words7"`
+        Words8 string `json:"words8"`
+        Words9 string `json:"words9"`
+        Words10 string `json:"words10"`
+        ListenerUid int64 `json:"listenerUid"`
+        WordsSort []int64 `json:"wordsSort"`
+    }
+    EditListenerWordsResp {
+
+    }
+)
+
+// 获取XXX首页统计数据
+type (
+    GetListenerHomePageDashboardReq {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+    GetListenerHomePageDashboardResp {
+        ListenerUid int64 `json:"listenerUid"`
+        TodayOrderCnt int64 `json:"todayOrderCnt"`                                           // 今日接单数
+        TodayOrderCntRank int64 `json:"todayOrderCntRank"`                                   // 今日接单数排名
+        TodayOrderAmount int64 `json:"todayOrderAmount"`                                     // 今日接单金额
+        TodayOrderAmountRank int64 `json:"todayOrderAmountRank"`                             // 今日接单金额排名
+        TodayRecommendUserCnt int64 `json:"todayRecommendUserCnt"`                           // 今日推荐用户数
+        TodayRecommendUserCntRank int64 `json:"todayRecommendUserCntRank"`                   // 今日推荐用户数排名
+        TodayEnterChatUserCnt int64 `json:"todayEnterChatUserCnt"`                           // 今日进入聊天页面用户数
+        TodayEnterChatUserCntRank int64 `json:"todayEnterChatUserCntRank"`                   // 今日进入聊天界面用户数排名
+        TodayViewUserCnt int64 `json:"todayViewUserCnt"`                                     // 今日访问资料页面用户数
+        TodayViewUserCntRank int64 `json:"todayViewUserCntRank"`                             // 今日资料页面用户数排名
+        TodayStatUpdateTime string `json:"todayStatUpdateTime"`                              // 今日统计数据更新时间
+        Last30DaysPaidUserCnt int64 `json:"last30DaysPaidUserCnt"`                           // 过去30天下单人数（下单人数占进入聊天页面的人数比例）
+        Last30DaysEnterChatUserCnt int64 `json:"last30DaysEnterChatUserCnt"`                 // 过去30天进入聊天页面人数
+        Last7DaysRepeatPaidUserCnt int64 `json:"last7DaysRepeatPaidUserCnt"`                 // 过去7天复购人数 （复购人数占下单人数比例）
+        Last7DaysPaidUserCnt int64 `json:"last7DaysPaidUserCnt"`                             // 过去7天下单人数（
+        Last30DaysRepeatPaidUserCnt int64 `json:"last30DaysRepeatPaidUserCnt"`               // 过去30天复购人数
+        Last7DaysAveragePaidAmountPerUser int64 `json:"last7DaysAveragePaidAmountPerUser"`   // 过去7天人均消费
+        Last30DaysAveragePaidAmountPerUser int64 `json:"last30DaysAveragePaidAmountPerUser"` // 过去30天人均消费
+        Last7DaysAveragePaidAmountPerDay int64 `json:"last7DaysAveragePaidAmountPerDay"`     // 过去7天日均消费
+        Last30DaysAveragePaidAmountPerDay int64 `json:"last30DaysAveragePaidAmountPerDay"`   // 过去30天日均消费
+        LastDayStatUpdateTime string `json:"lastDayStatUpdateTime"`                          // 过去几天统计数据更新时间
+        OneStarRatingOrderCnt int64 `json:"oneStarRatingOrderCnt"`                           // 累计不满意评价订单数
+        RefundOrderCnt int64 `json:"refundOrderCnt"`                                         // 累计退款订单数
+        Suggestion []string `json:"suggestion"`                                              // 建议
+    }
+)
+
+// 其他用户看到的XXX资料
+type UserSeeListenerShortProfile {
+    listenerUid int64 `json:"listenerUid"`                                                 //用户id
+    NickName string `json:"nickName"`                                                      //名字
+    Avatar string `json:"avatar"`                                                          //大图头像
+    MaritalStatus int64 `json:"maritalStatus"`                                             //婚姻状态
+    Constellation int64 `json:"constellation"`                                             //星座
+    Province string `json:"province"`                                                      //省级大区
+    City string `json:"city"`                                                              //地区市
+    Job string `json:"job"`                                                                //工作
+    Education int64 `json:"education"`                                                     //教育水平
+    Gender int64 `json:"gender"`                                                           //性别
+    Age int64 `json:"age"`                                                                 //年龄
+    Specialties []int64 `json:"specialties"`                                               //擅长领域
+    Introduction string `json:"introduction"`                                              //个人介绍
+    VoiceFile string `json:"voiceFile"`                                                    //声音文件
+    UserCount int64 `json:"userCount"`                                                     // 服务人数
+    ChatDuration int64 `json:"chatDuration"`                                               // 累计服务时长分钟
+    RatingSum int64 `json:"ratingSum"`                                                     // 评价总数
+    FiveStar int64 `json:"fiveStar"`                                                       // 好评数
+    WorkState int64 `json:"workState"`                                                     // 工作状态
+    OpenId string `json:"openId"`                                                          // 微信openid
+    AutoReplyNew string `json:"autoReplyNew"`                                              //新人 休息中自动回复
+    AutoReplyProcessing string `json:"autoReplyProcessing"`                                //服务中 休息中用户自动回复
+    AutoReplyFinish string `json:"autoReplyFinish"`                                        //服务结束 休息中自动回复
+}
+
+// 获取用户互动最多的XXX
+type (
+    GetUserTopRelationListenerReq {
+        Uid int64 `json:"uid"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    GetUserTopRelationListenerResp {
+        List []*UserSeeListenerShortProfile `json:"list"`
+    }
+)

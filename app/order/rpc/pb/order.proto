@@ -1,0 +1,497 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+
+//req 、resp
+
+message CreateChatOrderReq {
+  int64  listenerUid      = 1;
+  string listenerNickName = 2;
+  string listenerAvatar   = 3;
+  int64  uid              = 4;
+  int64  buyUnit          = 5;
+  int64  pricingPlanId    = 6;
+  int64  orderType        = 7;
+  int64  textChatPrice    = 8; //textChatPrice
+  int64  voiceChatPrice   = 9; //voiceChatPrice
+  string nickName         = 10;
+  string avatar           = 11;
+  string userChannel      = 12;
+  string listenerChannel  = 13;
+}
+
+message CreateChatOrderResp {
+  int64  chatUnitMinute = 1;    // 服务单价包含多少分钟
+  int64  buyUnit        = 2;              // 购买的时长，单价时间的整数倍
+  int64  unitPrice      = 3;           // 单价
+  int64  baseAmount     = 4;         // 服务费
+  int64  taxAmount      = 5;         // 税费
+  int64  nightAddAmount = 6;     // 夜间加收费用
+  int64  saveAmount     = 7;       // 优惠减免金额
+  int64  actualAmount   = 8;      // 实际总费用
+  string orderId        = 9;
+  int64  orderType      = 10;
+}
+
+message DoChatOrderActionReq{
+  string         orderId     = 1;
+  int64          operatorUid = 2;
+  int64          action      = 3; // 状态操作
+  int64          star        = 4; // 评价星级
+  string         remark      = 5; // 备注 例如退款原因
+  string         comment     = 6;
+  repeated int64 tag         = 7;
+  string         additional  = 8; // 补充信息
+  string         attachment  = 9; // 附件 #分隔图片文件
+  int64          sendMsg     = 10; // 是否同步发送到聊天 2 是 4 否
+  int64          orderType   = 11;// 订单类型
+  int64          listenerUid = 12;
+}
+message DoChatOrderActionResp{
+}
+
+// 订单列表
+message ShortChatOrder {
+  string         orderId             = 1;
+  string         createTime          = 2;
+  int64          listenerUid         = 3;
+  string         listenerNickName    = 4;
+  string         listenerAvatar      = 5;
+  int64          buyUnit             = 6;
+  int64          chatUnitMinute      = 7;
+  int64          unitPrice           = 8;
+  int64          actualAmount        = 9;
+  int64          orderState          = 10;
+  int64          orderType           = 11;
+  string         nickName            = 12;
+  int64          uid                 = 13;
+  string         avatar              = 14;
+  string         comment             = 15;
+  repeated int64 commentTag          = 16;
+  string         commentTime         = 17;
+  int64          star                = 18;
+  string         reply               = 19;
+  string         replyTime           = 20;
+  string         feedbackTime        = 21;
+  string         feedback            = 22;
+  string         statusMark          = 23; // 根据不通状态确定下一个状态的倒数计时提示语
+  int64          usedChatMinute      = 24;
+  string         startTime           = 25;
+  string         endTime             = 26;
+  string         expiryTime          = 27;
+  int64          saveAmount          = 28;
+  int64          platformShareAmount = 29;       // 平台收益金额（分）
+  int64          listenerAmount      = 30;     // XXX收益
+}
+
+message GetChatOrderListReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+  int64 listType    = 3; // 列表类型 0 全部 1 服务中 2 未反馈 3 待处理退款
+  int64 pageNo      = 4;
+  int64 pageSize    = 5;
+}
+message GetChatOrderListResp {
+  repeated ShortChatOrder list = 1;
+}
+
+// 获取聊天服务定价
+message BusinessChatPricePlan {
+  string createTime             = 1;
+  int64  id                     = 2;
+  int64  taxRate                = 3;                   // 税率
+  int64  nightAddPriceRate      = 4;             // 夜间加收费率
+  int64  shareRateStep1Star5    = 5;           // 1阶段满意评价平台抽佣比率
+  int64  shareRateStep1Star3    = 6;           // 1阶段一般评价平台抽佣比率
+  int64  shareRateStep1Star1    = 7;          // 1阶段不满意评价平台抽佣比率
+  int64  shareAmountStep1Unit   = 8;          // 1阶段时长临界单位
+  int64  shareRateStep2Star5    = 9;          // 2阶段满意评价平台抽佣比率
+  int64  shareRateStep2Star3    = 10;          // 2阶段一般评价平台抽佣比率
+  int64  shareRateStep2Star1    = 11;          // 2阶段不满意评价平台抽佣比率
+  int64  nightAddPriceHourStart = 12;       // 夜间服务加价开始时刻
+  int64  nightAddPriceHourEnd   = 13;       // 夜间加价结束时刻
+  int64  chatUnitMinute         = 14;       // 单位时长的分钟数
+  int64  newUserDiscount        = 15;       // 新用户减免比率
+  int64  defaultTextChatPrice   = 16;       // 默认文字聊天价格
+  int64  defaultVoiceChatPrice  = 17;       // 默认语音聊天价格
+  int64  orderCnt               = 18; // 订单数
+  int64  freeMinute             = 19; // 免费分钟数
+}
+
+message GetBusinessChatPricePlanReq {
+  int64 uid = 1;
+  int64 id  = 2;
+}
+message GetBusinessChatPricePlanResp {
+  BusinessChatPricePlan Config = 1;
+}
+
+message EstimateOrderReq {
+  int64 listenerUid    = 1;
+  int64 uid            = 2;
+  int64 buyUnit        = 3;                          // 服务时长分钟
+  int64 textChatPrice  = 4;                    //
+  int64 voiceChatPrice = 5;                    //
+  int64 pricingPlanId  = 6; //价格id
+  int64 orderType      = 7;
+}
+message EstimateOrderResp {
+  int64 chatUnitMinute = 1;    // 服务单价包含多少分钟
+  int64 buyUnit        = 2;              // 购买的时长，单价时间的整数倍
+  int64 unitPrice      = 3;           // 单价
+  int64 baseAmount     = 4;         // 服务费
+  int64 taxAmount      = 5;         // 税费
+  int64 nightAddAmount = 6;     // 夜间加收费用
+  int64 saveAmount     = 7;       // 优惠减免金额
+  int64 actualAmount   = 8;      // 实际总费用
+}
+
+message ChatOrderStateLog {
+  string createTime  = 1;
+  int64  state       = 2;
+  int64  operatorUid = 3;
+  string remark      = 4;
+}
+
+// 用户获取订单状态记录
+message GetChatOrderStateLogReq {
+  string         orderId  = 1;
+  int64          pageNo   = 2;
+  int64          pageSize = 3;
+  repeated int64 state    = 4;
+}
+message GetChatOrderStateLogResp {
+  repeated ChatOrderStateLog list = 1;
+}
+
+// 更新语音聊天订单的使用情况
+message UpdateChatOrderUseReq {
+  int64  uid         = 1;
+  int64  listenerUid = 2;
+  int64  usedMinute  = 3;
+  string startTime   = 4;
+  string stopTime    = 5;
+  int64  orderType   = 6;
+  int64  action      = 7;
+}
+
+message UpdateChatOrderUseResp {
+
+}
+
+// 获取需要过期更新状态的订单
+message GetExpireVoiceChatOrderReq {
+  int64  pageNo          = 1;
+  int64  pageSize        = 2;
+  string startExpiryTime = 3;
+  string endExpiryTime   = 4;
+}
+message ExpireVoiceChatOrder {
+  string orderId        = 1;
+  int64  uid            = 2;
+  int64  listenerUid    = 3;
+  int64  buyUnit        = 4;
+  int64  chatUnitMinute = 5;
+  int64  usedChatMinute = 6;
+}
+message GetExpireVoiceChatOrderResp {
+  repeated ExpireVoiceChatOrder list = 1;
+}
+
+// 结算订单
+message SettleChatOrderReq {
+  string orderId     = 1;
+  int64  star        = 2;
+  int64  settleType  = 3; // 结算类型 2 已经确认 3 待确认 6 已经退款
+  int64  uid         = 4;
+  int64  listenerUid = 5;
+}
+message SettleChatOrderResp {
+  int64  listenerUid         = 1;
+  int64  amount              = 2; // XXX收益金额 分
+  string orderId             = 3;
+  int64  orderType           = 4;
+  int64  usedMinute          = 5;
+  int64  uid                 = 6;
+  int64  platformShareAmount = 7; // 平台分成金额 分
+}
+
+// 内部获取订单详情
+message ChatOrder {
+  string orderId          = 1;
+  string createTime       = 2;
+  int64  listenerUid      = 3;
+  string listenerNickName = 4;
+  string listenerAvatar   = 5;
+  int64  buyUnit          = 6;
+  int64  usedChatMinute   = 7;
+  string startTime        = 8;
+  string endTime          = 9;
+  string expiryTime       = 10;
+  int64  saveAmount       = 11;
+  int64  actualAmount     = 12;
+  int64  orderState       = 13;
+  int64  chatUnitMinute   = 14;
+  int64  orderType        = 15;
+  string nickName         = 16;
+  int64  uid              = 17;
+}
+
+message GetChatOrderDetailReq{
+  string orderId = 1;
+}
+message GetChatOrderDetailResp{
+  ShortChatOrder order = 1;
+}
+
+
+// 获取XXX服务评价列表
+message ListenerOrderOpinion {
+  int64          uid              = 1;                          // 用户id
+  int64          listenerUid      = 2;           // XXX用户id
+  string         avatar           = 3; // 用户头像
+  string         nickName         = 4; // 用户昵称
+  string         orderId          = 5;            // 订单id
+  string         commentTime      = 6;     //用户评价时间
+  string         comment          = 7;  // 用户评论
+  repeated int64 comment_tag      = 8;  // 评价标签
+  int64          star             = 9;        // 好评 1 不满意 3 一般 5 满意
+  string         replyTime        = 10; //XXX回复时间
+  string         listenerReply    = 11;//XXX回复内容
+  int64          orderType        = 12; // 订单类型
+  string         feedbackTime     = 13;
+  string         feedback         = 14;
+  string         listenerNickName = 15;     //XXX昵称
+  string         listenerAvatar   = 16;     // XXX头像
+}
+message GetListenerCommentListReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+  int64 star        = 3;
+  int64 pageNo      = 4;
+  int64 pageSize    = 5;
+}
+message GetListenerCommentListResp {
+  repeated ListenerOrderOpinion list = 1;
+}
+
+// XXX回复
+message ReplyOrderCommentReq {
+  string orderId     = 1;
+  int64  listenerUid = 2;
+  string reply       = 3; // XXX回复
+}
+message ReplyOrderCommentResp {
+}
+
+// XXX反馈用户
+message FeedbackOrderReq {
+  string orderId     = 1;
+  int64  uid         = 2;
+  int64  listenerUid = 3;
+  string feedback    = 4;
+  int64  sendMsg     = 5; // 是否同步发送到聊天 2 是 4 否
+}
+
+message FeedbackOrderResp {
+
+}
+
+// 退款订单列表
+message RefundChatOrder {
+  string         orderId          = 1;
+  string         createTime       = 2;
+  int64          listenerUid      = 3;
+  string         listenerNickName = 4;
+  string         listenerAvatar   = 5;
+  string         nickName         = 6;
+  int64          uid              = 7;
+  string         avatar           = 8;
+  int64          buyUnit          = 9;
+  int64          chatUnitMinute   = 10;
+  int64          unitPrice        = 11;
+  int64          actualAmount     = 12;
+  int64          saveAmount       = 13;
+  int64          orderState       = 14;
+  int64          orderType        = 15;
+  string         comment          = 16;
+  repeated int64 commentTag       = 17;
+  string         commentTime      = 18;
+  int64          star             = 19;
+  string         feedbackTime     = 20;
+  string         feedback         = 21;
+  int64          usedChatMinute   = 22;
+  string         startTime        = 23;
+  string         endTime          = 24;
+  string         expiryTime       = 25;
+  string         applyRefundTime  = 26; // 首次申请退款时间
+  string         refundReason     = 27;       // 退款原因
+  int64          refundReasonTag  = 28; // 退款原因标签
+  string         additional       = 29;     // 补充信息
+  string         attachment       = 30;   // 附加图片 #分隔
+  string         userChannel      = 31; // 用户渠道
+}
+
+message GetOrderListByAdminReq {
+  int64          pageNo      = 1;
+  int64          pageSize    = 2;
+  int64          uid         = 3;
+  int64          listenerUid = 4;
+  int64          orderType   = 5;
+  string         orderId     = 6;
+  repeated int64 state       = 7;
+
+}
+message GetOrderListByAdminResp {
+  int64                    sum  = 1;
+  repeated RefundChatOrder list = 2;
+}
+
+// 获取需要自动处理的订单
+message GetAutoProcessOrderReq {
+  int64          pageNo     = 1;
+  int64          pageSize   = 2;
+  string         beforeTime = 3;
+  repeated int64 state      = 4;
+}
+
+message AutoProcessOrder {
+  string createTime  = 1;
+  string updateTime  = 2;
+  string orderId     = 3;
+  int64  listenerUid = 4;
+  int64  uid         = 5;
+  int64  orderType   = 6;
+  int64  orderState  = 7;
+}
+
+message GetAutoProcessOrderResp {
+  repeated AutoProcessOrder list = 1;
+}
+
+// 更新订单统计数据
+message UpdateOrderLastDaysStatReq {
+  repeated int64 listenerUid = 1;
+}
+message UpdateOrderLastDaysStatResp {
+}
+
+// 获取最近的好评
+message GetRecentGoodCommentReq {
+  int64 pageNo   = 1;
+  int64 pageSize = 2;
+}
+message RecentGoodComment {
+  string text        = 1;
+  int64  listenerUid = 2;
+  int64  uid         = 3;
+}
+message GetRecentGoodCommentResp {
+  repeated RecentGoodComment list = 1;
+}
+
+// 获取指定XXX最近的好评
+message GetListenerRecentGoodCommentReq {
+  repeated ShortListenerProfile listener = 1;
+}
+message GetListenerRecentGoodCommentResp {
+  repeated RecentGoodComment list = 1;
+}
+
+message ShortListenerProfile {
+  int64  listenerUid      = 1;
+  string listenerNickName = 2;
+  string listenerAvatar   = 3;
+}
+
+// 获取最近一个好评订单
+message GetLastCommentOrderReq {
+  int64 listenerUid = 1;
+  int64 star        = 2;
+}
+message GetLastCommentOrderResp {
+  string         orderId          = 1;
+  string         listenerNickName = 2; // XXX昵称
+  string         nickName         = 3;          // 用户昵称
+  string         commentTime      = 4;       // 用户评价时间
+  repeated int64 commentTag       = 5;        // 评价标签
+}
+
+// 获取最近时间段用户数
+message GetRecentPaidUserCntReq {
+  int64  listenerUid = 1;
+  string startTime   = 2;
+  string endTime     = 3;
+}
+
+message GetRecentPaidUserCntResp {
+  int64 userCnt = 1;
+}
+
+// 用户获取反馈列表
+message GetChatOrderFeedbackListByUserReq {
+  int64 uid      = 1;
+  int64 pageNo   = 2;
+  int64 pageSize = 3;
+}
+message UserSeeChatOrderFeedback {
+  string orderId          = 1;          //单号
+  string createTime       = 2;          // 下单时间
+  int64  listenerUid      = 3;          // XXXuid
+  string listenerNickName = 4;          // XXX名称
+  string listenerAvatar   = 5;          // XXX缩略头像
+  string feedbackTime     = 6;          // 反馈时间
+  string feedback         = 7;          // 反馈内容
+}
+message GetChatOrderFeedbackListByUserResp {
+  repeated UserSeeChatOrderFeedback list = 1;
+}
+
+//service
+service order {
+  // 获取订单费用估算
+  rpc estimateOrder(EstimateOrderReq) returns (EstimateOrderResp);
+  // 咨询服务下订单
+  rpc createChatOrder(CreateChatOrderReq) returns (CreateChatOrderResp);
+  // 获取订单详情
+  rpc getChatOrderDetail(GetChatOrderDetailReq) returns (GetChatOrderDetailResp);
+  // 订单操作
+  rpc doChatOrderAction(DoChatOrderActionReq) returns (DoChatOrderActionResp);
+  // 订单列表
+  rpc getChatOrderList(GetChatOrderListReq) returns (GetChatOrderListResp);
+  // 获取聊天服务价格配置
+  rpc getBusinessChatPricePlan(GetBusinessChatPricePlanReq) returns (GetBusinessChatPricePlanResp);
+  // 获取用户订单状态变化记录
+  rpc getChatOrderStateLog(GetChatOrderStateLogReq) returns (GetChatOrderStateLogResp);
+  // 更新订单的使用情况
+  rpc updateChatOrderUse(UpdateChatOrderUseReq) returns (UpdateChatOrderUseResp);
+  // 获取过期的语音订单
+  rpc getExpireVoiceChatOrder(GetExpireVoiceChatOrderReq) returns (GetExpireVoiceChatOrderResp);
+  // 结算订单
+  rpc settleChatOrder(SettleChatOrderReq) returns (SettleChatOrderResp);
+  // 获取XXX评价列表
+  rpc getListenerCommentList(GetListenerCommentListReq) returns (GetListenerCommentListResp);
+  // XXX回复用户的订单评价
+  rpc replyOrderComment(ReplyOrderCommentReq) returns (ReplyOrderCommentResp);
+  // XXX反馈
+  rpc feedbackOrder(FeedbackOrderReq) returns (FeedbackOrderResp);
+  // 管理后台获取订单列表
+  rpc getOrderListByAdmin(GetOrderListByAdminReq) returns (GetOrderListByAdminResp);
+  // 获取需要自动处理的订单
+  rpc getAutoProcessOrder(GetAutoProcessOrderReq) returns (GetAutoProcessOrderResp);
+  // 更新XXX订单统计数据
+  rpc updateOrderLastDaysStat(UpdateOrderLastDaysStatReq) returns (UpdateOrderLastDaysStatResp);
+  // 获取最近的好评
+  rpc getRecentGoodComment(GetRecentGoodCommentReq) returns (GetRecentGoodCommentResp);
+  // 获取指定XXX的好评
+  rpc getListenerRecentGoodComment(GetListenerRecentGoodCommentReq) returns (GetListenerRecentGoodCommentResp);
+  // 获取最近一条评价
+  rpc getLastCommentOrder(GetLastCommentOrderReq) returns (GetLastCommentOrderResp);
+  // 获取最近时间段付费用户数
+  rpc getRecentPaidUserCnt(GetRecentPaidUserCntReq) returns (GetRecentPaidUserCntResp);
+  // 用户获取反馈列表
+  rpc getChatOrderFeedbackListByUser(GetChatOrderFeedbackListByUserReq) returns (GetChatOrderFeedbackListByUserResp);
+}

@@ -1,0 +1,42 @@
+syntax = "v1"
+
+info(
+    title: "聊天"
+    desc: "聊天"
+    author: ""
+    email: ""
+)
+
+// 聊天过程状态同步
+type (
+    SyncListenerChatStateReq {
+        Uid int64 `json:"uid"`                 // 普通用户
+        ListenerUid int64 `json:"listenerUid"` // XXX
+        Action int64 `json:"action"`           // 操作 参考api定义文档
+        OpenId1 string `json:"openId1"`        // 拨打方
+        OpenId2 string `json:"openId2"`        // 接收方
+    }
+    SyncListenerChatStateResp {
+        WorkState int64 `json:"workState"`                    // XXX工作状态
+        OnlineState int64 `json:"onlineState"`                // XXX在线状态
+        FreeChatCnt int64 `json:"freeChatCnt"`                // 免费聊天次数
+        TextChatExpiryTime string `json:"textChatExpiryTime"` // 文字聊天到期时间
+        VoiceChatMinute int64 `json:"voiceChatMinute"`        // 语音聊天当前剩余时长
+        ChatState int64 `json:"chatState"`                    // 1 新用户 未付费 2 服务中用户 3 老用户 已完成用户
+        ListenerChatState int64 `json:"listenerChatState"`    //  1 2 通话中 3 不在通话中
+        Uid int64 `json:"uid"`                                // 普通用户
+        ListenerUid int64 `json:"listenerUid"`                // XXX
+    }
+)
+
+// 发送文本消息
+type (
+    SendTextMsgReq {
+        FromUid int64 `json:"fromUid"`
+        ToUid int64 `json:"toUid"`
+        Text []string `json:"text"`
+        MsgType int64 `json:"msgType"` // 文本消息类型
+    }
+    SendTextMsgResp {
+    }
+)

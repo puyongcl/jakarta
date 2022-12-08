@@ -1,0 +1,59 @@
+syntax = "v1"
+
+info(
+    title: "微信预拉取"
+    desc: ""
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+
+import (
+    "user.api"
+    "chat.api"
+    "listener.api"
+    "order.api"
+)
+
+// 预拉取数据接口
+type (
+    GetWxMpPreloadDataReq {
+        Appid string `json:"appid,optional"`
+        Token string `json:"token,optional"`
+        Code string `json:"code"`
+        Timestamp int64 `json:"timestamp,optional"`
+        Path string `json:"path,optional"`
+        Query string `json:"query,optional"`
+        Scene int64 `json:"scene,optional"`
+        AppVer int64 `json:"appVer"` // 当前app版本号 例：1.1.8 10108
+    }
+
+    GetWxMpPreloadDataResp {
+        LoginData *WXMiniAuthResp `json:"loginData"`
+        CloudConfigData *GetCloudConfigResp `json:"cloudConfigData"`
+        ListenerDraftData *ListenerSeeOwnProfile `json:"listenerDraftData"`
+        Listener []*UserSeeRecommendListenerProfile `json:"listener"`
+        BusinessConfigData *GetDefineBusinessConfigResp `json:"businessConfigData"`
+        ChatOrderPriceConfigData *BusinessChatPricingPlan `json:"chatOrderPriceConfigData"`
+        ListenerHomeData *GetListenerHomePageDashboardResp `json:"listenerHomeData"`
+        ListenerHomeOrderListData []*ListenerSeeChatOrder `json:"listenerHomeOrderListData"`
+        RecListener *UserSeeRecommendListenerProfile `json:"recListener"`
+    }
+)
+
+
+//no need login
+@server(
+    prefix: mobile/v1
+    group: wxmp
+)
+service mobile {
+    @doc "微信小程序数据预拉取"
+    @handler wxMpPreloadData
+    get /wxmp/preload (GetWxMpPreloadDataReq) returns (GetWxMpPreloadDataResp)
+
+    @doc "首次登陆集中调用"
+    @handler wxLogin
+    post /user/wxlogin (GetWxMpPreloadDataReq) returns (GetWxMpPreloadDataResp)
+}

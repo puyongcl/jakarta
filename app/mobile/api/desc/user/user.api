@@ -1,0 +1,337 @@
+syntax = "v1"
+
+info(
+    title: "用户"
+    desc: "用户"
+    author: ""
+    email: ""
+)
+
+type UserProfile {
+    Uid int64 `json:"uid"`
+    Nickname string `json:"nickname"`
+    Avatar string `json:"avatar"`                       // 头像
+    Birthday string `json:"birthday"`                   // 出生年月日 年-月-日
+    Constellation int64 `json:"constellation"`          // 星座 1 2 3 4
+    Gender int32 `json:"gender"`                        // 性别
+    Introduction string `json:"introduction"`           // 个人介绍
+    Age int64 `json:"age"`                              // 年龄
+    CreateTime string `json:"createTime"`               // 注册时间
+    PhoneNumber string `json:"phoneNumber"`             // 手机号
+}
+
+type (
+    EditProfileReq {
+        Uid int64 `json:"uid"`
+        Nickname string `json:"nickname"`
+        Avatar string `json:"avatar"`                              // 头像
+        Birthday string `json:"birthday"`                          // 出生年月日 年-月-日
+        Gender int32 `json:"gender"`                               // 性别
+        Introduction string `json:"introduction"`                  // 个人介绍
+        PhoneNumber string `json:"phoneNumber,optional"`           // 手机号
+    }
+    EditProfileResp {
+        UserProfile *UserProfile `json:"userProfile"`
+    }
+)
+
+type (
+    LoginReq {
+        AuthKey string `json:"authKey"`
+        AuthType string `json:"authType"`
+        Password string `json:"password"`
+        Uid int64 `json:"uid,optional"`
+        NickName string `json:"nickName,optional"`
+        Avatar string `json:"avatar,optional"`
+        UserType int64 `json:"userType,optional"`
+        Code string `json:"code,optional"`
+        Channel string `json:"channel,optional"` // 获客渠道
+    }
+    LoginResp {
+        AccessToken string `json:"accessToken"`
+        AccessExpire int64 `json:"accessExpire"`
+        RefreshAfter int64 `json:"refreshAfter"`
+        User *UserProfile `json:"user"`                            // 用户资料
+        UserSign string `json:"userSign"`                          // tencent IM sign
+        AccountState int64 `json:"accountState"`                   // 账户状态
+        UserType int64 `json:"userType"`                           // 用户类型
+        IsNewUser int64 `json:"isNewUser"`                         // 是否新用户 1 是
+        FreeTime string `json:"freeTime"`                          // 解封时间
+        BanReason string `json:"banReason"`                        // 被封号的原因
+        Channel string `json:"channel"`                            // 获客渠道
+        MinAppVer int64 `json:"minAppVer"`                         // 要求最小版本号
+        LatestAppVer int64 `json:"latestAppVer"`                   // 最新版本号
+    }
+)
+
+type (
+    WXMiniAuthReq {
+        Code string `json:"code"`
+        IV string `json:"iv,optional"`
+        EncryptedData string `json:"encryptedData,optional"`
+        Query string `json:"query,optional"`
+        AppVer int64 `json:"appVer"` // 当前app版本号 例：1.1.8 10108
+    }
+    WXMiniAuthResp {
+        AccessToken string `json:"accessToken"`
+        AccessExpire int64 `json:"accessExpire"`
+        RefreshAfter int64 `json:"refreshAfter"`
+        User *UserProfile `json:"user"`                            // 用户资料
+        UserSign string `json:"userSign"`                          // tencent IM sign
+        AccountState int64 `json:"accountState"`                   // 账户状态
+        UserType int64 `json:"userType"`                           // 用户类型
+        IsNewUser int64 `json:"isNewUser"`                         // 是否新用户 2 是
+        FreeTime string `json:"freeTime"`                          // 解封时间
+        BanReason string `json:"banReason"`                        // 被封号的原因
+        OpenId string `json:"openId"`                              // 微信小程序Openid
+        Channel string `json:"channel"`                            // 获客渠道
+        MinAppVer int64 `json:"minAppVer"`                         // 要求最小版本号
+        LatestAppVer int64 `json:"latestAppVer"`                   // 最新版本号
+        StoryTabSwitch int64 `json:"storyTabSwitch"`               // XX板块开关 2 开
+        IsFollowWxFwh int64 `json:"isFollowWxFwh"`                 // 是否关注服务号 2 已经关注
+    }
+)
+
+type (
+    GetUserProfileReq {
+        Uid int64 `json:"uid"`
+    }
+    GetUserProfileResp {
+        UserProfile *UserProfile `json:"userProfile"`
+        OpenId string `json:"openId"`
+    }
+)
+
+// 获取用户手机号
+type (
+    GetUserWxPhoneNumerReq {
+        Code string `json:"code"`
+        IV string `json:"iv"`
+        EncryptedData string `json:"encryptedData"`
+    }
+    GetUserWxPhoneNumerResp {
+        PhoneNumber string `json:"phoneNumber"`         // 用户绑定的手机号
+        PurePhoneNumber string `json:"purePhoneNumber"` // 没有区号的手机号
+        CountryCode string `json:"countryCode"`         // 区号
+    }
+)
+
+// 获取腾讯云COS临时密钥和配置
+type (
+    Credentials {
+        TmpSecretID string `json:"tmpSecretId"`
+        TmpSecretKey string `json:"tmpSecretKey"`
+        SessionToken string `json:"token"`
+    }
+    GetCloudConfigReq {
+        Uid int64 `json:"uid"`
+    }
+    GetCloudConfigResp {
+        Credentials *Credentials `json:"credentials"`
+        ExpiredTime int `json:"expiredTime"`
+        Expiration string `json:"expiration"`
+        StartTime int `json:"startTime"`
+        RequestId string `json:"requestId"`
+        Bucket string `json:"bucket"`
+        Region string `json:"region"`
+        CdnBasePath string `json:"cdnBasePath"`
+        BucketBasePath string `json:"bucketBasePath"`
+    }
+)
+
+// 获取省市配置
+type (
+    GetChinaAreaReq {
+
+    }
+    ChinaArea {
+        Id int64 `json:"id"`
+        Name string `json:"name"`
+    }
+    ProvinceArea {
+        Id int64 `json:"id"`
+        City []*ChinaArea `json:"city"`
+    }
+    GetChinaAreaResp {
+        Province []*ChinaArea `json:"province"`
+        City []*ProvinceArea `json:"city"`
+    }
+)
+
+// 拉黑/解除拉黑
+type (
+    BlockUserReq {
+        Uid int64 `json:"uid"`
+        TargetUid int64 `json:"targetUid"` // 操作对象
+        TargetAvatar string `json:"targetAvatar,optional"`
+        TargetNickName string `json:"targetNickName,optional"`
+        Action int64 `json:"action"`       // 2 拉黑 4 取消拉黑
+    }
+    BlockUserResp {
+
+    }
+)
+
+// 获取拉黑列表
+type (
+    GetUserBlockListReq {
+        Uid int64 `json:"uid"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    BlockUserInfo {
+        TargetUid int64 `json:"targetUid"` // 操作对象
+        TargetAvatar string `json:"targetAvatar"`
+        TargetNickName string `json:"targetNickName"`
+    }
+    GetUserBlockListResp {
+        list []*BlockUserInfo `json:"uids"`
+    }
+)
+
+// 发送消息
+type (
+    SendNotifyMsgReq {
+        Uid int64 `json:"uid"`            // 用户uid
+        NickName string `json:"nickName"` // 用户昵称
+        Avatar string `json:"avatar"`     // 用户头像
+        ListenerUid int64 `json:"listenerUid"`
+        Text int64 `json:"text"`
+        MsgType int64 `json:"msgType"`    // 见自定义消息类型
+    }
+    SendNotifyMsgResp {
+
+    }
+)
+
+// 订阅消息
+type (
+    SubscribeNotifyMsgReq {
+        Uid int64 `json:"uid"`             // 订阅消息者uid
+        TargetUid int64 `json:"targetUid"` // 订阅消息对象Uid
+        MsgType int64 `json:"msgType"`     // 消息类型
+        SendCnt int64 `json:"sendCnt"`     // 发送次数 1 1次 2 永久订阅
+        Action int64 `json:"action"`       // 见订阅消息事件类型
+    }
+    SubscribeNotifyMsgResp {
+
+    }
+)
+
+type (
+    SubscribeMultiNotifyMsgReq {
+        Sub []*SubscribeNotifyMsgReq `json:"sub"`
+    }
+    SubscribeMultiNotifyMsgResp {
+
+    }
+)
+
+// 上报消息
+type (
+    ReportUserReq {
+        Uid int64 `json:"uid"`
+        TargetUid int64 `json:"targetUid"`
+        ReportTag []int64 `json:"reportTag"`                // 上报标签
+        ReportContent string `json:"reportContent"`         // 上报内容
+        ReportAttachment string `json:"reportAttachment"`   // 附件 图片#隔开
+        Avatar string `json:"avatar"`
+        NickName string `json:"nickName"`
+        TargetAvatar string `json:"targetAvatar"`
+        TargetNickName string `json:"targetNickName"`
+    }
+    ReportUserResp {
+
+    }
+)
+
+// 上报需要XX援助的用户
+type (
+    ReportNeedHelpUserReq {
+        Uid int64 `json:"uid"`                                     // 需要帮助的人
+        ListenerUid int64 `json:"listenerUid"`                     // 上报人
+        ReportTag []int64 `json:"reportTag,optional"`              // 上报标签
+        ReportContent string `json:"reportContent"`                // 上报内容
+        ReportAttachment string `json:"reportAttachment,optional"` // 附件 图片#隔开
+        Avatar string `json:"avatar"`
+        NickName string `json:"nickName"`
+        ListenerAvatar string `json:"listenerAvatar"`
+        ListenerNickName string `json:"listenerNickName"`
+    }
+    ReportNeedHelpUserResp {
+
+    }
+)
+
+// 注销账号
+type (
+    DeleteUserAccountReq {
+        Uid int64 `json:"uid"`
+    }
+    DeleteUserAccountResp {
+
+    }
+)
+
+// 查询订阅消息
+type (
+    QuerySubscribeNotifyMsgReq {
+        Uid int64 `json:"uid"`             // 订阅消息者uid
+        TargetUid int64 `json:"targetUid"` // 订阅消息对象Uid
+        MsgType int64 `json:"msgType"`     // 消息类型
+    }
+    QuerySubscribeNotifyMsgResp {
+        MsgType int64 `json:"msgType"`     // 消息类型
+        SendCnt int64 `json:"sendCnt"`     // 发送次数 1 1次 2 永久订阅
+    }
+)
+
+type (
+    QueryMultiSubscribeNotifyMsgReq {
+        Sub []*QuerySubscribeNotifyMsgReq `json:"sub"`
+    }
+    QueryMultiSubscribeNotifyMsgResp {
+        Rsp []*QuerySubscribeNotifyMsgResp `json:"rsp"`
+    }
+)
+
+// 获取新用户推荐XXX
+type (
+    GetNewUserRecommendListenerReq {
+        Uid int64 `json:"uid"`
+        IsNewUser int64 `json:"isNewUser"`
+        RegDays int64 `json:"regDays"` // 注册后第几天
+    }
+
+    GetNewUserRecommendListenerResp {
+        ListenerUid int64 `json:"listenerUid"`
+    }
+)
+
+// 获取控制参数
+type (
+    GetUserControlConfigReq {
+        AppVer int64 `json:"appVer"` // 当前app版本号 例：1.1.8 10108
+    }
+    GetUserControlConfigResp {
+        MinAppVer int64 `json:"minAppVer"`                         // 要求最小版本号
+        LatestAppVer int64 `json:"latestAppVer"`                   // 最新版本号
+        StoryTabSwitch int64 `json:"storyTabSwitch"`               // XX板块开关 2 开
+    }
+)
+
+// 获取和更新用户与顾问对话记录
+type (
+    GetSetUserAndAdviserConversationReq {
+        Uid int64 `json:"uid"`
+        Step int64 `json:"step"`                        // 完成进度
+        SelectSpec []int64 `json:"selectSpec"`          // 用户选择的标签
+        Conversation []string `json:"conversation"`     // 会话记录 序号#用户uid#内容
+    }
+    GetSetUserAndAdviserConversationResp {
+        Uid int64 `json:"uid"`
+        Step int64 `json:"step"`                        // 完成进度
+        SelectSpec []int64 `json:"selectSpec"`          // 用户选择的标签
+        Conversation []string `json:"conversation"`     // 会话记录 序号#用户uid#内容
+    }
+)

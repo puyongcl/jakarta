@@ -1,0 +1,87 @@
+Name: listener-mq
+Host: 0.0.0.0
+Port: 3004
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4011
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: listener-mq
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: listener-mq
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/order-mq
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+RedisAsynq:
+  Host: redis-asynq:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+#kq
+KqUpdateListenerUserStatConf:
+  Name: UpdateListenerUserStat
+  Brokers:
+    - kafka:9092
+  Group: update-listener-user-stat-group
+  Topic: update-listener-user-stat-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+KqSendHelloWhenUserLoginConf:
+  Name: SendHelloWhenUserLoginMq
+  Brokers:
+    - kafka:9092
+  Group: rec-listener-when-user-login-group
+  Topic: rec-listener-when-user-login-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+#kq client
+KqSendDefineMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-define-msg-send-topic
+
+#rpc
+OrderRpcConf:
+  Endpoints:
+    - order-rpc:2007
+  NonBlock: true
+
+UsercenterRpcConf:
+  Endpoints:
+    - usercenter-rpc:2009
+  NonBlock: true
+
+ChatRpcConf:
+  Endpoints:
+    - chat-rpc:2002
+  NonBlock: true
+
+ListenerRpcConf:
+  Endpoints:
+    - listener-rpc:2004
+  NonBlock: true
+
+PaymentRpcConf:
+  Endpoints:
+    - payment-rpc:2008
+  NonBlock: true

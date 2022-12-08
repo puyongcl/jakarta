@@ -1,0 +1,121 @@
+syntax = "v1"
+
+info(
+	title: "XXX"
+	desc: "XXX"
+	author: ""
+	email: ""
+	version: "v1"
+)
+
+import (
+	"listener/listener.api"
+)
+
+// need login
+@server(
+	prefix: mobile/v1
+	group: listener
+	jwt: JwtAuth
+)
+service mobile {
+	@doc "编写XXX资料"
+	@handler editListenerProfile
+	post /listener/edit (EditListenerProfileReq) returns (EditListenerProfileResp)
+
+	@doc "提交新申请XXX资料"
+	@handler commitNewListenerCheck
+	post /listener/checkcommit (NewListenerCommitCheckReq) returns (NewListenerCommitCheckResp)
+	
+	@doc "普通用户获取XXX资料"
+	@handler detailListener
+	post /listener/userdetail (GetListenerInfoReq) returns (GetListenerInfoResp)
+	
+	@doc "XXX获取自己的资料"
+	@handler getListenerOwnProfile
+	post /listener/get (GetListenerOwnInfoReq) returns (GetListenerOwnInfoResp)
+	
+	@doc "XXX反馈用户"
+	@handler listenerFeedbackUser
+	post /listener/feedback (FeedbackOrderReq) returns (FeedbackOrderResp)
+	
+	@doc "XXX备注用户"
+	@handler listenerRemarkUser
+	post /listener/remark (ListenerRemarkUserReq) returns (ListenerRemarkUserResp)
+	
+	@doc "获取XXX备注用户"
+	@handler getListenerRemarkUser
+	post /listener/remark/get (GetListenerRemarkUserReq) returns (GetListenerRemarkUserResp)
+	
+	@doc "评价服务"
+	@handler commentListener
+	post /listener/user/comment (CommentOrderReq) returns (CommentOrderResp)
+	
+	@doc "回复"
+	@handler replyComment
+	post /listener/reply (ReplyCommentReq) returns (ReplyCommentResp)
+	
+	@doc "修改工作休息状态设置"
+	@handler changeWorkState
+	post /listener/state/change (ChangeWorkStateReq) returns (ChangeWorkStateResp)
+	
+	@doc "获取工作休息状态设置"
+	@handler getWorkState
+	post /listener/state (GetWorkStateReq) returns (GetWorkStateResp)
+
+	@doc "修改或设置绑定的银行卡"
+	@handler setBankCard
+	post /listener/bankcard (SetBankCardReq) returns (SetBankCardResp)
+
+	@doc "获取绑定的银行卡"
+	@handler getBankCard
+	post /listener/bankcard/get (GetBankCardReq) returns (GetBankCardResp)
+
+	@doc "获取提现记录"
+	@handler getCashLog
+	post /listener/cashlog (GetListenerCashListReq) returns (GetListenerCashListResp)
+
+	@doc "获取收益记录"
+	@handler getIncomeLog
+	post /listener/incomelog (GetListenerIncomeListReq) returns (GetListenerIncomeListResp)
+
+	@doc "获取XXX钱包"
+	@handler getListenerWallet
+	post /listener/wallet (GetListenerWalletReq) returns (GetListenerWalletResp)
+
+	@doc "XXX提现"
+	@handler listenerMoveCash
+	post /listener/wallet/move (ListenerMoveCashReq) returns (ListenerMoveCashResp)
+
+	@doc "获取常用语"
+	@handler getListenerWords
+	post /listener/words (GetListenerWordsReq) returns (GetListenerWordsResp)
+
+	@doc "编辑常用语"
+	@handler editListenerWords
+	post /listener/words/edit (EditListenerWordsReq) returns (EditListenerWordsResp)
+
+	@doc "获取XXX首页统计数据"
+	@handler getListenerHomePageDashboard
+	post /listener/home/dashboard (GetListenerHomePageDashboardReq) returns (GetListenerHomePageDashboardResp)
+
+	@doc "获取XXX专业领域 banner 推荐筛选条件 评价退款原因标签"
+	@handler getDefineBusinessConfig
+	post /listener/business/config (GetDefineBusinessConfigReq) returns (GetDefineBusinessConfigResp)
+	
+	@doc "推荐XXX列表"
+	@handler getRecommendListenerList
+	post /listener/recommend (RecommendListenerReq) returns (RecommendListenerResp)
+	
+	@doc "获取XXX服务评价列表"
+	@handler getListenerRatingList
+	post /listener/rating/list (GetListenerRatingListReq) returns (GetListenerRatingListResp)
+
+	@doc "获取XXX服务评价情况统计"
+	@handler getListenerRatingStat
+	post /listener/rating/stat (GetListenerRatingStatReq) returns (GetListenerRatingStatResp)
+
+	@doc "获取用户交互最多的几位XXX"
+	@handler getUserTopRelationListener
+	post /listener/user/toprel (GetUserTopRelationListenerReq) returns (GetUserTopRelationListenerResp)
+}

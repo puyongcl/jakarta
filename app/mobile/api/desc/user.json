@@ -1,0 +1,1690 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "用户",
+    "description": "用户",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "mobile/v1/user/adviser": {
+      "post": {
+        "summary": "获取和更新用户与顾问对话记录",
+        "operationId": "getSetUserAndAdviserConversation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetSetUserAndAdviserConversationResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetSetUserAndAdviserConversationReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/area/config": {
+      "post": {
+        "summary": "获取中国省市配置",
+        "operationId": "getArea",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChinaAreaResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChinaAreaReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/block": {
+      "post": {
+        "summary": "拉黑操作",
+        "operationId": "blockUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BlockUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BlockUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/block/list": {
+      "post": {
+        "summary": "获取拉黑列表",
+        "operationId": "getUserBlockList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserBlockListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserBlockListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/cloud/config": {
+      "post": {
+        "summary": "获取云服务临时密钥和配置",
+        "operationId": "getCloudConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetCloudConfigResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetCloudConfigReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/controlcfg": {
+      "post": {
+        "summary": "获取用户配置控制参数",
+        "operationId": "getUserControlConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserControlConfigResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserControlConfigReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/delete": {
+      "post": {
+        "summary": "注销账号",
+        "operationId": "deleteUserAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeleteUserAccountResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteUserAccountReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/detail": {
+      "post": {
+        "summary": "获取用户资料",
+        "operationId": "detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserProfileResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserProfileReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/edit": {
+      "post": {
+        "summary": "编辑用户资料",
+        "operationId": "editUserProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EditProfileResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditProfileReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/illegal/report": {
+      "post": {
+        "summary": "用户上报",
+        "operationId": "reportUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ReportUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReportUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/login": {
+      "post": {
+        "summary": "登陆",
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LoginResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/multinotify/subscribe": {
+      "post": {
+        "summary": "订阅多个消息",
+        "operationId": "subscribeMultiNotifyMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SubscribeMultiNotifyMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SubscribeMultiNotifyMsgReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/multisubscribe/query": {
+      "post": {
+        "summary": "查询用户多条订阅情况",
+        "operationId": "queryMultiSubscribe",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryMultiSubscribeNotifyMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryMultiSubscribeNotifyMsgReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/needhelp/report": {
+      "post": {
+        "summary": "XXX上报需要XX援助的用户",
+        "operationId": "reportNeedHelpUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ReportNeedHelpUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReportNeedHelpUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/notify/send": {
+      "post": {
+        "summary": "发送消息",
+        "operationId": "sendNotifyMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SendNotifyMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendNotifyMsgReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/notify/subscribe": {
+      "post": {
+        "summary": "订阅单条消息",
+        "operationId": "subscribeNotifyMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SubscribeNotifyMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SubscribeNotifyMsgReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/subscribe/query": {
+      "post": {
+        "summary": "查询用户单条订阅情况",
+        "operationId": "querySubscribe",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QuerySubscribeNotifyMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QuerySubscribeNotifyMsgReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/wxmini/auth": {
+      "post": {
+        "summary": "微信小程序登陆",
+        "operationId": "wxMiniAuth",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WXMiniAuthResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WXMiniAuthReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "mobile/v1/user/wxphonenumer/get": {
+      "post": {
+        "summary": "获取用户微信绑定的手机号",
+        "operationId": "getUserWxPhoneNumber",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserWxPhoneNumerResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserWxPhoneNumerReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BlockUserInfo": {
+      "type": "object",
+      "properties": {
+        "targetUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 操作对象"
+        },
+        "targetAvatar": {
+          "type": "string"
+        },
+        "targetNickName": {
+          "type": "string"
+        }
+      },
+      "title": "BlockUserInfo",
+      "required": [
+        "targetUid",
+        "targetAvatar",
+        "targetNickName"
+      ]
+    },
+    "BlockUserReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "targetUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 操作对象"
+        },
+        "targetAvatar": {
+          "type": "string"
+        },
+        "targetNickName": {
+          "type": "string"
+        },
+        "action": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 2 拉黑 4 取消拉黑"
+        }
+      },
+      "title": "BlockUserReq",
+      "required": [
+        "uid",
+        "targetUid",
+        "action"
+      ]
+    },
+    "BlockUserResp": {
+      "type": "object",
+      "title": "BlockUserResp"
+    },
+    "ChinaArea": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "ChinaArea",
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Credentials": {
+      "type": "object",
+      "properties": {
+        "tmpSecretId": {
+          "type": "string"
+        },
+        "tmpSecretKey": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "title": "Credentials",
+      "required": [
+        "tmpSecretId",
+        "tmpSecretKey",
+        "token"
+      ]
+    },
+    "DeleteUserAccountReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "DeleteUserAccountReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "DeleteUserAccountResp": {
+      "type": "object",
+      "title": "DeleteUserAccountResp"
+    },
+    "EditProfileReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 头像"
+        },
+        "birthday": {
+          "type": "string",
+          "description": " 出生年月日 年-月-日"
+        },
+        "gender": {
+          "type": "integer",
+          "format": "int32",
+          "description": " 性别"
+        },
+        "introduction": {
+          "type": "string",
+          "description": " 个人介绍"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": " 手机号"
+        }
+      },
+      "title": "EditProfileReq",
+      "required": [
+        "uid",
+        "nickname",
+        "avatar",
+        "birthday",
+        "gender",
+        "introduction"
+      ]
+    },
+    "EditProfileResp": {
+      "type": "object",
+      "properties": {
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        }
+      },
+      "title": "EditProfileResp",
+      "required": [
+        "userProfile"
+      ]
+    },
+    "GetChinaAreaReq": {
+      "type": "object",
+      "title": "GetChinaAreaReq"
+    },
+    "GetChinaAreaResp": {
+      "type": "object",
+      "properties": {
+        "province": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChinaArea"
+          }
+        },
+        "city": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProvinceArea"
+          }
+        }
+      },
+      "title": "GetChinaAreaResp",
+      "required": [
+        "province",
+        "city"
+      ]
+    },
+    "GetCloudConfigReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetCloudConfigReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "GetCloudConfigResp": {
+      "type": "object",
+      "properties": {
+        "credentials": {
+          "$ref": "#/definitions/Credentials"
+        },
+        "expiredTime": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "expiration": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "bucket": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "cdnBasePath": {
+          "type": "string"
+        },
+        "bucketBasePath": {
+          "type": "string"
+        }
+      },
+      "title": "GetCloudConfigResp",
+      "required": [
+        "credentials",
+        "expiredTime",
+        "expiration",
+        "startTime",
+        "requestId",
+        "bucket",
+        "region",
+        "cdnBasePath",
+        "bucketBasePath"
+      ]
+    },
+    "GetNewUserRecommendListenerReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isNewUser": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "regDays": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 注册后第几天"
+        }
+      },
+      "title": "GetNewUserRecommendListenerReq",
+      "required": [
+        "uid",
+        "isNewUser",
+        "regDays"
+      ]
+    },
+    "GetNewUserRecommendListenerResp": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetNewUserRecommendListenerResp",
+      "required": [
+        "listenerUid"
+      ]
+    },
+    "GetSetUserAndAdviserConversationReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "step": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 完成进度"
+        },
+        "selectSpec": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 用户选择的标签"
+        },
+        "conversation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": " 会话记录 序号#用户uid#内容"
+        }
+      },
+      "title": "GetSetUserAndAdviserConversationReq",
+      "required": [
+        "uid",
+        "step",
+        "selectSpec",
+        "conversation"
+      ]
+    },
+    "GetSetUserAndAdviserConversationResp": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "step": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 完成进度"
+        },
+        "selectSpec": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 用户选择的标签"
+        },
+        "conversation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": " 会话记录 序号#用户uid#内容"
+        }
+      },
+      "title": "GetSetUserAndAdviserConversationResp",
+      "required": [
+        "uid",
+        "step",
+        "selectSpec",
+        "conversation"
+      ]
+    },
+    "GetUserBlockListReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetUserBlockListReq",
+      "required": [
+        "uid",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetUserBlockListResp": {
+      "type": "object",
+      "properties": {
+        "uids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BlockUserInfo"
+          }
+        }
+      },
+      "title": "GetUserBlockListResp",
+      "required": [
+        "uids"
+      ]
+    },
+    "GetUserControlConfigReq": {
+      "type": "object",
+      "properties": {
+        "appVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前app版本号 例：1.1.8 10108"
+        }
+      },
+      "title": "GetUserControlConfigReq",
+      "required": [
+        "appVer"
+      ]
+    },
+    "GetUserControlConfigResp": {
+      "type": "object",
+      "properties": {
+        "minAppVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 要求最小版本号"
+        },
+        "latestAppVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 最新版本号"
+        },
+        "storyTabSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XX板块开关 2 开"
+        }
+      },
+      "title": "GetUserControlConfigResp",
+      "required": [
+        "minAppVer",
+        "latestAppVer",
+        "storyTabSwitch"
+      ]
+    },
+    "GetUserProfileReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetUserProfileReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "GetUserProfileResp": {
+      "type": "object",
+      "properties": {
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        },
+        "openId": {
+          "type": "string"
+        }
+      },
+      "title": "GetUserProfileResp",
+      "required": [
+        "userProfile",
+        "openId"
+      ]
+    },
+    "GetUserWxPhoneNumerReq": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "iv": {
+          "type": "string"
+        },
+        "encryptedData": {
+          "type": "string"
+        }
+      },
+      "title": "GetUserWxPhoneNumerReq",
+      "required": [
+        "code",
+        "iv",
+        "encryptedData"
+      ]
+    },
+    "GetUserWxPhoneNumerResp": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string",
+          "description": " 用户绑定的手机号"
+        },
+        "purePhoneNumber": {
+          "type": "string",
+          "description": " 没有区号的手机号"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": " 区号"
+        }
+      },
+      "title": "GetUserWxPhoneNumerResp",
+      "required": [
+        "phoneNumber",
+        "purePhoneNumber",
+        "countryCode"
+      ]
+    },
+    "LoginReq": {
+      "type": "object",
+      "properties": {
+        "authKey": {
+          "type": "string"
+        },
+        "authType": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "code": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string",
+          "description": " 获客渠道"
+        }
+      },
+      "title": "LoginReq",
+      "required": [
+        "authKey",
+        "authType",
+        "password"
+      ]
+    },
+    "LoginResp": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "accessExpire": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshAfter": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user": {
+          "$ref": "#/definitions/UserProfile",
+          "description": " 用户资料"
+        },
+        "userSign": {
+          "type": "string",
+          "description": " tencent IM sign"
+        },
+        "accountState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 账户状态"
+        },
+        "userType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户类型"
+        },
+        "isNewUser": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 是否新用户 1 是"
+        },
+        "freeTime": {
+          "type": "string",
+          "description": " 解封时间"
+        },
+        "banReason": {
+          "type": "string",
+          "description": " 被封号的原因"
+        },
+        "channel": {
+          "type": "string",
+          "description": " 获客渠道"
+        },
+        "minAppVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 要求最小版本号"
+        },
+        "latestAppVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 最新版本号"
+        }
+      },
+      "title": "LoginResp",
+      "required": [
+        "accessToken",
+        "accessExpire",
+        "refreshAfter",
+        "user",
+        "userSign",
+        "accountState",
+        "userType",
+        "isNewUser",
+        "freeTime",
+        "banReason",
+        "channel",
+        "minAppVer",
+        "latestAppVer"
+      ]
+    },
+    "ProvinceArea": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "city": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChinaArea"
+          }
+        }
+      },
+      "title": "ProvinceArea",
+      "required": [
+        "id",
+        "city"
+      ]
+    },
+    "QueryMultiSubscribeNotifyMsgReq": {
+      "type": "object",
+      "properties": {
+        "sub": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuerySubscribeNotifyMsgReq"
+          }
+        }
+      },
+      "title": "QueryMultiSubscribeNotifyMsgReq",
+      "required": [
+        "sub"
+      ]
+    },
+    "QueryMultiSubscribeNotifyMsgResp": {
+      "type": "object",
+      "properties": {
+        "rsp": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuerySubscribeNotifyMsgResp"
+          }
+        }
+      },
+      "title": "QueryMultiSubscribeNotifyMsgResp",
+      "required": [
+        "rsp"
+      ]
+    },
+    "QuerySubscribeNotifyMsgReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订阅消息者uid"
+        },
+        "targetUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订阅消息对象Uid"
+        },
+        "msgType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 消息类型"
+        }
+      },
+      "title": "QuerySubscribeNotifyMsgReq",
+      "required": [
+        "uid",
+        "targetUid",
+        "msgType"
+      ]
+    },
+    "QuerySubscribeNotifyMsgResp": {
+      "type": "object",
+      "properties": {
+        "msgType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 消息类型"
+        },
+        "sendCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 发送次数 1 1次 2 永久订阅"
+        }
+      },
+      "title": "QuerySubscribeNotifyMsgResp",
+      "required": [
+        "msgType",
+        "sendCnt"
+      ]
+    },
+    "ReportNeedHelpUserReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 需要帮助的人"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 上报人"
+        },
+        "reportTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 上报标签"
+        },
+        "reportContent": {
+          "type": "string",
+          "description": " 上报内容"
+        },
+        "reportAttachment": {
+          "type": "string",
+          "description": " 附件 图片#隔开"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "listenerAvatar": {
+          "type": "string"
+        },
+        "listenerNickName": {
+          "type": "string"
+        }
+      },
+      "title": "ReportNeedHelpUserReq",
+      "required": [
+        "uid",
+        "listenerUid",
+        "reportContent",
+        "avatar",
+        "nickName",
+        "listenerAvatar",
+        "listenerNickName"
+      ]
+    },
+    "ReportNeedHelpUserResp": {
+      "type": "object",
+      "title": "ReportNeedHelpUserResp"
+    },
+    "ReportUserReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "targetUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "reportTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 上报标签"
+        },
+        "reportContent": {
+          "type": "string",
+          "description": " 上报内容"
+        },
+        "reportAttachment": {
+          "type": "string",
+          "description": " 附件 图片#隔开"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "targetAvatar": {
+          "type": "string"
+        },
+        "targetNickName": {
+          "type": "string"
+        }
+      },
+      "title": "ReportUserReq",
+      "required": [
+        "uid",
+        "targetUid",
+        "reportTag",
+        "reportContent",
+        "reportAttachment",
+        "avatar",
+        "nickName",
+        "targetAvatar",
+        "targetNickName"
+      ]
+    },
+    "ReportUserResp": {
+      "type": "object",
+      "title": "ReportUserResp"
+    },
+    "SendNotifyMsgReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户uid"
+        },
+        "nickName": {
+          "type": "string",
+          "description": " 用户昵称"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 用户头像"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "text": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "msgType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 见自定义消息类型"
+        }
+      },
+      "title": "SendNotifyMsgReq",
+      "required": [
+        "uid",
+        "nickName",
+        "avatar",
+        "listenerUid",
+        "text",
+        "msgType"
+      ]
+    },
+    "SendNotifyMsgResp": {
+      "type": "object",
+      "title": "SendNotifyMsgResp"
+    },
+    "SubscribeMultiNotifyMsgReq": {
+      "type": "object",
+      "properties": {
+        "sub": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubscribeNotifyMsgReq"
+          }
+        }
+      },
+      "title": "SubscribeMultiNotifyMsgReq",
+      "required": [
+        "sub"
+      ]
+    },
+    "SubscribeMultiNotifyMsgResp": {
+      "type": "object",
+      "title": "SubscribeMultiNotifyMsgResp"
+    },
+    "SubscribeNotifyMsgReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订阅消息者uid"
+        },
+        "targetUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订阅消息对象Uid"
+        },
+        "msgType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 消息类型"
+        },
+        "sendCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 发送次数 1 1次 2 永久订阅"
+        },
+        "action": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 见订阅消息事件类型"
+        }
+      },
+      "title": "SubscribeNotifyMsgReq",
+      "required": [
+        "uid",
+        "targetUid",
+        "msgType",
+        "sendCnt",
+        "action"
+      ]
+    },
+    "SubscribeNotifyMsgResp": {
+      "type": "object",
+      "title": "SubscribeNotifyMsgResp"
+    },
+    "UserProfile": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 头像"
+        },
+        "birthday": {
+          "type": "string",
+          "description": " 出生年月日 年-月-日"
+        },
+        "constellation": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 星座 1 2 3 4"
+        },
+        "gender": {
+          "type": "integer",
+          "format": "int32",
+          "description": " 性别"
+        },
+        "introduction": {
+          "type": "string",
+          "description": " 个人介绍"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 年龄"
+        },
+        "createTime": {
+          "type": "string",
+          "description": " 注册时间"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": " 手机号"
+        }
+      },
+      "title": "UserProfile",
+      "required": [
+        "uid",
+        "nickname",
+        "avatar",
+        "birthday",
+        "constellation",
+        "gender",
+        "introduction",
+        "age",
+        "createTime",
+        "phoneNumber"
+      ]
+    },
+    "WXMiniAuthReq": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "iv": {
+          "type": "string"
+        },
+        "encryptedData": {
+          "type": "string"
+        },
+        "query": {
+          "type": "string"
+        },
+        "appVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前app版本号 例：1.1.8 10108"
+        }
+      },
+      "title": "WXMiniAuthReq",
+      "required": [
+        "code",
+        "appVer"
+      ]
+    },
+    "WXMiniAuthResp": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "accessExpire": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshAfter": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user": {
+          "$ref": "#/definitions/UserProfile",
+          "description": " 用户资料"
+        },
+        "userSign": {
+          "type": "string",
+          "description": " tencent IM sign"
+        },
+        "accountState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 账户状态"
+        },
+        "userType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户类型"
+        },
+        "isNewUser": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 是否新用户 2 是"
+        },
+        "freeTime": {
+          "type": "string",
+          "description": " 解封时间"
+        },
+        "banReason": {
+          "type": "string",
+          "description": " 被封号的原因"
+        },
+        "openId": {
+          "type": "string",
+          "description": " 微信小程序Openid"
+        },
+        "channel": {
+          "type": "string",
+          "description": " 获客渠道"
+        },
+        "minAppVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 要求最小版本号"
+        },
+        "latestAppVer": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 最新版本号"
+        },
+        "storyTabSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XX板块开关 2 开"
+        },
+        "isFollowWxFwh": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 是否关注服务号 2 已经关注"
+        }
+      },
+      "title": "WXMiniAuthResp",
+      "required": [
+        "accessToken",
+        "accessExpire",
+        "refreshAfter",
+        "user",
+        "userSign",
+        "accountState",
+        "userType",
+        "isNewUser",
+        "freeTime",
+        "banReason",
+        "openId",
+        "channel",
+        "minAppVer",
+        "latestAppVer",
+        "storyTabSwitch",
+        "isFollowWxFwh"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

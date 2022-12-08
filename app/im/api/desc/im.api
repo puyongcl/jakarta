@@ -1,0 +1,37 @@
+syntax = "v1"
+
+info(
+	title: "IM服务"
+	desc: "IM服务"
+	author: ""
+	email: ""
+	version: "v1"
+)
+
+import (
+	"tim/tim.api"
+	"wx/wx.api"
+)
+
+//========================> order v1 <========================
+//no need login
+@server(
+	prefix: im/v1
+	group: tim
+)
+service im {
+	@doc "TIM回调"
+	@handler callback
+	post /tim/callback (TIMCallbackStateChangeReq) returns (TIMCallbackResp)
+}
+
+//no need login
+@server(
+	prefix: im/v1
+	group: mp
+)
+service im {
+	@doc "百度渠道生成小程序url"
+	@handler genBaiduMpUrl
+	post /wx/mp/url/baidu (GenBaiduWxMpUrlReq) returns (GenBaiduWxMpUrlResp)
+}

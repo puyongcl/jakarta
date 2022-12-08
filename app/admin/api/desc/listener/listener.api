@@ -1,0 +1,281 @@
+syntax = "v1"
+
+info(
+    title: "管理员后台"
+    desc: "管理员后台"
+    author: ""
+    email: ""
+)
+
+// 审核看到的XXX资料草稿
+type AdminSeeListenerProfileDraft {
+    CreateTime string `json:"createTime"`
+    UpdateTime string `json:"updateTime"`
+    listenerUid int64 `json:"listenerUid"`                                                 //用户id
+    NickName string `json:"nickName"`                                                      //名字
+    ListenerName string `json:"listenerName"`                                              // 姓名
+    Avatar string `json:"avatar"`                                                          //大图头像
+    MaritalStatus int64 `json:"maritalStatus"`                                             //婚姻状态
+    PhoneNumber string `json:"phoneNumber"`                                                //手机号
+    Constellation int64 `json:"constellation"`                                             //星座
+    Province string `json:"province"`                                                      //省级大区
+    City string `json:"city"`                                                              //地区市
+    Job string `json:"job"`                                                                //工作
+    Education int64 `json:"education"`                                                     //教育水平
+    Gender int64 `json:"gender"`                                                           //性别
+    Birthday string `json:"birthday"`                                                      //出生年-月-日
+    IdNo string `json:"idNo"`                                                              //身份证号
+    IdPhoto1 string `json:"idPhoto1"`                                                      //正面身份证（国徽）
+    IdPhoto2 string `json:"idPhoto2"`                                                      //反面身份证
+    IdPhoto3 string `json:"idPhoto3"`                                                      //手持身份证
+    Specialties []int64 `json:"specialties"`                                               //擅长领域
+    Introduction string `json:"introduction"`                                              //个人介绍
+    VoiceFile string `json:"voiceFile"`                                                    //声音文件
+    Experience1 string `json:"experience1"`                                                //个人经历1
+    Experience2 string `json:"experience2"`                                                //个人经历2
+    CertType int64 `json:"certType"`                                                       //资质类型 2 职业技能证书 4 其他平台从业记录
+    OtherPlatformAccount string `json:"otherPlatformAccount"`                              // 用户在其他平台的账户信息
+    CertFiles1 string `json:"certFiles1"`                                                  //附加材料1 格式：名称#文件名
+    CertFiles2 string `json:"certFiles2"`                                                  //附加材料2 格式：名称#文件名
+    CertFiles3 string `json:"certFiles3"`                                                  //附加材料3 格式：名称#文件名
+    CertFiles4 string `json:"certFiles4"`                                                  //附加材料4 格式：名称#文件名
+    CertFiles5 string `json:"certFiles5"`                                                  //附加材料5 格式：名称#文件名
+    AutoReplyNew string `json:"autoReplyNew"`                                              //新人 休息中自动回复
+    AutoReplyProcessing string `json:"autoReplyProcessing"`                                //服务中 休息中用户自动回复
+    AutoReplyFinish string `json:"autoReplyFinish"`                                        //服务结束 休息中自动回复
+    TextChatPrice int64 `json:"textChatPrice"`                                             //文字聊天价格
+    VoiceChatPrice int64 `json:"voiceChatPrice"`                                           //语音聊天价格
+    TextChatSwitch int64 `json:"textChatSwitch"`                                           // 文字服务开关
+    VoiceChatSwitch int64 `json:"voiceChatSwitch"`                                         // 语音服务开关
+    CheckFailField []string `json:"checkFailField"`                                        //审核失败的字段
+    CheckingField []string `json:"checkingField"`                                          //审核中的字段
+    CheckStatus int64 `json:"checkStatus"`                                                 //当前审核状态
+    DraftVersion int64 `json:"draftVersion"`                                               // 草稿版本
+}
+
+// 审核看到的XXX资料
+type AdminSeeListenerProfile {
+    CreateTime string `json:"createTime"`
+    UpdateTime string `json:"updateTime"`
+    listenerUid int64 `json:"listenerUid"`                                                   //用户id
+    NickName string `json:"nickName"`                                                        //名字
+    ListenerName string `json:"listenerName"`                                                // 姓名
+    Avatar string `json:"avatar"`                                                            //大图头像
+    MaritalStatus int64 `json:"maritalStatus"`                                               //婚姻状态
+    PhoneNumber string `json:"phoneNumber"`                                                  //手机号
+    Constellation int64 `json:"constellation"`                                               //星座
+    Province string `json:"province"`                                                        //省级大区
+    City string `json:"city"`                                                                //地区市
+    Job string `json:"job"`                                                                  //工作
+    Education int64 `json:"education"`                                                       //教育水平
+    Gender int64 `json:"gender"`                                                             //性别
+    Birthday string `json:"birthday"`                                                        //出生年-月-日
+    IdNo string `json:"idNo"`                                                                //身份证号
+    IdPhoto1 string `json:"idPhoto1"`                                                        //正面身份证（国徽）
+    IdPhoto2 string `json:"idPhoto2"`                                                        //反面身份证
+    IdPhoto3 string `json:"idPhoto3"`                                                        //手持身份证
+    Specialties []int64 `json:"specialties"`                                                 //擅长领域
+    Introduction string `json:"introduction"`                                                //个人介绍
+    VoiceFile string `json:"voiceFile"`                                                      //声音文件
+    Experience1 string `json:"experience1"`                                                  //个人经历1
+    Experience2 string `json:"experience2"`                                                  //个人经历2
+    CertType int64 `json:"certType"`                                                         //资质类型 2 职业技能证书 4 其他平台从业记录
+    OtherPlatformAccount string `json:"otherPlatformAccount"`                                // 用户在其他平台的账户信息
+    CertFiles1 string `json:"certFiles1"`                                                    //附加材料1 格式：名称#文件名
+    CertFiles2 string `json:"certFiles2"`                                                    //附加材料2 格式：名称#文件名
+    CertFiles3 string `json:"certFiles3"`                                                    //附加材料3 格式：名称#文件名
+    CertFiles4 string `json:"certFiles4"`                                                    //附加材料4 格式：名称#文件名
+    CertFiles5 string `json:"certFiles5"`                                                    //附加材料5 格式：名称#文件名
+    AutoReplyNew string `json:"autoReplyNew"`                                                //新人 休息中自动回复
+    AutoReplyProcessing string `json:"autoReplyProcessing"`                                  //服务中 休息中用户自动回复
+    AutoReplyFinish string `json:"autoReplyFinish"`                                          //服务结束 休息中自动回复
+    TextChatPrice int64 `json:"textChatPrice"`                                               //文字聊天价格
+    VoiceChatPrice int64 `json:"voiceChatPrice"`                                             //语音聊天价格
+    TextChatSwitch int64 `json:"textChatSwitch"`                                             // 文字服务开关
+    VoiceChatSwitch int64 `json:"voiceChatSwitch"`                                           // 语音服务开关
+    UserCount int64 `json:"userCount"`                                                       // 服务人数
+    ChatDuration int64 `json:"chatDuration"`                                                 // 累计服务时长分钟
+    RatingSum int64 `json:"ratingSum"`                                                       // 评价总数
+    FiveStar int64 `json:"fiveStar"`                                                         // 好评数
+    WorkState int64 `json:"workState"`                                                       // 工作状态
+    RefundOrderCnt int64 `json:"refundOrderCnt"`                                             // 退款完成次数
+    PaidOrderCnt int64 `json:"paidOrderCnt"`                                                 // 支付订单总数
+}
+
+// 获取XXX列表
+type GetListenerProfileListReq {
+    AdminUid int64 `json:"adminUid"`
+    PageNo int64 `json:"pageNo"`
+    PageSize int64 `json:"pageSize"`
+    CheckStatus []int64 `json:"checkStatus"`    // 审核状态
+    ListenerUid int64 `json:"listenerUid"`      // XXXuid
+    ListenerName string `json:"listenerName"`   // XXX名称
+    CertType int64 `json:"certType"`            // 证书类型
+}
+
+type CheckListenerProfile {
+    Draft *AdminSeeListenerProfileDraft `json:"draft"`
+    Profile *AdminSeeListenerProfile `json:"profile"`
+}
+
+type GetListenerProfileListResp {
+    List []*CheckListenerProfile `json:"list"`
+    Sum int64 `json:"sum"`
+}
+
+// 审核XXX资料
+type CheckListenerProfileReq {
+    AdminUid int64 `json:"adminUid"`
+    listenerUid int64 `json:"listenerUid"`                                                          //用户id
+    NickName string `json:"nickName"`                                                               //名字
+    ListenerName string `json:"listenerName"`                                                       // 姓名
+    Avatar string `json:"avatar"`                                                                   //大图头像
+    MaritalStatus int64 `json:"maritalStatus"`                                                      //婚姻状态
+    PhoneNumber string `json:"phoneNumber"`                                                         //手机号
+    Constellation int64 `json:"constellation"`                                                      //星座
+    Province string `json:"province"`                                                               //省级大区
+    City string `json:"city"`                                                                       //地区市
+    Job string `json:"job"`                                                                         //工作
+    Education int64 `json:"education"`                                                              //教育水平
+    Gender int64 `json:"gender"`                                                                    //性别
+    Birthday string `json:"birthday"`                                                               //出生年-月-日
+    IdNo string `json:"idNo"`                                                                       //身份证号
+    IdPhoto1 string `json:"idPhoto1"`                                                               //正面身份证（国徽）
+    IdPhoto2 string `json:"idPhoto2"`                                                               //反面身份证
+    IdPhoto3 string `json:"idPhoto3"`                                                               //手持身份证
+    Specialties []int64 `json:"specialties"`                                                        //擅长领域
+    Introduction string `json:"introduction"`                                                       //个人介绍
+    VoiceFile string `json:"voiceFile"`                                                             //声音文件
+    Experience1 string `json:"experience1"`                                                         //个人经历1
+    Experience2 string `json:"experience2"`                                                         //个人经历2
+    CertType int64 `json:"certType"`                                                                //资质类型 2 职业技能证书 4 其他平台从业记录
+    OtherPlatformAccount string `json:"otherPlatformAccount"`                                       // 用户在其他平台的账户信息
+    CertFiles1 string `json:"certFiles1"`                                                           //附加材料1 格式：名称#文件名
+    CertFiles2 string `json:"certFiles2"`                                                           //附加材料2 格式：名称#文件名
+    CertFiles3 string `json:"certFiles3"`                                                           //附加材料3 格式：名称#文件名
+    CertFiles4 string `json:"certFiles4"`                                                           //附加材料4 格式：名称#文件名
+    CertFiles5 string `json:"certFiles5"`                                                           //附加材料5 格式：名称#文件名
+    AutoReplyNew string `json:"autoReplyNew"`                                                       //新人 休息中自动回复
+    AutoReplyProcessing string `json:"autoReplyProcessing"`                                         //服务中 休息中用户自动回复
+    AutoReplyFinish string `json:"autoReplyFinish"`                                                 //服务结束 休息中自动回复
+    TextChatPrice int64 `json:"textChatPrice"`                                                      //文字聊天价格
+    VoiceChatPrice int64 `json:"voiceChatPrice"`                                                    //语音聊天价格
+    TextChatSwitch int64 `json:"textChatSwitch"`                                                    // 文字服务开关
+    VoiceChatSwitch int64 `json:"voiceChatSwitch"`                                                  // 语音服务开关
+    CheckFailField []string `json:"checkFailField"`                                                 //审核失败的字段
+    CheckPassField []string `json:"checkPassField"`                                                 //审核通过的字段
+    Remark string `json:"remark,optional"`                                                          // 审核留言
+    CheckStatus int64 `json:"checkStatus"`                                                          // 当前的审核状态 取返回值 用于判断是否首次申请 后续更新
+    DraftVersion int64 `json:"draftVersion"`                                                        // 草稿版本
+}
+
+//
+type CheckListenerProfileResp {
+
+}
+
+//
+type UserProfile {
+    Uid int64 `json:"uid"`
+    Nickname string `json:"nickname"`
+    Avatar string `json:"avatar"`                       // 头像大图
+    SmallAvatar string `json:"small_avatar"`            // 缩略头像
+    Birthday string `json:"birthday"`                   // 出生年月日 年-月-日
+    Constellation int64 `json:"constellation"`          // 星座 1 2 3 4
+    Gender int32 `json:"gender"`                        // 性别
+    Introduction string `json:"introduction"`           // 个人介绍
+}
+type (
+    AdminLoginReq {
+        AuthKey string `json:"authKey"`
+        AuthType string `json:"authType"`
+        Password string `json:"password"`
+    }
+    AdminLoginResp {
+        AccessToken string `json:"accessToken"`
+        AccessExpire int64 `json:"accessExpire"`
+        RefreshAfter int64 `json:"refreshAfter"`
+        User *UserProfile `json:"user"`
+        UserSign string `json:"userSign"` // tencent IM
+        AccountState int64 `json:"accountState"`
+        UserType int64 `json:"userType"`
+    }
+)
+
+// 获取XXX专业领域
+type (
+    Pair {
+        Id int64 `json:"id"`
+        Name string `json:"name"`
+    }
+    Banner {
+        Id int64 `json:"id"`
+        Name string `json:"name"`
+        Pic string `json:"pic"`
+        Child []*Pair `json:"child"`
+        Url string `json:"url"`
+    }
+    GetBusinessConfigReq {
+    }
+    GetBusinessConfigResp {
+        Specialties []*Banner `json:"specialties"`         // 专业领域
+    }
+)
+
+// 获取转账列表
+type (
+    GetCashListReq {
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+        ListenerUid int64 `json:"listenerUid"`
+        SettleType int64 `json:"settleType"`
+    }
+    CashLogDetail {
+        FlowNo string `json:"flowNo"`
+        ListenerUid int64 `json:"listenerUid"`
+        ListenerName string `json:"listenerName"`
+        IdNo string `json:"idNo"`
+        BankCardNo string `json:"bankCardNo"`
+        Amount int64 `json:"amount"`
+        OutId string `json:"outId"`
+        SettleType int64 `json:"settleType"`
+        Remark string `json:"remark"`
+        OutTime string `json:"outTime"`
+    }
+    GetCashListResp {
+        Sum int64 `json:"sum"`
+        List []*CashLogDetail `json:"list"`
+    }
+)
+
+// 提交转账
+type (
+    CommitMoveCashReq {
+        AdminUid int64 `json:"adminUid"`
+        Data []*MoveCashData `json:"data"`
+    }
+    MoveCashData {
+        FlowNo string `json:"flowNo"`
+        Uid int64 `json:"uid"`
+    }
+    CommitMoveCashResp {
+
+    }
+)
+
+// 生成合同并上传到腾讯云
+type (
+    GenListenerContractReq {
+        ListenerUid int64 `json:"listenerUid"`
+        ListenerName string `json:"listenerName"`
+        IdNo string `json:"idNo"`
+        PhoneNumber string `json:"phoneNumber"`
+        CheckStatus int64 `json:"checkStatus,optional"`
+        ContractType int64 `json:"contractType"`
+    }
+    GenListenerContractResp {
+        File string `json:"file"`
+        ContractType int64 `json:"contractType"`
+        UploadState int64 `json:"uploadState"` // 状态 1 初始 2 成功 3 失败
+    }
+)

@@ -1,0 +1,80 @@
+syntax = "v1"
+
+info(
+    title: "stat"
+    desc: "stat"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+type (
+    GetDailyStatListReq {
+        Date []string `json:"date"` // 20220825,20220826
+        Channel string `json:"channel"`
+    }
+    DailyStat {
+        Id string `json:"id"`
+        NewUserCnt int64 `json:"newUserCnt"`                  // 新增用户
+        LoginUserCnt int64 `json:"loginUserCnt"`              // 登陆用户
+        PaidUserCnt int64 `json:"paidUserCnt"`                // 今天下过单的用户
+        LoginListenerCnt int64 `json:"loginListenerCnt"`      // 登陆过的XXX
+        PaidOrderCnt int64 `json:"paidOrderCnt"`              // 支付订单总数
+        PaidAmount int64 `json:"paidAmount"`                  // 支付订单总金额
+        ApplyRefundAmount int64 `json:"applyRefundAmount"`    // 申请退款总额
+        RefundSuccessAmount int64 `json:"refundSuccessAmount"`// 退款成功总金额
+        ConfirmOrderAmount int64 `json:"confirmOrderAmount"`  // 确认完成订单总金额
+        ListenerAmount int64 `json:"listenerAmount"`          // XXX收入总金额
+        PlatformAmount int64 `json:"platformAmount"`          // 平台收入总金额
+        Channel string `json:"channel"`
+        CreateTime string `json:"createTime"`
+    }
+    GetDailyStatListResp {
+        List []*DailyStat `json:"list"`
+    }
+)
+
+type (
+    GetUserChannelListReq {
+        CreateTimeStart string `json:"createTimeStart"` // 注册时间开始
+        CreateTimeEnd string `json:"createTimeEnd"`     // 注册时间结束
+    }
+    GetUserChannelListResp {
+        Channel []string `json:"channel"`
+    }
+)
+
+type (
+    // 统计近多少日的用户在昨日累计数据
+    GetLifeTimeValueStatReq {
+        StartDate string `json:"startDate"` // 开始日期 20220801
+        EndDate string `json:"endDate"`     // 结束日期 20220807
+        UserFlag int64 `json:"userFlag"`    // 1 新用户 2 活跃用户
+        Channel string `json:"channel"`     // 渠道
+    }
+    LifeTimeValueStat {
+        Date string `json:"date"`
+        UserCnt int64 `json:"userCnt"`                      // 用户数
+        PaidUserCnt int64 `json:"paidUserCnt"`              // 付费用户数
+        RefundOrderCnt int64 `json:"refundOrderCnt"`        // 退款单数
+        PaidOrderCnt int64 `json:"paidOrderCnt"`            // 下单数
+        RepeatPaidUserCnt int64 `json:"repeatPaidUserCnt"`  // 复购用户数
+        CommentOrderCnt int64 `json:"commentOrderCnt"`      // 评价订单数
+        FiveStarOrderCnt int64 `json:"fiveStarOrderCnt"`    // 满意评价订单数
+        ThreeStarOrderCnt int64 `json:"threeStarOrderCnt"`  // 一般评价订单数
+        OneStarOrderCnt int64 `json:"oneStarOrderCnt"`      // 不满意订单数
+        TextChatOrderCnt int64 `json:"textChatOrderCnt"`    // 文字订单数
+        VoiceChatOrderCnt int64 `json:"voiceChatOrderCnt"`  // 语音订单数
+        PaidAmountSum int64 `json:"paidAmountSum"`          // 用户付费总金额
+        Ltv1Day int64 `json:"ltv1Day"`
+        Ltv3Day int64 `json:"ltv3Day"`
+        Ltv7Day int64 `json:"ltv7Day"`
+        Ltv14Day int64 `json:"ltv14Day"`
+        Ltv21Day int64 `json:"ltv21Day"`
+        Ltv30Day int64 `json:"ltv30Day"`
+        Ltv60Day int64 `json:"ltv60Day"`
+    }
+    GetLifeTimeValueStatResp {
+        List []*LifeTimeValueStat `json:"list"`
+    }
+)

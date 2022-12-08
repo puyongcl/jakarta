@@ -1,0 +1,185 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+// ------------------------------------
+// Messages
+// ------------------------------------
+
+//--------------------------------发布内容--------------------------------
+
+// 发布
+message AddStoryReq {
+  int64  uid       = 1;
+  int64  storyType = 2; // 发布XX类型 1 XX
+  int64  spec      = 3; // 发布内容对应的擅长领域一级分类
+  string tittle    = 4; // 标题
+  string content   = 5; // 文字内容
+  string nickname  = 6;
+}
+message AddStoryResp {
+  string id = 1;
+}
+
+// 获取回复
+message GetStoryReplyListByUserReq {
+  string storyId  = 1;
+  int64 uid = 2;
+  int64  pageNo   = 3;
+  int64  pageSize = 4;
+}
+
+message StoryReply {
+  string createTime  = 1;
+  string id          = 2;
+  string storyId     = 3;
+  int64  listenerUid = 4;
+  string replyText   = 5;
+  string replyVoice  = 6;
+  int64  likeCnt     = 7;
+  int64  state       = 9;
+  int64  uid         = 10;
+  int64  isLike      = 11;
+}
+
+message GetStoryReplyListByUserResp {
+  repeated StoryReply list = 1;
+}
+
+// 回复
+message AddStoryReplyReq {
+  int64  listenerUid = 1;
+  string storyId     = 2;
+  string replyText   = 3;
+  string replyVoice  = 4;
+  string nickname    = 5;
+}
+
+message AddStoryReplyResp {
+  string id = 1;
+}
+
+// 点赞
+message AddLikeStoryReplyReq {
+  int64  uid          = 1;
+  string storyReplyId = 2;
+}
+
+message AddLikeStoryReplyResp {
+  int64 likeCnt = 1;
+}
+
+// 删除发布
+message DelStoryReq {
+  int64  uid     = 1;
+  string storyId = 2;
+}
+message DelStoryResp {
+}
+
+// 删除回复
+message DelStoryReplyReq {
+  int64  listenerUid  = 1;
+  string storyReplyId = 2;
+}
+message DelStoryReplyResp {
+}
+
+// 推荐
+message GetRecStoryListByUserReq {
+  int64 uid       = 1;
+  int64 storyType = 2;
+  int64 spec      = 3;
+  int64 pageNo    = 4;
+  int64 pageSize  = 5;
+}
+
+message Story {
+  string createTime  = 1;
+  string Id          = 2;
+  int64  uid         = 3;
+  int64  storyType   = 4; // XX类型
+  int64  spec        = 5; // 擅长领域一级分类
+  string tittle      = 6; // 标题
+  string content     = 7;    // 发布内容
+  int64  state       = 8; // 状态
+  int64  viewCnt     = 9;  // 浏览次数
+  int64  replyCnt    = 10; // 回复人数
+}
+
+message GetRecStoryListByUserResp {
+  repeated Story list = 1;
+}
+
+// 获取本人发布的XX
+message GetStoryListByOwnReq {
+  int64 uid       = 1;
+  int64 storyType = 2;
+  int64 pageNo    = 3;
+  int64 pageSize  = 4;
+}
+
+message GetStoryListByOwnResp {
+  repeated Story list = 1;
+}
+
+// 获取本人发布的回复
+message GetStoryReplyListByOwnReq {
+  int64 listenerUid = 1;
+  int64 pageNo      = 3;
+  int64 pageSize    = 4;
+}
+
+message GetStoryReplyListByOwnResp {
+  repeated StoryReply list = 1;
+}
+
+// 获取发布的XX（根据id）
+message GetStoryByIdReq {
+  string storyId = 1;
+  int64 uid = 2;
+}
+
+message GetStoryByIdResp {
+  Story story = 1;
+}
+
+// 获取XX的回复（根据id）
+message GetStoryReplyByIdReq {
+  string storyReplyId = 1;
+  int64 uid = 2;
+}
+
+message GetStoryReplyByIdResp {
+  StoryReply reply = 1;
+}
+// ------------------------------------
+// Rpc Func
+// ------------------------------------
+
+service bbs {
+  // 发布
+  rpc addStory(AddStoryReq) returns (AddStoryResp);
+  // 获取XX回复列表
+  rpc getStoryReplyListByUser(GetStoryReplyListByUserReq) returns (GetStoryReplyListByUserResp);
+  // 回复
+  rpc addStoryReply(AddStoryReplyReq) returns (AddStoryReplyResp);
+  // 点赞
+  rpc addLikeStoryReply(AddLikeStoryReplyReq) returns (AddLikeStoryReplyResp);
+  // 删除发布
+  rpc delStory(DelStoryReq) returns (DelStoryResp);
+  // 删除回复
+  rpc delStoryReply(DelStoryReplyReq) returns (DelStoryReplyResp);
+  // 推荐
+  rpc getRecStoryListByUser(GetRecStoryListByUserReq) returns (GetRecStoryListByUserResp);
+  // 获取个人所有XX
+  rpc getStoryListByOwn(GetStoryListByOwnReq) returns (GetStoryListByOwnResp);
+  // 获取个人所有回复
+  rpc getStoryReplyListByOwn(GetStoryReplyListByOwnReq) returns (GetStoryReplyListByOwnResp);
+  // 获取发布的XX（根据id）
+  rpc getStoryById(GetStoryByIdReq) returns (GetStoryByIdResp);
+  // 获取XX的回复（根据id）
+  rpc getStoryReplyById(GetStoryReplyByIdReq) returns (GetStoryReplyByIdResp);
+}

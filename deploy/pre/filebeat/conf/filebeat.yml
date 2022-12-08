@@ -1,0 +1,32 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+  # 开启json解析
+    paths:
+      - /var/lib/docker/containers/*/*-json.log
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+fields:
+  log_topic: jakarta-log
+
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: false
+
+processors:
+  - decode_json_fields:
+      fields: ['@timestamp', 'caller','level','content','trace','span','duration']
+      target: ""
+
+output.kafka:
+  enabled: true
+  hosts: ["10.0.0.38:9093"]
+  #要提前创建topic
+  topic: '%{[fields.log_topic]}'
+  partition.round_robin:
+    reachable_only: false
+  required_acks: 1
+  keep_alive: 10s

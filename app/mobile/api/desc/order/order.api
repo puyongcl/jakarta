@@ -1,0 +1,310 @@
+syntax = "v1"
+
+info(
+    title: "订单"
+    desc: "订单"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+// 创建订单
+type (
+    CreateChatOrderReq {
+        ListenerUid int64 `json:"listenerUid"`
+        ListenerNickName string `json:"listenerNickName"`                                                // XXX昵称
+        ListenerAvatar string `json:"listenerAvatar"`                                                    // XXX头像
+        Uid int64 `json:"uid"`                                                                           // 用户id
+        NickName string `json:"nickName"`                                                                // 用户昵称
+        Avatar string `json:"avatar"`                                                                    // 用户头像
+        OpenId string `json:"openId"`                                                                    // 用户微信openid
+        BuyUnit int64 `json:"buyUnit"`                                                                   // 服务时长分钟
+        PricingPlanId int64 `json:"pricingPlanId"`                                                       // 价格方案id
+        OrderType int64 `json:"orderType"`                                                               // 订单类型2文字4语音
+        Channel string `json:"channel,optional"`                                                         // 获客渠道
+    }
+    CreateChatOrderResp {
+        OrderId string `json:"orderId"`
+        ChatUnitMinute int64 `json:"chatUnitMinute"`     // 服务单价包含多少分钟
+        BuyUnit int64 `json:"buyUnit"`                   // 购买的时长，单价时间的整数倍
+        UnitPrice int64 `json:"unitPrice"`               // 单价
+        BaseAmount int64 `json:"baseAmount"`             // 服务费
+        TaxAmount int64 `json:"taxAmount"`               // 税费
+        NightAddAmount int64 `json:"nightAddAmount"`     // 夜间加收费用
+        SaveAmount int64 `json:"saveAmount"`             // 优惠减免金额
+        ActualAmount int64 `json:"actualAmount"`         // 实际总费用
+        Appid string `json:"appid"`
+        NonceStr string `json:"nonceStr"`
+        PaySign string `json:"paySign"`
+        Package string `json:"package"`
+        Timestamp string `json:"timestamp"`
+        SignType string `json:"signType"`
+    }
+)
+
+// 获取当前XXX聊天价格
+type (
+    GetCurrentListenerChatPriceReq {
+        ListenerUid int64 `json:"listenerUid"`
+        Uid int64 `json:"uid"`
+    }
+    GetCurrentListenerChatPriceResp {
+        TextChatPrice int64 `json:"textChatPrice"`                                        //文字聊天单价格
+        VoiceChatPrice int64 `json:"voiceChatPrice"`                                      //语音聊天单价格
+        TextChatActualPrice int64 `json:"textChatActualPrice"`                            //优惠后的文字单价格
+        VoiceChatActualPrice int64 `json:"voiceChatActualPrice"`                          //优惠后的语音单价格
+        NightAddFlag string `json:"nightAddFlag"`                                         // 夜间服务费加收提示
+        FreeFlag string `json:"freeFlag"`                                                 // 优惠标志
+        FreeMinute int64 `json:"freeMinute"`                                              // 优惠分钟数
+        NewUserDiscount int64 `json:"newUserDiscount"`                                    // 新用户订单费用折扣(千分之几)
+        PricingPlanId int64 `json:"pricingPlanId"`                                        // 价格方案id
+        ChatUnitMinute int64 `json:"chatUnitMinute"`                                      // 单位时长的分钟数
+    }
+)
+
+// 获取订单估算
+type (
+    EstimateOrderReq {
+        ListenerUid int64 `json:"listenerUid"`
+        Uid int64 `json:"uid"`
+        BuyUnit int64 `json:"buyUnit"`                              // 服务时长分钟
+        ChatPrice int64 `json:"chatPrice"`                          // 每单位价格
+        PricingPlanId int64 `json:"pricingPlanId"`                  // 价格方案id
+    }
+    EstimateOrderResp {
+        ChatUnitMinute int64 `json:"chatUnitMinute"`     // 服务单价包含多少分钟
+        BuyUnit int64 `json:"buyUnit"`                   // 购买的时长，单价时间的整数倍
+        UnitPrice int64 `json:"unitPrice"`               // 单价
+        BaseAmount int64 `json:"baseAmount"`             // 服务费
+        TaxAmount int64 `json:"taxAmount"`               // 税费
+        NightAddAmount int64 `json:"nightAddAmount"`     // 夜间加收费用
+        SaveAmount int64 `json:"saveAmount"`             // 优惠减免金额
+        ActualAmount int64 `json:"actualAmount"`         // 实际总费用
+    }
+)
+
+type UserSeeChatOrder {
+    OrderId string `json:"orderId"`                                //单号
+    CreateTime string `json:"createTime"`                          // 下单时间
+    ListenerUid int64 `json:"listenerUid"`                         // XXXuid
+    ListenerNickName string `json:"listenerNickName"`              // XXX名称
+    ListenerAvatar string `json:"listenerAvatar"`                  // XXX缩略头像
+    BuyUnit int64 `json:"buyUnit"`                                 // 购买多少单位
+    ChatUnitMinute int64 `json:"chatUnitMinute"`                   // 一单位多少分钟
+    UsedChatMinute int64 `json:"usedChatMinute"`                   // 已使用时长
+    StartTime string `json:"startTime"`                            // 服务开始时间
+    EndTime string `json:"endTime"`                                // 最近一次服务结束时间
+    ExpiryTime string `json:"expiryTime"`                          // 到期时间
+    SaveAmount int64 `json:"saveAmount"`                           // 优惠金额
+    ActualAmount int64 `json:"actualAmount"`                       // 实际支付金额
+    OrderState int64 `json:"orderState"`                           // 订单状态
+    OrderType int64 `json:"orderType"`                             // 订单类型
+    UnitPrice int64 `json:"unitPrice"`                             // 单价
+    Comment string `json:"comment"`
+    CommentTag []int64 `json:"commentTag"`
+    CommentTime string `json:"commentTime"`
+    Star int64 `json:"star"`
+    Reply string `json:"reply"`
+    ReplyTime string `json:"replyTime"`
+    FeedbackTime string `json:"feedbackTime"`
+    Feedback string `json:"feedback"`
+    StatusMark string `json:"statusMark"`                          // 根据不通状态确定下一个状态的倒数计时提示语
+}
+
+type ListenerSeeChatOrder {
+    OrderId string `json:"orderId"`                                //单号
+    NickName string `json:"nickName"`
+    Uid int64 `json:"uid"`
+    Avatar string `json:"avatar"`
+    CreateTime string `json:"createTime"`                          // 下单时间
+    BuyUnit int64 `json:"buyUnit"`                                 // 购买多少单位
+    ChatUnitMinute int64 `json:"chatUnitMinute"`                   // 一单位多少分钟
+    UsedChatMinute int64 `json:"usedChatMinute"`                   // 已使用时长
+    StartTime string `json:"startTime"`                            // 服务开始时间
+    EndTime string `json:"endTime"`                                // 最近一次服务结束时间
+    ExpiryTime string `json:"expiryTime"`                          // 到期时间
+    SaveAmount int64 `json:"saveAmount"`                           // 优惠金额
+    ActualAmount int64 `json:"actualAmount"`                       // 实际支付金额
+    OrderState int64 `json:"orderState"`                           // 订单状态
+    OrderType int64 `json:"orderType"`                             // 订单类型
+    UnitPrice int64 `json:"unitPrice"`                             // 单价
+    Comment string `json:"comment"`
+    CommentTag []int64 `json:"commentTag"`
+    CommentTime string `json:"commentTime"`
+    Star int64 `json:"star"`
+    Reply string `json:"reply"`
+    ReplyTime string `json:"replyTime"`
+    FeedbackTime string `json:"feedbackTime"`
+    Feedback string `json:"feedback"`
+    StatusMark string `json:"statusMark"`                          // 根据不通状态确定下一个状态的倒数计时提示语
+    PlatformShareAmount int64 `json:"platformShareAmount"`         // 平台收益金额（分）
+    ListenerAmount int64 `json:"listenerAmount"`                   // XXX收益
+}
+
+// 用户获取订单列表
+type (
+    GetUserChatOrderListReq {
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid,optional"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    GetUserChatOrderListResp {
+        List []*UserSeeChatOrder `json:"list"`
+    }
+)
+
+// 用户订单详情
+type (
+    GetUserChatOrderDetailReq {
+        OrderId string `json:"orderId"`
+    }
+    GetUserChatOrderDetailResp {
+        Info *UserSeeChatOrder `json:"info"`
+    }
+)
+
+type ChatOrderStateLog {
+    CreateTime string `json:"createTime"`
+    State int64 `json:"state"`
+    OperatorUid int64 `json:"operatorUid"`
+    Remark string `json:"remark"`
+}
+
+// 用户获取订单状态记录
+type (
+    GetChatOrderStateLogReq {
+        OrderId string `json:"orderId"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    GetChatOrderStateLogResp {
+        List []*ChatOrderStateLog `json:"list"`
+    }
+)
+
+// 用户获取退款流程记录
+type (
+    ChatOrderRefundLog {
+        CreateTime string `json:"createTime"`
+        State int64 `json:"state"`
+        OperatorUid int64 `json:"operatorUid"`
+        Remark string `json:"remark"`
+    }
+    GetChatOrderRefundLogReq {
+        OrderId string `json:"orderId"`
+    }
+    GetChatOrderRefundLogResp {
+        List []*ChatOrderRefundLog `json:"list"`
+    }
+)
+
+// 订单操作 状态变更
+type (
+    DoChatOrderActionReq {
+        OrderId string `json:"orderId,optional"`
+        OperatorUid int64 `json:"operatorUid"`          // 操作人uid
+        Action int64 `json:"action"`                    // 订单状态（操作）
+        Remark string `json:"remark,optional"`          // 例如 退款原因
+        Tag []int64 `json:"tag,optional"`               // 例如 退款原因tag
+        Additional string `json:"additional,optional"`  // 补充信息
+        Attachment string `json:"attachment,optional"`  // 附件 #分隔图片文件
+        OrderType int64 `json:"orderType,optional"`     // 订单类型
+        ListenerUid int64 `json:"listenerUid,optional"` // XXXuid
+    }
+    DoChatOrderActionResp {
+
+    }
+)
+
+// 获取当前价格配置
+type (
+    BusinessChatPricingPlan {
+        CreateTime string `json:"createTime"`
+        Id int64 `json:"id"`
+        TaxRate int64 `json:"taxRate"`                               // 税率(千分之几)
+        NightAddPriceRate int64 `json:"nightAddPriceRate"`           // 夜间加收费率(千分之几)
+        ShareRateStep1Star5 int64 `json:"shareRateStep1Star5"`       // 1阶段满意评价平台抽佣比率(千分之几)
+        ShareRateStep1Star3 int64 `json:"shareRateStep1Star3"`       // 1阶段一般评价平台抽佣比率(千分之几)
+        ShareRateStep1Star1 int64 `json:"shareRateStep1Star1"`       // 1阶段不满意评价平台抽佣比率(千分之几)
+        ShareAmountStep1Unit int64 `json:"shareAmountStep1Unit"`     // 1阶段时长临界单位
+        ShareRateStep2Star5 int64 `json:"shareRateStep2Star5"`       // 2阶段满意评价平台抽佣比率(千分之几)
+        ShareRateStep2Star3 int64 `json:"shareRateStep2Star3"`       // 2阶段一般评价平台抽佣比率(千分之几)
+        ShareRateStep2Star1 int64 `json:"shareRateStep2Star1"`       // 2阶段不满意评价平台抽佣比率(千分之几)
+        NightAddPriceHourStart int64 `json:"nightAddPriceHourStart"` // 夜间服务加价开始时刻
+        NightAddPriceHourEnd int64 `json:"nightAddPriceHourEnd"`     // 夜间加价结束时刻
+        ChatUnitMinute int64 `json:"chatUnitMinute"`                 // 单位时长的分钟数
+        NewUserDiscount int64 `json:"newUserDiscount"`               // 新用户订单费用折扣(千分之几)
+        FreeMinute int64 `json:"freeMinute"`                         // 免费分钟数
+        DefaultTextChatPrice int64 `json:"defaultTextChatPrice"`     // 默认文字聊天价格(分)
+        DefaultVoiceChatPrice int64 `json:"defaultVoiceChatPrice"`   // 默认语音聊天价格(分)
+        OrderCnt int64 `json:"orderCnt"`                             // 订单数
+    }
+    GetBusinessChatPricingPlanReq {
+        Uid int64 `json:"uid"`
+    }
+    GetBusinessChatPricingPlanResp {
+        Config *BusinessChatPricingPlan `json:"config"`
+    }
+)
+
+// XXX获取订单列表
+type (
+    GetListenerSeeChatOrderListReq {
+        ListenerUid int64 `json:"listenerUid"`
+        Uid int64 `json:"uid,optional"`
+        ListType int64 `json:"listType,optional"`// 列表类型 0 全部 1 需要完成 服务 反馈 同意退款
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    GetListenerSeeChatOrderListResp {
+        List []*ListenerSeeChatOrder `json:"list"`
+    }
+)
+
+// XXX订单详情
+type (
+    GetListenerChatOrderDetailReq {
+        OrderId string `json:"orderId"`
+    }
+    GetListenerChatOrderDetailResp {
+        Info *ListenerSeeChatOrder `json:"info"`
+    }
+)
+
+// 获取最近的好评
+type (
+    GetRecentGoodCommentReq {
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    RecentGoodComment {
+        Text string `json:"text"`
+        ListenerUid int64 `json:"listenerUid"`
+        Uid int64 `json:"uid"`
+    }
+    GetRecentGoodCommentResp {
+        List []*RecentGoodComment `json:"list"`
+    }
+)
+
+// 用户获取反馈列表
+type (
+    GetChatOrderFeedbackListByUserReq {
+        Uid int64 `json:"uid"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    UserSeeChatOrderFeedback {
+        OrderId string `json:"orderId"`                                //单号
+        CreateTime string `json:"createTime"`                          // 下单时间
+        ListenerUid int64 `json:"listenerUid"`                         // XXXuid
+        ListenerNickName string `json:"listenerNickName"`              // XXX名称
+        ListenerAvatar string `json:"listenerAvatar"`                  // XXX缩略头像
+        FeedbackTime string `json:"feedbackTime"`                      // 反馈时间
+        Feedback string `json:"feedback"`                              // 反馈内容
+    }
+    GetChatOrderFeedbackListByUserResp {
+        List []*UserSeeChatOrderFeedback `json:"list"`
+    }
+)

@@ -1,0 +1,46 @@
+syntax = "v1"
+
+info(
+	title: "支付服务"
+	desc: "支付服务"
+	author: ""
+	email: ""
+	version: "v1"
+)
+
+import(
+	"thirdPayment/thirdPayment.api"
+)
+
+//==============================> payment v1 <========================================
+//no need login
+@server(
+	prefix: payment/v1
+	group: third
+)
+service payment {
+	
+	@doc "wechat pay callback"
+	@handler wxPayCallback
+	post /third/wxpaycallback (ThirdPaymentWxPayCallbackReq) returns (ThirdPaymentWxPayCallbackResp)
+	
+	@doc "wechat pay refund callback"
+	@handler wxRefundCallback
+	post /third/wxrefundcallback (ThirdPaymentWxPayCallbackReq) returns (ThirdPaymentWxPayCallbackResp)
+	
+	@doc "hfbf callback"
+	@handler hfbfCashCallback
+	post /third/hfbfcallback (HFBFCashCallbackReq) returns (HFBFCashCallbackResp)
+}
+
+//need login
+@server(
+	prefix: payment/v1
+	group: payment
+	jwt: JwtAuth
+)
+service payment {
+	@doc "third payment：wechat pay"
+	@handler payment
+	post /payment/wxpay (ThirdPaymentWxPayReq) returns (ThirdPaymentWxPayResp)
+}

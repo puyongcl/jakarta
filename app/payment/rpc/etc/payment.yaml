@@ -1,0 +1,81 @@
+Name: payment-rpc
+ListenOn: 0.0.0.0:2008
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4023
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: payment-rpc
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: payment-rpc
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/payment-rpc
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+DB:
+  DataSource: postgres://jakarta:postgres@postgresql:5432/jakarta_payment?sslmode=disable&timezone=Asia/Shanghai
+Cache:
+  - Host: redis-cache:6379
+    Pass: G62m50oigInC30sf
+
+#小程序配置
+WxMiniConf:
+  AppId: wx603sdadda4524
+  Secret: 2ff445454553bfc303e8b48b
+
+#WxPayConf
+WxPayConf:
+  MchId: "1627518954"
+  SerialNo: 42CA46B0YINSGHJSB33985DFF44DEB268
+  APIv3Key: ADCCAQoCggEBAMQ78951mEY6DL51d
+  PrivateKey: |-
+    -----BEGIN PRIVATE KEY-----
+    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDEKPO/Ng1dZhGO
+    gy+dXaDDEmgsrDAZRWVVnlqM390dMTS09c0dzkqAKJHzvzJzvt8NrTcFEmwc1NVe
+    qB2nSq8//JFWVX+Hre3TZ1pJ2VABSzCigCV4I0Atw8sYE3ljEcxB9S90wtRDO7as
+    oxS4fADt9pxAolgKD2YFYCm62JkBC6PNaf5h1nc0fJeB/JLbuOg+fPGJAF9UeAlM
+    J1k4C9PScvceVknSAMDzx00aUn6oedLpdkB9Ih4Ptxr/HgFKj5ZlxlmoSCNbLzSe
+    AspXaZHzazS36LZqBPsasa2octO+HAMXBw/2Na5Vsa6wEBz3Ue6CuPa0wxv
+    h20c0jaDAgMBAAECggEAJHcUcMxEicNKqjp65H8ePoUydnN/8YK0BsmMPbnz6dRW
+    3vj+q3bI5LAmCbDWWSv3XRyBKOE21dk+3PzVnl7E21lBT1JPhdJwbqc84pOSSttG
+    bD70ODQdXySRoaUlIKSTWwOQUd1SBjmYiNk8JdtvdM0uWNmVEjGwnnk06LYRI19J
+    8DIIK9gy2OEeVTPZdnRqotXHzBuRIjgBUJ4BpowPtBSUlbkNjgeIJB+FFDP1Yifg
+    Ya8mwgWfp9rO4MYGnyShMzQxcWpG99/Y4m4/aJEz/0piY/mZT5PMgo2QjVl8T+sh
+    6cnxo2vB87JtQWFrSdsNuqFOirsasas3l2QKBgQD0WG7OLl0LEWtR8T7a
+    snoI3J9VHVjSqzNgtc+vvPjA0FsPoJpV0ZGhCWr2MjBtOCtUFhEM9l8SJbWuvUHr
+    3sGDjBOV98UsUaQ2eLBD1OP3AQLBoTpynKiuXmsqcK/p/ItPFh+BigIoky3YOX+k
+    6Ln8QGSw0hBMhwg7wHQ3uyU8rQKBgQDNhCcz3CMQ4Foul3C8NdBXx+U/FWjybl28
+    mXdy62+8XnsnuJ6yhhhhQHUmxaZv3kL4FFBeQ1LSz+B1kyO6tHZWbmtT+OLGlBBT
+    GFVoVtghzBfvVIr6a+aH/odvKQPZBE0fTgKnf7zJ5C0QndUkkTwMD69zVId9IxCJ
+    YsIpdJH17wKBgQCW9R+X4Ar5sIxWNq43XPaKDQufAR+EH+MBB7JFB4HDVbY8hGN1
+    S6EmFXRwn/dNMtuJ+owULw3zXzrMtvsas87T0Edqhhz/83LJ2O1js9W
+    SbTo7UpWEQKNk8nZVXinhkTpHmy/Xl6e2m01C+9pUo5hSTdr+u2SFNvfjQKBgChx
+    hkl1W805aWXb1YqkSHDN3LZSX0m+IGI6DUCnRmDacv/5G/nj265fwe40XTGMmr85
+    OCuksgrcb76Tiyd11gfiSOrIgtAzWRcRJdWXqYbVJCysBYGMdFx04XAlsSUm7Ipp
+    jqopwBw29AteFBDTJ+7zs0JN8y/UE7AFqFICJ6svAoGBAM4i8cH/lZboLzknd4G3
+    MBfNtf4ByxPsBUoLNqxNLCamGNbSWvcfQ+E2bwBzidz1iy8x3rafyz+y07JIv5A/
+    KGaZ7sHPyAJuLD2yyyX0mh2a7EJvq1syb6HG4guu1fp1p9jEaHb0ldGGRmm+Z9U7
+    yZ1ATur++86WtZMzQDq2qGf0
+    -----END PRIVATE KEY-----
+
+  #  NotifyUrl: https://159.75.129.208:8888/payment/v1/third/wxcallback
+  NotifyUrl: https://third.domain.com:8888/payment/v1/third/wxpaycallback
+  RefundNotifyUrl: https://third.domain.com:8888/payment/v1/third/wxrefundcallback
+
+HfbfCashConf:
+  AppId: "2022078457340493"
+  AppSecret: DOPMQOZTKJX52424EV584QMGH

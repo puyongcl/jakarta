@@ -1,0 +1,241 @@
+version: '3'
+
+######## app下api+rpc ,  启动本项目之前，要先启动本项目依赖的环境docker-compose-env.yml #######
+
+services:
+  admin-api:
+    image: reg.domain.com/bogota/admin-api
+    container_name: admin-api
+    #ports:
+    #  - "1001:1001"
+    volumes:
+      - ./jakarta/app/admin/api/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  chat-rpc:
+    image: reg.domain.com/bogota/chat-rpc
+    container_name: chat-rpc
+    #ports:
+    #  - "2002:2002"
+    volumes:
+      - ./jakarta/app/chat/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  chat-mq:
+    image: reg.domain.com/bogota/chat-mq
+    container_name: chat-mq
+    #ports:
+    #  - "3002:3002"
+    volumes:
+      - ./jakarta/app/chat/mq/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  im-api:
+    image: reg.domain.com/bogota/im-api
+    container_name: im-api
+    #ports:
+    #  - "1003:1003"
+    volumes:
+      - ./jakarta/app/im/api/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  im-mq:
+    image: reg.domain.com/bogota/im-mq
+    container_name: im-mq
+    #ports:
+    #  - "3003:3003"
+    volumes:
+      - ./jakarta/app/im/mq/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  im-rpc:
+    image: reg.domain.com/bogota/im-rpc
+    container_name: im-rpc
+    #ports:
+    #  - "2003:2003"
+    volumes:
+      - ./jakarta/app/im/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  listener-rpc:
+    image: reg.domain.com/bogota/listener-rpc
+    container_name: listener-rpc
+    #ports:
+    #  - "2004:2004"
+    volumes:
+      - ./data/contract:/app/contract:rw
+      - ./jakarta/app/listener/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  listener-mq:
+    image: reg.domain.com/bogota/listener-mq
+    container_name: listener-mq
+    #ports:
+    #  - "3004:3004"
+    volumes:
+      - ./jakarta/app/listener/mq/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  mobile-api:
+    image: reg.domain.com/bogota/mobile-api
+    container_name: mobile-api
+    #ports:
+    #  - "1005:1005"
+    volumes:
+      - ./jakarta/app/mobile/api/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  mqueue-job:
+    image: reg.domain.com/bogota/mqueue-job
+    container_name: mqueue-job
+    #ports:
+    #  - "3006:3006"
+    volumes:
+      - ./jakarta/app/mqueue/job/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  mqueue-scheduler:
+    image: reg.domain.com/bogota/mqueue-scheduler
+    container_name: mqueue-scheduler
+    #ports:
+    #  - "5006:5006"
+    volumes:
+      - ./jakarta/app/mqueue/scheduler/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  order-mq:
+    image: reg.domain.com/bogota/order-mq
+    container_name: order-mq
+    #ports:
+    #  - "3007:3007"
+    volumes:
+      - ./jakarta/app/order/mq/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  order-rpc:
+    image: reg.domain.com/bogota/order-rpc
+    container_name: order-rpc
+    #ports:
+    #  - "2007:2007"
+    volumes:
+      - ./jakarta/app/order/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  payment-api:
+    image: reg.domain.com/bogota/payment-api
+    container_name: payment-api
+    #ports:
+    #  - "1008:1008"
+    volumes:
+      - ./jakarta/app/payment/api/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  payment-mq:
+    image: reg.domain.com/bogota/payment-mq
+    container_name: payment-mq
+    #ports:
+    #  - "3008:3008"
+    volumes:
+      - ./jakarta/app/payment/mq/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  payment-rpc:
+    image: reg.domain.com/bogota/payment-rpc
+    container_name: payment-rpc
+    #ports:
+    #  - "2008:2008"
+    volumes:
+      - ./jakarta/app/payment/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  statistic-rpc:
+    image: reg.domain.com/bogota/statistic-rpc
+    container_name: statistic-rpc
+    #ports:
+    #  - "2010:2010"
+    volumes:
+      - ./jakarta/app/statistic/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  usercenter-rpc:
+    image: reg.domain.com/bogota/usercenter-rpc
+    container_name: usercenter-rpc
+    #ports:
+    #  - "2009:2009"
+    volumes:
+      - ./jakarta/app/usercenter/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+  bbs-rpc:
+    image: reg.domain.com/bogota/bbs-rpc
+    container_name: bbs-rpc
+    #ports:
+    #  - "2009:2009"
+    volumes:
+      - ./jakarta/app/bbs/rpc/etc/:/app/conf/:ro
+    privileged: true
+    restart: always
+    networks:
+      - jakarta_net
+
+networks:
+  jakarta_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+

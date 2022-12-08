@@ -1,0 +1,158 @@
+Name: im-mq
+Host: 0.0.0.0
+Port: 3003
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4009
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: im-mq
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: im-mq
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/im-mq
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+#kq
+IMDefineMsgSendConf:
+  Name: IMDefineMsgSend
+  Brokers:
+    - kafka:9092
+  Group: im-define-msg-send-group
+  Topic: im-define-msg-send-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1
+
+#kq
+WxMiniProgramMsgSendConf:
+  Name: WxMiniProgramMsgSend
+  Brokers:
+    - kafka:9092
+  Group: wx-mini-program-msg-send-group
+  Topic: wx-mini-program-msg-send-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+#kq
+WxFwhMsgSendConf:
+  Name: WxFwhMsgSend
+  Brokers:
+    - kafka:9092
+  Group: wx-fwh-msg-send-group
+  Topic: wx-fwh-msg-send-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+WxFwhCallbackEventConf:
+  Name: WxFwhCallbackEvent
+  Brokers:
+    - kafka:9092
+  Group: wxfwh-callback-event-group
+  Topic: wxfwh-callback-event-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+IMStateChangeMsgConf:
+  Name: IMStateChangeMsg
+  Brokers:
+    - kafka:9092
+  Group: im-state-change-msg-group
+  Topic: im-state-change-msg-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+IMAfterSendMsgConf:
+  Name: IMAfterSendMsg
+  Brokers:
+    - kafka:9092
+  Group: im-after-send-msg-group
+  Topic: im-after-send-msg-topic
+  Offset: first
+  Consumers: 1
+  Processors: 2
+
+SubscribeNotifyMsgConf:
+  Name: SubscribeNotifyMsg
+  Brokers:
+    - kafka:9092
+  Group: subscribe-notify-msg-group
+  Topic: subscribe-notify-msg-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+SendDefineMsgClientConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-define-msg-send-topic
+
+SendWxMiniProgramMsgClientConf:
+  Brokers:
+    - kafka:9092
+  Topic: wx-mini-program-msg-send-topic
+
+SendSubscribeNotifyMsgClientConf:
+  Brokers:
+    - kafka:9092
+  Topic: subscribe-notify-msg-topic
+
+SendWxFwhProgramMsgClientConf:
+  Brokers:
+    - kafka:9092
+  Topic: wx-fwh-msg-send-topic
+
+UploadUserEventConf:
+  Name: UploadUserEvent
+  Brokers:
+    - kafka:9092
+  Group: upload-user-event-group
+  Topic: upload-user-event-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+#rpc
+ImRpcConf:
+  Endpoints:
+    - im-rpc:2003
+  NonBlock: true
+
+UsercenterRpcConf:
+  Endpoints:
+    - usercenter-rpc:2009
+  NonBlock: true
+
+ListenerRpcConf:
+  Endpoints:
+    - listener-rpc:2004
+  NonBlock: true
+
+StatRpcConf:
+  Endpoints:
+    - statistic-rpc:2010
+  NonBlock: true
+
+ChatRpcConf:
+  Endpoints:
+    - chat-rpc:2002
+  NonBlock: true

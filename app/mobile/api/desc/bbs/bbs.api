@@ -1,0 +1,162 @@
+syntax = "v1"
+
+info(
+    title: "bbs"
+    desc: ""
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+// 发布XX
+type AddStoryReq {
+    Uid int64 `json:"uid"`
+    StoryType int64 `json:"storyType"`   // 发布XX类型 1 XX
+    Spec int64 `json:"spec"`             // 发布内容对应的擅长领域一级分类
+    Tittle string `json:"tittle"`        // 标题
+    Content string `json:"content"`      // 文字内容
+    Nickname string `json:"nickname"`
+}
+
+type AddStoryResp {
+    Id string `json:"id"`
+}
+
+// 回复XX
+type AddStoryReplyReq {
+    ListenerUid int64 `json:"listenerUid"`
+    StoryId string `json:"storyId"`
+    ReplyText string `json:"replyText"`
+    ReplyVoice string `json:"replyVoice"`
+    Nickname string `json:"nickname"`
+}
+
+type AddStoryReplyResp {
+    Id string `json:"id"`
+}
+
+// 点赞
+type AddLikeStoryReplyReq {
+    Uid int64 `json:"uid"`
+    StoryReplyId string `json:"storyReplyId"`
+}
+
+type AddLikeStoryReplyResp {
+    LikeCnt int64 `json:"likeCnt"`
+}
+
+// 浏览详情（用户获取XX回复列表）
+type GetStoryReplyListReq {
+    StoryId string `json:"storyId"`
+    PageNo int64 `json:"pageNo"`
+    PageSize int64 `json:"pageSize"`
+}
+
+type Story {
+    CreateTime string `json:"createTime"`
+    Id string `json:"Id"`
+    Uid int64 `json:"uid"`
+    StoryType int64 `json:"storyType"`   // XX类型
+    Spec int64 `json:"spec"`             // 擅长领域一级分类
+    Tittle string `json:"tittle"`        // 标题
+    Content string `json:"content"`      // 发布内容
+    State int64 `json:"state"`           // 状态
+    ViewCnt int64 `json:"viewCnt"`       // 浏览次数
+    ReplyCnt int64 `json:"replyCnt"`     // 回复人数
+    Nickname string `json:"nickname"` // 昵称
+    Avatar string `json:"avatar"`   // 头像
+}
+
+type StoryReply {
+    CreateTime string `json:"createTime"`
+    Id string `json:"id"`
+    StoryId string `json:"storyId"`
+    ListenerUid int64 `json:"listenerUid"`
+    ReplyText string `json:"replyText"`
+    ReplyVoice string `json:"replyVoice"`
+    LikeCnt int64 `json:"likeCnt"`
+    State int64 `json:"state"`
+    Uid int64 `json:"uid"`
+    ListenerNickname string `json:"listenerNickname"`
+    ListenerAvatar string `json:"listenerAvatar"`
+    Intro string `json:"intro"`
+    IsLike int64 `json:"isLike"`
+}
+
+type GetStoryReplyListResp {
+    List []*StoryReply `json:"list"`
+}
+
+// 删除发布的XX
+type DelStoryReq {
+    Uid int64 `json:"uid"`
+    StoryId string `json:"storyId"`
+}
+
+type DelStoryResp {
+
+}
+
+// 删除XX的回复
+type DelStoryReplyReq {
+    ListenerUid int64 `json:"listenerUid"`
+    StoryReplyId string `json:"storyReplyId"`
+}
+
+type DelStoryReplyResp {
+
+}
+
+// 推荐
+type GetRecStoryListByUserReq {
+    Uid int64 `json:"uid"`
+    StoryType int64 `json:"storyType"`
+    Spec int64 `json:"spec"`
+    PageNo int64 `json:"pageNo"`
+    PageSize int64 `json:"pageSize"`
+}
+
+type GetRecStoryListByUserResp {
+    List []*Story `json:"list"`
+}
+
+// 获取个人所有的XX
+type GetStoryListByOwnReq {
+    Uid int64 `json:"uid"`
+    StoryType int64 `json:"storyType"`
+    PageNo int64 `json:"pageNo"`
+    PageSize int64 `json:"pageSize"`
+}
+
+type GetStoryListByOwnResp {
+    List []*Story `json:"list"`
+}
+
+// 获取个人所有回复
+type GetStoryReplyListByOwnReq {
+    ListenerUid int64 `json:"listenerUid"`
+    PageNo int64 `json:"pageNo"`
+    PageSize int64 `json:"pageSize"`
+}
+
+type GetStoryReplyListByOwnResp {
+    List []*StoryReply `json:"list"`
+}
+
+// 获取XX
+type GetStoryByIdReq {
+    StoryId string `json:"storyId"`
+}
+
+type GetStoryByIdResp {
+    Story *Story `json:"story"`
+}
+
+// 获取XX回复
+type GetStoryReplyReq {
+    StoryReplyId string `json:"storyReplyId"`
+}
+
+type GetStoryReplyResp {
+    Reply *StoryReply `json:"reply"`
+}

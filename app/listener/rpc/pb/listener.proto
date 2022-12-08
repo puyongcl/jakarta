@@ -1,0 +1,933 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+// ------------------------------------ 
+// Messages
+// ------------------------------------ 
+
+//--------------------------------XXX--------------------------------
+
+// 用户看到的XXX资料
+message UserSeeListenerProfile {
+  int64          listenerUid         = 1; //uid
+  string         nickName            = 2; //nickName
+  string         avatar              = 3; //avatar
+  int64          maritalStatus       = 4; //maritalStatus
+  int64          constellation       = 5; //constellation
+  string         province            = 6; //province
+  string         city                = 7; //city
+  string         job                 = 8; //job
+  int64          education           = 9; //education
+  int64          gender              = 10; //gender
+  int64          age                 = 11;
+  repeated int64 specialties         = 12; // 专业领域
+  string         introduction        = 13; //introduction
+  string         voiceFile           = 14; //voiceFile
+  string         experience1         = 15; //experience1
+  string         experience2         = 16; //experience2
+  int64          certType            = 17;
+  string         certFiles1          = 18; //certFiles1
+  string         certFiles2          = 19; //certFiles2
+  string         certFiles3          = 20; //certFiles3
+  string         certFiles4          = 21; //certFiles4
+  string         certFiles5          = 22; //certFiles5
+  int64          textChatPrice       = 23; //textChatPrice
+  int64          voiceChatPrice      = 24; //voiceChatPrice
+  int64          userCount           = 25; //userCount
+  int64          chatDuration        = 26; //chatDuration
+  int64          ratingSum           = 27; //ratingSum
+  int64          fiveStar            = 28; //fiveStar
+  int64          workState           = 29;
+  string         openId              = 30;
+  int64          textChatSwitch      = 31;
+  int64          voiceChatSwitch     = 32;
+  string         autoReplyNew        = 33; //autoReplyNew
+  string         autoReplyProcessing = 34; //autoReplyProcessing
+  string         autoReplyFinish     = 35; //autoReplyFinish
+}
+
+// XXX看到的自己的资料
+message ListenerSeeOwnProfile {
+  int64           listenerUid          = 1; //uid
+  string          nickName             = 2; //nickName
+  string          avatar               = 3; //avatar
+  int64           maritalStatus        = 4; //maritalStatus
+  string          phoneNumber          = 5; //phoneNumber
+  int64           constellation        = 6; //constellation
+  string          province             = 7; //province
+  string          city                 = 8; //city
+  string          job                  = 9; //job
+  int64           education            = 10; //education
+  int64           gender               = 11; //gender
+  string          birthday             = 12;
+  string          idNo                 = 13;
+  string          idPhoto1             = 14; //idPhoto1
+  string          idPhoto2             = 15; //idPhoto2
+  string          idPhoto3             = 16; //idPhoto3
+  repeated int64  specialties          = 17; // 专业领域
+  string          introduction         = 18; //introduction
+  string          voiceFile            = 19; //voiceFile
+  string          experience1          = 20; //experience1
+  string          experience2          = 21; //experience2
+  int64           certType             = 22;
+  string          certFiles1           = 23; //certFiles1
+  string          certFiles2           = 24; //certFiles2
+  string          certFiles3           = 25; //certFiles3
+  string          certFiles4           = 26; //certFiles4
+  string          certFiles5           = 27; //certFiles5
+  string          autoReplyNew         = 28; //autoReplyNew
+  string          autoReplyProcessing  = 29; //autoReplyProcessing
+  string          autoReplyFinish      = 30; //autoReplyFinish
+  int64           textChatPrice        = 31; //textChatPrice
+  int64           voiceChatPrice       = 32; //voiceChatPrice
+  repeated string checkFailField       = 33;
+  repeated string checkingField        = 34;
+  int64           checkStatus          = 35; //checkStatus
+  int64           draftVersion         = 36;
+  string          listenerName         = 37;
+  string          otherPlatformAccount = 38;
+  int64           textChatSwitch       = 39;
+  int64           voiceChatSwitch      = 40;
+}
+
+
+// XXX编辑自己的资料
+message EditListenerProfileDraftReq {
+  int64          listenerUid          = 1; //uid
+  string         nickName             = 2; //nickName
+  string         avatar               = 3; //avatar
+  int64          maritalStatus        = 4; //maritalStatus
+  string         phoneNumber          = 5; //phoneNumber
+  int64          constellation        = 6; //constellation
+  string         province             = 7; //province
+  string         city                 = 8; //city
+  string         job                  = 9; //job
+  int64          education            = 10; //education
+  int64          gender               = 11; //gender
+  string         birthday             = 12; //birthday
+  string         idNo                 = 13; //idNo
+  string         idPhoto1             = 14; //idPhoto1
+  string         idPhoto2             = 15; //idPhoto2
+  string         idPhoto3             = 16; //idPhoto3
+  repeated int64 specialties          = 17; // 专业领域
+  string         introduction         = 18; //introduction
+  string         voiceFile            = 19; //voiceFile
+  string         experience1          = 20; //experience1
+  string         experience2          = 21; //experience2
+  int64          certType             = 22;
+  string         certFiles1           = 23; //certFiles1
+  string         certFiles2           = 24; //certFiles2
+  string         certFiles3           = 25; //certFiles3
+  string         certFiles4           = 26; //certFiles4
+  string         certFiles5           = 27; //certFiles5
+  string         autoReplyNew         = 28; //autoReplyNew
+  string         autoReplyProcessing  = 29; //autoReplyProcessing
+  string         autoReplyFinish      = 30; //autoReplyFinish
+  int64          textChatPrice        = 31; //textChatPrice
+  int64          voiceChatPrice       = 32; //voiceChatPrice
+  int64          draftVersion         = 33;
+  string         listenerName         = 34;
+  string         otherPlatformAccount = 35;
+  int64          textChatSwitch       = 36;
+  int64          voiceChatSwitch      = 37;
+}
+
+message EditListenerProfileDraftResp {
+  int64 draftVersion = 1;
+}
+
+// 普通用户获取XXX资料
+message GetListenerProfileByUserReq {
+  int64  listenerUid = 1;
+  int64  uid         = 2;
+  string nickName    = 3;
+  string avatar      = 4;
+}
+
+message GetListenerProfileByUserResp {
+  UserSeeListenerProfile Profile = 1;
+}
+
+// XXX获取自己的资料
+message GetListenerProfileByOwnReq {
+  int64 listenerUid = 1;
+}
+
+message GetListenerProfileByOwnResp {
+  ListenerSeeOwnProfile profile = 1;
+}
+
+// XXX备注用户
+message ListenerRemarkUserReq {
+  int64  uid         = 1;
+  int64  listenerUid = 2;
+  string remark      = 3;
+  string userDesc    = 4;
+}
+
+message ListenerRemarkUserResp {
+
+}
+
+// 获取XXX备注用户
+message GetListenerRemarkUserReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+}
+message GetListenerRemarkUserResp {
+  int64  uid         = 1;
+  int64  listenerUid = 2;
+  string remark      = 3;      // XXX备注
+  string userDesc    = 4;  // 描述
+}
+
+// 推荐XXX列表
+message UserSeeRecommendListenerProfile {
+  int64          listenerUid     = 1; //uid
+  string         nickName        = 2; //nickName
+  string         avatar          = 3; //avatar
+  int64          maritalStatus   = 4; //maritalStatus
+  int64          constellation   = 5; //constellation
+  string         job             = 6; //job
+  int64          education       = 7; //education
+  int64          gender          = 8; //gender
+  int64          age             = 9;
+  repeated int64 specialties     = 10; // 专业领域
+  string         introduction    = 12; //introduction
+  string         voiceFile       = 13; //voiceFile
+  int64          textChatPrice   = 14; // 文字聊天原单价
+  int64          voiceChatPrice  = 15; // 语音聊天原单价
+  int64          ratingSum       = 16; //ratingSum
+  int64          fiveStar        = 17; //fiveStar
+  int64          textChatSwitch  = 18;
+  int64          voiceChatSwitch = 19;
+}
+message GetRecommendListenerByUserReq {
+  int64          uid         = 1;
+  int64          pageNo      = 2;
+  int64          pageSize    = 3;
+  int64          specialties = 4;
+  int64          chatType    = 5;
+  int64          gender      = 6;
+  int64          age         = 7;
+  int64          sortOrder   = 8;
+  repeated int64 workState   = 9;
+  string         authKey     = 10;
+}
+message GetRecommendListenerByUserResp {
+  repeated UserSeeRecommendListenerProfile listener = 1;
+}
+
+message GetRecommendListenerReq {
+  int64 uid         = 1;
+  int64 pageNo      = 2;
+  int64 pageSize    = 3;
+  int64 specialties = 4;
+  int64 chatType    = 5;
+  int64 gender      = 6;
+  int64 age         = 7;
+  int64 sortOrder   = 8;
+}
+message GetRecommendListenerResp {
+  repeated ListenerShortProfile listener = 1;
+}
+
+// 管理员看到的XXX的资料草稿
+message AdminSeeListenerProfileDraft {
+  int64           listenerUid          = 1; //uid
+  string          nickName             = 2; //nickName
+  string          avatar               = 3; //avatar
+  int64           maritalStatus        = 5; //maritalStatus
+  string          phoneNumber          = 6; //phoneNumber
+  int64           constellation        = 7; //constellation
+  string          province             = 8; //province
+  string          city                 = 9; //city
+  string          job                  = 10; //job
+  int64           education            = 11; //education
+  int64           gender               = 12; //gender
+  string          birthday             = 13;
+  string          idNo                 = 14;
+  string          idPhoto1             = 15; //idPhoto1
+  string          idPhoto2             = 16; //idPhoto2
+  string          idPhoto3             = 17; //idPhoto3
+  repeated int64  specialties          = 18; // 专业领域
+  string          introduction         = 19; //introduction
+  string          voiceFile            = 20; //voiceFile
+  string          experience1          = 21; //experience1
+  string          experience2          = 22; //experience2
+  int64           certType             = 23;
+  string          certFiles1           = 24; //certFiles1
+  string          certFiles2           = 25; //certFiles2
+  string          certFiles3           = 26; //certFiles3
+  string          certFiles4           = 27; //certFiles4
+  string          certFiles5           = 28; //certFiles5
+  string          autoReplyNew         = 29; //autoReplyNew
+  string          autoReplyProcessing  = 30; //autoReplyProcessing
+  string          autoReplyFinish      = 31; //autoReplyFinish
+  int64           textChatPrice        = 32; //textChatPrice
+  int64           voiceChatPrice       = 33; //voiceChatPrice
+  repeated string checkFailField       = 34;
+  repeated string checkingField        = 35;
+  int64           checkStatus          = 36; //checkStatus
+  string          createTime           = 37;
+  string          updateTime           = 38;
+  int64           draftVersion         = 39;
+  string          listenerName         = 40;
+  string          otherPlatformAccount = 41;
+  int64           textChatSwitch       = 42;
+  int64           voiceChatSwitch      = 43;
+}
+
+// 管理员看到的XXX资料
+message AdminSeeListenerProfile {
+  int64           listenerUid          = 1; //uid
+  string          nickName             = 2; //nickName
+  string          avatar               = 3; //avatar
+  int64           maritalStatus        = 5; //maritalStatus
+  string          phoneNumber          = 6; //phoneNumber
+  int64           constellation        = 7; //constellation
+  string          province             = 8; //province
+  string          city                 = 9; //city
+  string          job                  = 10; //job
+  int64           education            = 11; //education
+  int64           gender               = 12; //gender
+  string          birthday             = 13;
+  string          idNo                 = 14;
+  string          idPhoto1             = 15; //idPhoto1
+  string          idPhoto2             = 16; //idPhoto2
+  string          idPhoto3             = 17; //idPhoto3
+  repeated int64  specialties          = 18; // 专业领域
+  string          introduction         = 19; //introduction
+  string          voiceFile            = 20; //voiceFile
+  string          experience1          = 21; //experience1
+  string          experience2          = 22; //experience2
+  int64           certType             = 23;
+  string          certFiles1           = 24; //certFiles1
+  string          certFiles2           = 25; //certFiles2
+  string          certFiles3           = 26; //certFiles3
+  string          certFiles4           = 27; //certFiles4
+  string          certFiles5           = 28; //certFiles5
+  string          autoReplyNew         = 29; //autoReplyNew
+  string          autoReplyProcessing  = 30; //autoReplyProcessing
+  string          autoReplyFinish      = 31; //autoReplyFinish
+  int64           textChatPrice        = 32; //textChatPrice
+  int64           voiceChatPrice       = 33; //voiceChatPrice
+  repeated string checkFailField       = 34;
+  repeated string checkingField        = 35;
+  int64           checkStatus          = 36; //checkStatus
+  string          createTime           = 37;
+  string          updateTime           = 38;
+  int64           userCount            = 39; //userCount
+  int64           chatDuration         = 40; //chatDuration
+  int64           ratingSum            = 41; //ratingSum
+  int64           fiveStar             = 42; //fiveStar
+  int64           workState            = 43;
+  int64           refundOrderCnt       = 44;
+  int64           finishOrderCnt       = 45;
+  int64           paidOrderCnt         = 46;
+  string          listenerName         = 47;
+  string          otherPlatformAccount = 48;
+  int64           textChatSwitch       = 49;
+  int64           voiceChatSwitch      = 50;
+}
+
+// 获取XXX列表
+message GetListenerProfileListReq {
+  int64          adminUid     = 1;
+  int64          pageNo       = 2;
+  int64          pageSize     = 3;
+  repeated int64 checkStatus  = 4;
+  int64          listenerUid  = 5; // XXXuid
+  string         listenerName = 6;// XXX名称
+  int64          certType     = 7;// 证书类型
+}
+
+message CheckListenerProfile {
+  AdminSeeListenerProfileDraft draft   = 1;
+  AdminSeeListenerProfile      profile = 2;
+}
+
+message GetListenerProfileListResp {
+  repeated CheckListenerProfile list = 1;
+  int64                         sum  = 2;
+}
+
+// 审核XXX资料
+message CheckListenerProfileReq {
+  int64           listenerUid          = 1; //uid
+  string          nickName             = 2; //nickName
+  string          avatar               = 3; //avatar
+  int64           maritalStatus        = 5; //maritalStatus
+  string          phoneNumber          = 6; //phoneNumber
+  int64           constellation        = 7; //constellation
+  string          province             = 8; //province
+  string          city                 = 9; //city
+  string          job                  = 10; //job
+  int64           education            = 11; //education
+  int64           gender               = 12; //gender
+  string          birthday             = 13;
+  string          idNo                 = 14;
+  string          idPhoto1             = 15; //idPhoto1
+  string          idPhoto2             = 16; //idPhoto2
+  string          idPhoto3             = 17; //idPhoto3
+  repeated int64  specialties          = 18; // 专业领域
+  string          introduction         = 19; //introduction
+  string          voiceFile            = 20; //voiceFile
+  string          experience1          = 21; //experience1
+  string          experience2          = 22; //experience2
+  int64           certType             = 23;
+  string          certFiles1           = 24; //certFiles1
+  string          certFiles2           = 25; //certFiles2
+  string          certFiles3           = 26; //certFiles3
+  string          certFiles4           = 27; //certFiles4
+  string          certFiles5           = 28; //certFiles5
+  string          autoReplyNew         = 29; //autoReplyNew
+  string          autoReplyProcessing  = 30; //autoReplyProcessing
+  string          autoReplyFinish      = 31; //autoReplyFinish
+  int64           textChatPrice        = 32; //textChatPrice
+  int64           voiceChatPrice       = 33; //voiceChatPrice
+  int64           adminUid             = 34;
+  repeated string checkFailField       = 35;
+  repeated string checkPassField       = 36;
+  string          remark               = 37;
+  string          openId               = 38;
+  int64           checkStatus          = 39;
+  int64           draftVersion         = 40;
+  string          listenerName         = 41;
+  string          otherPlatformAccount = 42;
+  int64           textChatSwitch       = 43;
+  int64           voiceChatSwitch      = 44;
+  string          channel              = 45;
+}
+
+message CheckListenerProfileResp {
+  int64 checkResult = 1; // 2 新申请XXX审核通过
+}
+
+// 修改XXX状态
+message ChangeWorkStateReq {
+  int64          listenerUid       = 1;
+  int64          workState         = 2;
+  int64          restingTimeEnable = 3;
+  string         stopWorkTime      = 4;
+  string         startWorkTime     = 5;
+  repeated int64 workDays          = 6;
+}
+message ChangeWorkStateResp {
+
+}
+
+// 获取XXX设置的状态
+message GetWorkStateReq {
+  int64 listenerUid = 1;
+}
+message GetWorkStateResp {
+  int64          workState         = 1;
+  int64          restingTimeEnable = 2;
+  string         stopWorkTime      = 3;
+  string         startWorkTime     = 4;
+  string         introduction      = 5;
+  repeated int64 workDays          = 6;
+  int64          onlineState       = 7;
+}
+
+// 获取XXX定价和当前定价方案
+message GetListenerPriceReq {
+  int64  uid         = 1;
+  int64  listenerUid = 2;
+  string authKey     = 3;
+}
+
+message GetListenerPriceResp {
+  int64  textChatPrice  = 1; //textChatPrice
+  int64  voiceChatPrice = 2; //voiceChatPrice
+  string channel        = 3;
+}
+
+// 更新XXX钱包
+message UpdateListenerWalletReq {
+  int64  listenerUid = 1;
+  int64  amount      = 2; // 收益金额 分
+  int64  orderAmount = 3; // 订单金额(待确认金额、退款金额)
+  string outId       = 4; // 本次金额更新关联的外部id
+  int64  settleType  = 5; // 本次金额更新操作类型
+  string remark      = 6;
+  string outTime     = 7; // 订单创建时间或者提现申请时间
+  string flowNo      = 8; // 钱包流水号 订单收益可以不用 提现操作更新需要使用
+}
+message UpdateListenerWalletResp {
+}
+
+// 更新XXX订单的统计数据
+message UpdateListenerOrderStatReq {
+  int64          addUserCount         = 1;
+  int64          addChatDuration      = 2;
+  int64          addRatingSum         = 3;
+  int64          addFiveStar          = 4;
+  int64          addThreeStar         = 5;
+  int64          addOneStar           = 6;
+  int64          addRefundOrderCnt    = 7;
+  int64          addFinishOrderCnt    = 8;
+  int64          addPaidOrderCnt      = 9;
+  int64          addRepeatPaidUserCnt = 10;
+  int64          listenerUid          = 11;
+  repeated int64 commentTag           = 12;
+  int64          userPaidOrderAmount  = 13;
+}
+
+message UpdateListenerOrderStatResp {
+
+}
+
+//
+message CommitCheckNewListenerProfileReq {
+  int64 uid         = 1;
+  int64 checkStatus = 2;
+}
+
+message CommitCheckNewListenerProfileResp {
+
+}
+
+// 绑定银行卡
+message SetBankCardReq {
+  string listenerName = 1;
+  string phoneNumber  = 2;
+  string idNo         = 3;
+  string bankCardNo   = 4;
+  int64  listenerUid  = 5;
+}
+message SetBankCardResp {
+}
+
+// 获取绑定的银行卡
+message GetBankCardReq {
+  int64 listenerUid = 1;
+}
+
+message GetBankCardResp {
+  string listenerName = 1;
+  string phoneNumber  = 2;
+  string idNo         = 3;
+  string bankCardNo   = 4;
+  int64  listenerUid  = 5;
+}
+
+// 获取XXX钱包详情
+message GetListenerWalletReq {
+  int64 listenerUid = 1;
+}
+message GetListenerWalletResp {
+  int64 listenerUid             = 1;
+  int64 waitConfirmAmount       = 2;     // 等待确认的金额（分）
+  int64 amount                  = 3;                  // 已经确认的收益金额（分）
+  int64 refundSumAmount         = 4;    // 累计退款金额 (分)
+  int64 cashSumAmount           = 5;         // 累计提现金额 （分）
+  int64 applyCashAmount         = 6;       // 当前申请的提现金额
+  int64 currentMonthAmount      = 7; // 本月收益
+  int64 currentMonthOrderAmount = 8; // 本月订单金额
+}
+
+// 获取XXX提现记录
+message GetListenerCashLogReq {
+  int64 listenerUid = 1;
+  int64 pageNo      = 2;
+  int64 pageSize    = 3;
+  int64 settleType  = 4;
+}
+
+message ListenerCashLog {
+  string createTime = 1;
+  int64  amount     = 2;
+  int64  settleType = 3;
+  string outId      = 4;
+  string remark     = 5;
+}
+
+message GetListenerCashLogResp {
+  repeated ListenerCashLog list = 1;
+}
+
+// 获取XXX收益记录
+message GetListenerIncomeLogReq {
+  int64 listenerUid = 1;
+  int64 pageNo      = 2;
+  int64 pageSize    = 3;
+}
+
+message ListenerIncomeLog {
+  string createTime = 1;
+  int64  amount     = 2;
+  int64  settleType = 3;
+  string outId      = 4;
+  string remark     = 5;
+}
+
+message GetListenerIncomeLogResp {
+  repeated ListenerIncomeLog list = 1;
+}
+
+// 获取提交转账的信息并更新状态
+message GetCommitMoveCashReq {
+  string flowNo = 1;
+  int64  uid    = 2;
+}
+message GetCommitMoveCashResp {
+  string flowNo      = 1;
+  int64  amount      = 2;
+  string phoneNumber = 3;
+  string name        = 4;
+  string idNo        = 5;
+  string bankCardNo  = 6;
+  int64  uid         = 7;
+}
+
+// 获取XXX评价统计情况
+message GetListenerRatingStatReq {
+  int64 listenerUid = 1;
+}
+
+message CommentTagPair {
+  int64 tag = 1;
+  int64 cnt = 2;
+}
+
+message GetListenerRatingStatResp {
+  int64                   ratingSum      = 1;
+  int64                   fiveStar       = 2;
+  int64                   threeStar      = 3;
+  int64                   oneStar        = 4;
+  int64                   userCount      = 5;
+  int64                   chatDuration   = 6;
+  repeated CommentTagPair commentTagStat = 7;
+}
+
+// 获取常用语
+message GetListenerWordsReq {
+  int64 listenerUid = 1;
+}
+
+message GetListenerWordsResp {
+  string         words1      = 1;
+  string         words2      = 2;
+  string         words3      = 3;
+  string         words4      = 4;
+  string         words5      = 5;
+  string         words6      = 6;
+  string         words7      = 7;
+  string         words8      = 8;
+  string         words9      = 9;
+  string         words10     = 10;
+  int64          listenerUid = 11;
+  repeated int64 wordsSort   = 12;
+}
+
+// 更改常用语
+message EditListenerWordsReq {
+  string         words1      = 1;
+  string         words2      = 2;
+  string         words3      = 3;
+  string         words4      = 4;
+  string         words5      = 5;
+  string         words6      = 6;
+  string         words7      = 7;
+  string         words8      = 8;
+  string         words9      = 9;
+  string         words10     = 10;
+  int64          listenerUid = 11;
+  repeated int64 wordsSort   = 12;
+}
+
+message EditListenerWordsResp {
+
+}
+
+// 更新XXX和用户的交互情况
+message UpdateListenerUserStatReq {
+  string         time        = 1;
+  int64          event       = 2;
+  int64          uid         = 3;
+  repeated int64 listenerUid = 4;
+}
+
+message UpdateListenerUserStatResp {
+}
+
+// 更新统计今日推荐和浏览XXX资料页统计
+message UpdateTodayListenerUserStatReq {
+  repeated int64 listenerUid = 1;
+}
+message UpdateTodayListenerUserStatResp {
+
+}
+
+// 更新XXX首页数据统计
+message UpdateListenerDashboardStatReq {
+  string         time        = 1;
+  repeated int64 listenerUid = 2;
+}
+message UpdateListenerDashboardStatResp {
+
+}
+
+// 查询几天内更新过的XXX列表
+message FindListenerListRangeByUpdateTimeReq {
+  string start     = 1; // 开始时间
+  string end       = 2; // 结束时间
+  int64  pageNo    = 3;
+  int64  pageSize  = 4;
+  int64  workState = 5;
+}
+message ListenerShortProfile {
+  int64  listenerUid      = 1;
+  string listenerNickName = 2;
+  string listenerAvatar   = 3;
+}
+message FindListenerListRangeByUpdateTimeResp {
+  repeated ListenerShortProfile listener = 1;
+}
+
+// 获取XXX首页统计数据
+message GetListenerHomePageDashboardReq {
+  int64 listenerUid = 1;
+}
+message GetListenerHomePageDashboardResp {
+  int64           listenerUid                        = 1;
+  int64           todayOrderCnt                      = 2;                      // 今日接单数
+  int64           todayOrderCntRank                  = 3;                  // 今日接单数排名
+  int64           todayOrderAmount                   = 4;                   // 今日接单金额
+  int64           todayOrderAmountRank               = 5;               // 今日接单金额排名
+  int64           todayRecommendUserCnt              = 6;              // 今日推荐用户数
+  int64           todayRecommendUserCntRank          = 7;          // 今日推荐用户数排名
+  int64           todayEnterChatUserCnt              = 8;              // 今日进入聊天页面用户数
+  int64           todayEnterChatUserCntRank          = 9;          // 今日进入聊天界面用户数排名
+  int64           todayViewUserCnt                   = 10;                   // 今日访问资料页面用户数
+  int64           todayViewUserCntRank               = 11;               // 今日资料页面用户数排名
+  string          todayStatUpdateTime                = 12;                // 今日统计数据更新时间
+  int64           last30DaysPaidUserCnt              = 13;              // 过去30天下单人数（下单人数占进入聊天页面的人数比例）
+  int64           last30DaysEnterChatUserCnt         = 14;         // 过去30天进入聊天页面人数
+  int64           last7DaysRepeatPaidUserCnt         = 15;         // 过去7天复购人数 （复购人数占下单人数比例）
+  int64           last7DaysPaidUserCnt               = 16;               // 过去7天下单人数（
+  int64           last30DaysRepeatPaidUserCnt        = 17;        // 过去30天复购人数
+  int64           last7DaysAveragePaidAmountPerUser  = 18;  // 过去7天人均消费
+  int64           last30DaysAveragePaidAmountPerUser = 19; // 过去30天人均消费
+  int64           last7DaysAveragePaidAmountPerDay   = 20;   // 过去7天日均消费
+  int64           last30DaysAveragePaidAmountPerDay  = 21;  // 过去30天日均消费
+  string          lastDayStatUpdateTime              = 22;              // 过去几天统计数据更新时间
+  int64           oneStarRatingOrderCnt              = 23;              // 累计不满意评价订单数
+  int64           refundOrderCnt                     = 24;                     // 累计退款订单数
+  repeated string suggestion                         = 25; // 建议
+}
+
+// 保存最近多少天的统计数据（一天更新一次，不能覆盖每日更新的数据）
+message SnapshotLastDaysListenerStatReq {
+  repeated int64 listenerUid = 1;
+}
+message SnapshotLastDaysListenerStatResp {
+
+}
+
+// 更新XXX每日统计数据
+message UpdateListenerEveryDayAverageStatReq {
+}
+
+message UpdateListenerEveryDayAverageStatResp {
+}
+
+// 更新XXX建议
+message UpdateListenerSuggestionReq {
+  repeated int64 listenerUid = 1;
+}
+
+message UpdateListenerSuggestionResp {
+}
+
+// 更新XXX的状态
+message UpdateListenerOnlineStateReq {
+  int64 state         = 1;
+  int64 listenerUid   = 2;
+  int64 todayLoginCnt = 3;
+}
+
+message UpdateListenerOnlineStateResp {
+
+}
+
+// 获取XXX基本资料
+message GetListenerBasicInfoReq {
+  int64 listenerUid = 1;
+}
+
+message GetListenerBasicInfoResp {
+  int64  listenerUid   = 1; //uid
+  string nickName      = 2; //nickName
+  string avatar        = 3; //avatar
+  int64  maritalStatus = 5; //maritalStatus
+  string phoneNumber   = 6; //phoneNumber
+  int64  constellation = 7; //constellation
+  string province      = 8; //province
+  string city          = 9; //city
+  string job           = 10; //job
+  int64  education     = 11; //education
+  int64  gender        = 12; //gender
+  string birthday      = 13;
+  string listenerName  = 14;
+  string openId        = 15;
+  string introduction  = 16; //introduction
+  int64  userCount     = 17; //userCount
+  int64  chatDuration  = 18; //chatDuration
+  int64  ratingSum     = 19; //ratingSum
+  int64  fiveStar      = 20; //fiveStar
+  int64  age           = 21;
+}
+
+// 更新推荐XXX集合
+message UpdateRecommendListenerPoolReq {
+  int64 recentDay = 1; // 最近多少天活跃的
+  int64 size      = 2; // 个数
+}
+
+message UpdateRecommendListenerPoolResp {
+  int64 cnt = 1;
+}
+
+// 用户登陆推荐XXX发消息
+message RecListenerWhenUserLoginReq {
+  int64  uid       = 1;
+  int64  isNewUser = 2;
+  int64  regDays   = 3;// 注册后第几天
+  int64  orderCnt  = 4; // 订单数
+  string authKey   = 5;
+}
+
+message RecListenerWhenUserLoginResp {
+  UserSeeRecommendListenerProfile recListener = 1;
+}
+
+// 管理后台获取XXX提现申请列表
+message GetListenerMoveCashListByAdminReq {
+  int64 listenerUid = 1;
+  int64 pageNo      = 2;
+  int64 pageSize    = 3;
+  int64 settleType  = 4;
+}
+
+message AdminSeeListenerMoveCash {
+  string createTime   = 1;
+  int64  amount       = 2;
+  int64  settleType   = 3;
+  string outId        = 4;
+  string remark       = 5;
+  int64  listenerUid  = 6;
+  string listenerName = 7;
+  string idNo         = 8;
+  string bankCardNo   = 9;
+  string flowNo       = 10;
+}
+
+message GetListenerMoveCashListByAdminResp {
+  int64                             sum  = 1;
+  repeated AdminSeeListenerMoveCash list = 2;
+}
+
+message GenListenerContractReq {
+  int64  listenerUid  = 1;
+  string listenerName = 2;
+  string idNo         = 3;
+  string phoneNumber  = 4;
+  int64  checkStatus  = 5;
+  int64  contractType = 6;
+}
+
+message GenListenerContractResp {
+  string file         = 1;
+  int64  contractType = 2;
+  int64  uploadState  = 3; // 状态 1 初始 2 成功 3 失败
+}
+
+// ------------------------------------
+// Rpc Func
+// ------------------------------------
+
+service listener{
+  // XXX首次填写或更新自己的资料
+  rpc addOrUpdateListenerProfileDraft(EditListenerProfileDraftReq) returns (EditListenerProfileDraftResp);
+  // 新申请XXX提交审核
+  rpc commitCheckNewListenerProfile(CommitCheckNewListenerProfileReq) returns (CommitCheckNewListenerProfileResp);
+  // 用户查看XXX资料（TODO 后台内部禁止调用）
+  rpc getListenerProfileByUser(GetListenerProfileByUserReq) returns (GetListenerProfileByUserResp);
+  // XXX获取自己的资料
+  rpc getListenerProfileByOwn(GetListenerProfileByOwnReq) returns (GetListenerProfileByOwnResp);
+  // XXX备注用户
+  rpc listenerRemarkUser(ListenerRemarkUserReq) returns (ListenerRemarkUserResp);
+  // 获取XXX备注的用户
+  rpc getListenerRemarkUser(GetListenerRemarkUserReq) returns (GetListenerRemarkUserResp);
+  // 用户获取XXX推荐列表
+  rpc getRecommendListenerListByUser(GetRecommendListenerByUserReq) returns (GetRecommendListenerByUserResp);
+  // 获取推荐的XXX
+  rpc getRecommendListenerList(GetRecommendListenerReq) returns (GetRecommendListenerResp);
+  // 获取XXX工作状态设置
+  rpc getWorkState(GetWorkStateReq) returns (GetWorkStateResp);
+  // 修改XXX工作状态
+  rpc changeWorkState(ChangeWorkStateReq) returns (ChangeWorkStateResp);
+  // 获取XXX定价和价格方案
+  rpc getListenerPrice(GetListenerPriceReq) returns (GetListenerPriceResp);
+  // XXX钱包金额更新
+  rpc updateListenerWallet(UpdateListenerWalletReq) returns (UpdateListenerWalletResp);
+  // 更新XXX的订单统计数据
+  rpc updateListenerOrderStat(UpdateListenerOrderStatReq) returns (UpdateListenerOrderStatResp);
+  // 绑定银行卡
+  rpc setBankCard(SetBankCardReq) returns (SetBankCardResp);
+  // 获取银行卡
+  rpc getBankCard(GetBankCardReq) returns (GetBankCardResp);
+  // 获取XXX钱包详情
+  rpc getListenerWallet(GetListenerWalletReq) returns (GetListenerWalletResp);
+  // 获取提现记录
+  rpc getListenerCashLog(GetListenerCashLogReq) returns (GetListenerCashLogResp);
+  // 获取收益记录
+  rpc getListenerIncomeLog(GetListenerIncomeLogReq) returns (GetListenerIncomeLogResp);
+  // 获取XXX评价统计情况
+  rpc getListenerRatingStat(GetListenerRatingStatReq) returns (GetListenerRatingStatResp);
+  // 获取XXX常用语
+  rpc getListenerWords(GetListenerWordsReq) returns (GetListenerWordsResp);
+  // 编辑XXX常用语
+  rpc editListenerWords(EditListenerWordsReq) returns (EditListenerWordsResp);
+  // 更新XXX与用户的交互情况
+  rpc updateListenerUserStat(UpdateListenerUserStatReq) returns (UpdateListenerUserStatResp);
+  // 更新统计今日推荐和浏览XXX资料页统计
+  rpc updateTodayListenerUserStat(UpdateTodayListenerUserStatReq) returns (UpdateTodayListenerUserStatResp);
+  // 更新XXX首页数据统计看板
+  rpc updateListenerDashboardStat(UpdateListenerDashboardStatReq) returns (UpdateListenerDashboardStatResp);
+  // 查询几天内更新过的XXX列表
+  rpc findListenerListRangeByUpdateTime(FindListenerListRangeByUpdateTimeReq) returns (FindListenerListRangeByUpdateTimeResp);
+  // 获取XXX首页统计数据
+  rpc getListenerHomePageDashboard(GetListenerHomePageDashboardReq) returns (GetListenerHomePageDashboardResp);
+  // 保存最近多少天的统计数据（一天更新一次，不能覆盖每日更新的数据)
+  rpc snapshotLastDaysListenerStat(SnapshotLastDaysListenerStatReq) returns (SnapshotLastDaysListenerStatResp);
+  // 更新XXX每日统计数据的平均值
+  rpc updateListenerEveryDayAverageStat(UpdateListenerEveryDayAverageStatReq) returns (UpdateListenerEveryDayAverageStatResp);
+  // 更新XXX建议
+  rpc updateListenerSuggestion(UpdateListenerSuggestionReq) returns (UpdateListenerSuggestionResp);
+  // 更新XXX的状态
+  rpc updateListenerOnlineState(UpdateListenerOnlineStateReq) returns (UpdateListenerOnlineStateResp);
+  // 生成合同
+  rpc genListenerContract(GenListenerContractReq) returns (GenListenerContractResp);
+
+  // 管理员接口 获取XXX列表
+  rpc adminGetListenerProfileList(GetListenerProfileListReq) returns (GetListenerProfileListResp);
+  // 管理员接口 审核XXX
+  rpc adminCheckListenerProfile(CheckListenerProfileReq) returns (CheckListenerProfileResp);
+  // 获取提交转账信息并更新状态
+  rpc getCommitMoveCash(GetCommitMoveCashReq) returns (GetCommitMoveCashResp);
+  // 获取XXX基本资料（后台内部）
+  rpc getListenerBasicInfo(GetListenerBasicInfoReq) returns (GetListenerBasicInfoResp);
+  // 更新新用户推荐XXX
+  rpc updateRecommendListenerPool(UpdateRecommendListenerPoolReq) returns (UpdateRecommendListenerPoolResp);
+  // 获取新用户推荐XXX
+  rpc recListenerWhenUserLogin(RecListenerWhenUserLoginReq) returns (RecListenerWhenUserLoginResp);
+  // 管理后台获取XXX提现申请列表
+  rpc getListenerMoveCashListByAdmin(GetListenerMoveCashListByAdminReq) returns (GetListenerMoveCashListByAdminResp);
+}

@@ -1,0 +1,107 @@
+syntax = "v1"
+
+info(
+	title: "用户"
+	desc: "用户"
+	author: ""
+	email: ""
+	version: "v1"
+)
+
+import (
+	"user/user.api"
+)
+
+//============================> usercenter v1 <============================
+//no need login
+@server(
+	prefix: mobile/v1
+	group: user
+)
+service mobile {
+	
+	@doc "登陆"
+	@handler login
+	post /user/login (LoginReq) returns (LoginResp)
+	
+	@doc "微信小程序登陆"
+	@handler wxMiniAuth
+	post /user/wxmini/auth (WXMiniAuthReq) returns (WXMiniAuthResp)
+}
+
+//need login
+@server(
+	prefix: mobile/v1
+	group: user
+	jwt: JwtAuth
+)
+service mobile {
+	@doc "获取用户配置控制参数"
+	@handler getUserControlConfig
+	post /user/controlcfg (GetUserControlConfigReq) returns (GetUserControlConfigResp)
+	
+	@doc "获取用户资料"
+	@handler detail
+	post /user/detail (GetUserProfileReq) returns (GetUserProfileResp)
+	
+	@doc "编辑用户资料"
+	@handler editUserProfile
+	post /user/edit (EditProfileReq) returns (EditProfileResp)
+	
+	@doc "获取用户微信绑定的手机号"
+	@handler getUserWxPhoneNumber
+	post /user/wxphonenumer/get (GetUserWxPhoneNumerReq) returns (GetUserWxPhoneNumerResp)
+	
+	@doc "获取云服务临时密钥和配置"
+	@handler getCloudConfig
+	post /user/cloud/config (GetCloudConfigReq) returns (GetCloudConfigResp)
+
+	@doc "获取中国省市配置"
+	@handler getArea
+	post /user/area/config (GetChinaAreaReq) returns (GetChinaAreaResp)
+
+	@doc "拉黑操作"
+	@handler blockUser
+	post /user/block (BlockUserReq) returns (BlockUserResp)
+
+	@doc "获取拉黑列表"
+	@handler getUserBlockList
+	post /user/block/list (GetUserBlockListReq) returns (GetUserBlockListResp)
+
+	@doc "发送消息"
+	@handler sendNotifyMsg
+	post /user/notify/send (SendNotifyMsgReq) returns (SendNotifyMsgResp)
+
+	@doc "订阅单条消息"
+	@handler subscribeNotifyMsg
+	post /user/notify/subscribe (SubscribeNotifyMsgReq) returns (SubscribeNotifyMsgResp)
+
+	@doc "用户上报"
+	@handler reportUser
+	post /user/illegal/report (ReportUserReq) returns (ReportUserResp)
+
+	@doc "XXX上报需要XX援助的用户"
+	@handler reportNeedHelpUser
+	post /user/needhelp/report (ReportNeedHelpUserReq) returns (ReportNeedHelpUserResp)
+
+	@doc "注销账号"
+	@handler deleteUserAccount
+	post /user/delete (DeleteUserAccountReq) returns (DeleteUserAccountResp)
+
+	@doc "查询用户单条订阅情况"
+	@handler querySubscribe
+	post /user/subscribe/query (QuerySubscribeNotifyMsgReq) returns (QuerySubscribeNotifyMsgResp)
+
+	@doc "订阅多个消息"
+	@handler subscribeMultiNotifyMsg
+	post /user/multinotify/subscribe (SubscribeMultiNotifyMsgReq) returns (SubscribeMultiNotifyMsgResp)
+
+	@doc "查询用户多条订阅情况"
+	@handler queryMultiSubscribe
+	post /user/multisubscribe/query (QueryMultiSubscribeNotifyMsgReq) returns (QueryMultiSubscribeNotifyMsgResp)
+
+
+	@doc "获取和更新用户与顾问对话记录"
+	@handler getSetUserAndAdviserConversation
+	post /user/adviser (GetSetUserAndAdviserConversationReq) returns (GetSetUserAndAdviserConversationResp)
+}

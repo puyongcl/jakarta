@@ -1,0 +1,84 @@
+Name: listener-rpc
+ListenOn: 0.0.0.0:2004
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4010
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: listener-rpc
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: listener-rpc
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/listener-rpc
+
+ContractConfig:
+  ContractTemplate10001: contract/MARK_10001.docx
+
+HfbfCashConf:
+  AppId: "2022072217340493"
+  AppSecret: DOPMQOZTKJX5WPCU8Y5OMYBEV584QMGH
+
+#腾讯云密钥
+TencentConf:
+  SecretId: AKIDmNiD7wVpasfsdsCNHuHM
+  SecretKey: thRxCBuR7895442ieJjtnSr0t
+  AppId: "13178454693"
+  Bucket: jakarta-13178454693
+  Region: ap-guangzhou
+  Expire: 86400
+
+#im msg kq client
+KqSendDefineMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-define-msg-send-topic
+
+#notify kq client
+KqSubscribeNotifyMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: subscribe-notify-msg-topic
+
+KqUpdateListenerUserStatConf:
+  Brokers:
+    - kafka:9092
+  Topic: update-listener-user-stat-topic
+
+KqSendHelloWhenUserLoginConf:
+  Brokers:
+    - kafka:9092
+  Topic: rec-listener-when-user-login-topic
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+DB:
+  DataSource: postgres://jakarta:postgres@postgresql:5432/jakarta_listener?sslmode=disable&timezone=Asia/Shanghai
+
+Cache:
+  - Host: redis-cache:6379
+    Pass: G62m50oigInC30sf
+
+RedisAsynq:
+  Host: redis-asynq:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+TimConf:
+  SDKAPPID: 144778745455445
+  IMKEY: 8e830220d28d51454242424667d1698b
+  ADMINID: administrator
+  ADMINSIGN: eJwtzMsOgjAUBNB--2-oHlityvXdnX6lI-d8nh*5-6BvaLLvMjcZh-kEGFUZGthF*T7A45aNNs_

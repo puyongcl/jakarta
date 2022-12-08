@@ -1,0 +1,170 @@
+global:
+  scrape_interval:
+  external_labels:
+    monitor: 'codelab-monitor'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 5s  #global catch time
+    static_configs:
+      - targets: ['127.0.0.1:9090']
+
+  - job_name: 'admin-api'
+    static_configs:
+      - targets: [ 'admin-api:4001' ]
+        labels:
+          job: admin-api
+          app: admin-api
+          env: dev
+
+  - job_name: 'statistic-rpc'
+    static_configs:
+      - targets: [ 'statistic-rpc:4027' ]
+        labels:
+          job: statistic-rpc
+          app: statistic-rpc
+          env: dev
+
+  - job_name: 'chat-rpc'
+    static_configs:
+      - targets: [ 'chat-rpc:4004' ]
+        labels:
+          job: chat-rpc
+          app: chat-rpc
+          env: dev
+
+  - job_name: 'chat-mq'
+    static_configs:
+      - targets: [ 'chat-mq:4005' ]
+        labels:
+          job: chat-mq
+          app: chat-mq
+          env: dev
+
+  - job_name: 'im-api'
+    static_configs:
+      - targets: [ 'im-api:4007' ]
+        labels:
+          job: im-api
+          app: im-api
+          env: dev
+
+  - job_name: 'im-rpc'
+    static_configs:
+      - targets: ['im-rpc:4008']
+        labels:
+          job: im-rpc
+          app: im-rpc
+          env: dev
+
+  - job_name: 'im-mq'
+    static_configs:
+      - targets: ['im-mq:4009']
+        labels:
+          job: im-mq
+          app: im-mq
+          env: dev
+
+  - job_name: 'listener-rpc'
+    static_configs:
+      - targets: [ 'listener-rpc:4010' ]
+        labels:
+          job: listener-rpc
+          app: listener-rpc
+          env: dev
+
+  - job_name: 'listener-mq'
+    static_configs:
+      - targets: [ 'listener-mq:4011' ]
+        labels:
+          job: listener-mq
+          app: listener-mq
+          env: dev
+
+  - job_name: 'mobile-api'
+    static_configs:
+      - targets: ['mobile-api:4013']
+        labels:
+          job: mobile-api
+          app: mobile-api
+          env: dev
+
+  - job_name: 'mqueue-job'
+    static_configs:
+      - targets: [ 'mqueue-job:4016' ]
+        labels:
+          job: mqueue-job
+          app: mqueue-job
+          env: dev
+
+  - job_name: 'mqueue-scheduler'
+    static_configs:
+      - targets: [ 'mqueue-scheduler:4017' ]
+        labels:
+          job: mqueue-scheduler
+          app: mqueue-scheduler
+          env: dev
+
+  - job_name: 'order-rpc'
+    static_configs:
+      - targets: [ 'order-rpc:4019' ]
+        labels:
+          job: order-rpc
+          app: order-rpc
+          env: dev
+
+  - job_name: 'order-mq'
+    static_configs:
+      - targets: [ 'order-mq:4020' ]
+        labels:
+          job: order-mq
+          app: order-mq
+          env: dev
+
+  - job_name: 'payment-api'
+    static_configs:
+      - targets: [ 'payment-api:4022' ]
+        labels:
+          job: payment-api
+          app: payment-api
+          env: dev
+
+  - job_name: 'payment-rpc'
+    static_configs:
+      - targets: [ 'payment-rpc:4023' ]
+        labels:
+          job: payment-rpc
+          app: payment-rpc
+          env: dev
+
+  - job_name: 'payment-mq'
+    static_configs:
+      - targets: [ 'payment-mq:4024' ]
+        labels:
+          job: payment-mq
+          app: payment-mq
+          env: dev
+
+  - job_name: 'usercenter-rpc'
+    static_configs:
+      - targets: ['usercenter-rpc:4025']
+        labels:
+          job: usercenter-rpc
+          app: usercenter-rpc
+          env: dev
+
+  - job_name: 'bbs-rpc'
+    static_configs:
+      - targets: ['bbs-rpc:4030']
+        labels:
+          job: bbs-rpc
+          app: bbs-rpc
+          env: dev
+
+  - job_name: 'nginx-gateway_exporter'
+    static_configs:
+      - targets: ['nginx-gateway_exporter:9113']
+        labels:
+          job: nginx-gateway_exporter
+          app: nginx-gateway_exporter
+          env: dev

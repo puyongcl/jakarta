@@ -1,0 +1,100 @@
+Name: payment-api
+Host: 0.0.0.0
+Port: 1008
+Mode: dev
+
+#jwtAuth
+JwtAuth:
+  AccessSecret: 1e4705b0-40d2-4075-a3b1-a2217f67d082
+  AccessExpire: 7200
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4022
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: payment-api
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: payment-api
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/payment-api
+
+HfbfCashConf:
+  AppId: "2022047850493"
+  AppSecret: DOPMQOZTKJX5WPCU8Y5OMYBEV584QMGH
+
+#WxPayCallbackConf
+WxPayCallbackConf:
+  MchId: "145419344"
+  SerialNo: 42CA4ADHN8953C6F2D5B33985DFF44DEB268
+  APIv3Key: ADCCAQoCggE7824HJK1mEY6DL51d
+  PrivateKey: |-
+    -----BEGIN PRIVATE KEY-----
+    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDEKPO/Ng1dZhGO
+    gy+dXaDDEmgsrDAZRWVVnlqM390dMTS09c0dzkqAKJHzvzJzvt8NrTcFEmwc1NVe
+    qB2nSq8//JFWVX+Hre3TZ1pJ2VABSzCigCV4I0Atw8sYE3ljEcxB9S90wtRDO7as
+    oxS4fADt9pxAolgKD2YFYCm62JkBC6PNaf5h1nc0fJeB/JLbuOg+fPGJAF9UeAlM
+    J1k4C9PScvceVknSAMDzx00aU4892dkB9Ih4Ptxr/HgFKj5ZlxlmoSCNbLzSe
+    AspXaZHzazS36LZqBP3NxHU5rJF2octO+HAMXBw/2Na5Vsa6wEBz3Ue6CuPa0wxv
+    h20c0jaDAgMBAAECggEAJHcUcMxEicNKqjp65H8ePoUydnN/8YK0BsmMPbnz6dRW
+    3vj+q3bI5LAmCbDWWSv3XRyBKOE21dk+3PzVnl7E21lBT1JPhdJwbqc84pOSSttG
+    bD70ODQdXySRoaUlIKSTWwOQUd1SBjmYiNk8JdtvdM0uWNmVEjGwnnk06LYRI19J
+    8DIIK9gy2OEeVTPZdnRqotXHzBuRIjgBUJ4BpowPtBSUlbkNjgeIJB+FFDP1Yifg
+    Ya8mwgWfp9rO4MYGnyShMzQxcWpG99/Y4m4/aJEz/0piY/mZT5PMgo2QjVl8T+sh
+    6cnxo2vB87JtQWFrSdsNuqFOir+P89T9IhPC6s3l2QKBgQD0WG7OLl0LEWtR8T7a
+    snoI3J9VHVjSqzNgtc+vvPjA0FsPoJpV0ZGhCWr2MjBtOCtUFhEM9l8SJbWuvUHr
+    3sGDjBOV98UsUaQ2eLBD1OP38852ynKiuXmsqcK/p/ItPFh+BigIoky3YOX+k
+    6Ln8QGSw0hBMhwg7wHQ3uyU8rQKBgQDNhCcz3CMQ4Foul3C8NdBXx+U/FWjybl28
+    mXdy62+8XnsnuJ6yhhhhQHUmxaZv3kL4FFBeQ1LSz+B1kyO6tHZWbmtT+OLGlBBT
+    GFVoVtghzBfvVIr6a+aH/odvKQPZBE0fTgKnf7zJ5C0QndUkkTwMD69zVId9IxCJ
+    YsIpdJH17wKBgQCW9R+X4Ar5sIxWNq43XPaKDQufAR+EH+MBB7JFB4HDVbY8hGN1
+    S6EmFXRwn/dNMtuJ+owULw3zXzrMtv5II/n4NI1RJJ87T0Edqhhz/83LJ2O1js9W
+    SbTo7UpWEQKNk8nZVXinhkTpHmy/Xl6e2m01C+9pUo5hSTdr+u2SFNvfjQKBgChx
+    hkl1W805aWXb1YqkSHDN3LZSX0m+IGI6DUCnRmDacv/5G/nj265fwe40XTGMmr85
+    OCuksgrcb76Tiyd11gfiSOrIgtAzW8562JCysBYGMdFx04XAlsSUm7Ipp
+    jqopwBw29AteFBDTJ+7zs0JN8y/UE7AFqFICJ6svAoGBAM4i8cH/lZboLzknd4G3
+    MBfNtf4ByxPsBUoLNqxNLCamGNbSWvcfQ+E2bwBzidz1iy8x3rafyz+y07JIv5A/
+    KGaZ7sHPyAJuLD2yyyX0mh2a7EJvq1syb6HG4guu1fp1p9jEaHb0ldGGRmm+Z9U7
+    yZ1ATur++86WtZMzQDq2qGf0
+    -----END PRIVATE KEY-----  
+
+#kq
+KqUpdatePaymentStatusConf:
+  Brokers:
+    - kafka:9092
+  Topic: update-payment-status-topic
+
+KqUpdateRefundStatusConf:
+  Brokers:
+    - kafka:9092
+  Topic: update-refund-status-topic
+
+KqUpdateCashStatusConf:
+  Brokers:
+    - kafka:9092
+  Topic: update-cash-status-topic
+
+#rpc service
+PaymentRpcConf:
+  Endpoints:
+    - payment-rpc:2008
+  NonBlock: true
+
+OrderRpcConf:
+  Endpoints:
+    - order-rpc:2007
+  NonBlock: true
+
+UsercenterRpcConf:
+  Endpoints:
+    - usercenter-rpc:2009
+  NonBlock: true

@@ -1,0 +1,467 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+//model
+message UserProfile {
+  int64  uid           = 1;
+  string nickname      = 2;
+  string avatar        = 3;
+  string birthday      = 4;
+  int64  constellation = 5;
+  int64  gender        = 6;
+  string introduction  = 7;
+  int64  age           = 8;
+  string createTime    = 9;
+  string phoneNumber   = 10;
+}
+
+message UserAuth {
+  int64  uid          = 1;
+  string authType     = 2;
+  string authKey      = 3;
+  string passwd       = 4;
+  string createTime   = 5;
+  string updateTime   = 6;
+  int64  accountState = 7;
+  int64  userType     = 8;
+  string channel      = 9;
+}
+
+//req 、resp
+message RegisterReq {
+  string password  = 1;
+  string authKey   = 2;
+  string authType  = 3;
+  int64  userType  = 4;
+  int64  uid       = 5;
+  string nickName  = 6;
+  string avatar    = 7;
+  string wxUnionId = 8;
+  string channel   = 9;
+  string cb        = 10;
+}
+message RegisterResp {
+  string      accessToken  = 1;
+  int64       accessExpire = 2;
+  int64       refreshAfter = 3;
+  UserProfile user         = 4;
+  string      userSign     = 5;
+  int64       accountState = 6;
+  int64       userType     = 7;
+}
+
+message LoginReq {
+  string authType  = 1;
+  string authKey   = 2;
+  string password  = 3;
+  int64  uid       = 4;
+  string nickName  = 5;
+  string avatar    = 6;
+  int64  userType  = 7;
+  string wxUnionId = 8;
+  string channel   = 9;
+  string cb        = 10;
+}
+message LoginResp {
+  string      accessToken   = 1;
+  int64       accessExpire  = 2;
+  int64       refreshAfter  = 3;
+  UserProfile user          = 4;
+  string      userSign      = 5;
+  int64       accountState  = 6;
+  int64       userType      = 7;
+  string      openId        = 8;
+  int64       isNewUser     = 9;
+  string      freeTime      = 10;
+  string      banReason     = 11;
+  string      channel       = 12;
+  int64       isFollowWxFwh = 13; // 是否关注微信服务号
+}
+
+message GetUserProfileReq {
+  int64 uid = 1;
+}
+message GetUserProfileResp {
+  UserProfile user   = 1;
+  string      openId = 2;
+}
+
+message GetUserShortProfileReq {
+  int64 uid = 1;
+}
+message GetUserShortProfileResp {
+  UserProfile user = 1;
+}
+
+message GetUserAuthByAuthKeyReq {
+  string authKey  = 1;
+  string authType = 2;
+}
+message GetUserAuthByAuthKeyResp {
+  UserAuth userAuth = 1;
+}
+
+message GetUserAuthByUserIdReq {
+  int64 uid = 1;
+}
+message GetUserAuthyUserIdResp {
+  UserAuth userAuth = 1;
+}
+
+message GenerateTokenReq {
+  int64  uid         = 1;
+  string userChannel = 2;
+  int64  appVer      = 3;
+  string authKey = 4;
+  string authType = 5;
+}
+message GenerateTokenResp {
+  string accessToken  = 1;
+  int64  accessExpire = 2;
+  int64  refreshAfter = 3;
+}
+
+message EditUserProfileReq {
+  int64  uid          = 1;
+  string nickname     = 2;
+  string avatar       = 3;
+  string birthday     = 4;
+  int64  gender       = 5;
+  string introduction = 6;
+  string phoneNumber  = 7;
+}
+
+message EditUserProfileResp {
+  UserProfile user = 1;
+}
+
+// 更改用户类型
+message UpdateUserTypeReq {
+  int64 uid      = 1;
+  int64 userType = 2;
+}
+
+message UpdateUserTypeResp {
+}
+
+// 更新用户登陆状态
+message UpdateUserLoginStateReq {
+  int64 uid       = 1;
+  int64 state     = 2;
+  int64 eventTime = 3;
+}
+message UpdateUserLoginStateResp {
+  int64  userType      = 1;
+  string channel       = 2;
+  int64  todayLoginCnt = 3;
+  int64  isUpdated     = 4;
+}
+
+// 更新用户的服务使用情况
+message UpdateUserStatReq {
+  int64 uid                = 1;
+  int64 addCostAmountSum   = 2;  // 支付成功总额
+  int64 addRefundAmountSum = 3;// 退款总额
+  int64 addPaidOrderCnt    = 4;   // 支付成功订单数量
+  int64 addRefundOrderCnt  = 5; // 退款订单数
+}
+
+message UpdateUserStatResp {
+
+}
+
+// 获取用户的服务使用情况
+message GetUserStatReq {
+  int64 uid = 1;
+}
+
+message GetUserStatResp {
+  int64 uid             = 1;
+  int64 costAmountSum   = 2;  // 支付成功总额
+  int64 refundAmountSum = 3;// 退款总额
+  int64 paidOrderCnt    = 4;   // 支付成功订单数量
+  int64 refundOrderCnt  = 5; // 退款订单数
+  int64 noCondRefundCnt = 6; // 无条件退款次数
+}
+
+// 判断是否有无条件退款机会 有则扣一次次数
+message UpdateNoCondRefundCntReq {
+  int64 uid = 1;
+}
+message UpdateNoCondRefundCntResp {
+  int64 state = 1; // 2 成功扣除1次无条件退款 4 失败
+}
+
+// 拉黑/解除拉黑
+message BlockUserReq {
+  int64  uid            = 1;
+  int64  targetUid      = 2; // 操作对象
+  string targetAvatar   = 3;
+  string targetNickName = 4;
+  int64  action         = 5; // 2 拉黑 4 取消拉黑
+}
+message BlockUserResp {
+
+}
+
+// 获取拉黑列表
+message GetUserBlockListReq {
+  int64 uid      = 1;
+  int64 pageNo   = 2;
+  int64 pageSize = 3;
+}
+
+message BlockUserInfo {
+  int64  targetUid      = 1; // 操作对象
+  string targetAvatar   = 2;
+  string targetNickName = 3;
+}
+message GetUserBlockListResp {
+  repeated BlockUserInfo list = 1;
+}
+
+// 上报用户
+message ReportUserReq {
+  int64          uid              = 1;
+  int64          targetUid        = 2;
+  repeated int64 reportTag        = 3; // 上报标签
+  string         reportContent    = 4; // 上报内容
+  string         reportAttachment = 5; // 附件 图片#隔开
+  string         avatar           = 6;
+  string         nickName         = 7;
+  string         targetAvatar     = 8;
+  string         targetNickName   = 9;
+}
+
+message ReportUserResp {
+
+}
+
+// 获取上报用户列表
+message GetReportUserListReq {
+  int64 uid       = 1;
+  int64 targetUid = 2;
+  int64 tag       = 3;
+  int64 state     = 4;
+  int64 pageNo    = 5;
+  int64 pageSize  = 6;
+}
+
+message ReportUserData {
+  string         id             = 1;
+  int64          uid            = 2;
+  int64          targetUid      = 3;
+  repeated int64 reportTag      = 4;
+  string         reportContent  = 5;
+  string         attachment     = 6;
+  string         remark         = 7;
+  int64          state          = 8;
+  string         createTime     = 9;
+  string         updateTime     = 10;
+  string         avatar         = 11;
+  string         nickName       = 12;
+  string         targetAvatar   = 13;
+  string         targetNickName = 14;
+}
+
+message GetReportUserListResp {
+  int64                   sum  = 1;
+  repeated ReportUserData list = 2;
+}
+
+// 处理上报用户
+message AdminProcessReportUserReq {
+  int64          uid           = 1;
+  int64          targetUid     = 2;
+  string         id            = 3;
+  int64          action        = 4;
+  string         remark        = 5;
+  string         reportContent = 6;
+  repeated int64 reportTag     = 7;
+}
+message AdminProcessReportUserResp {
+
+}
+
+// 上报需要帮助的人
+message ReportNeedHelpUserReq {
+  int64          uid              = 1; // 需要帮助的人
+  int64          listenerUid      = 2; // 上报人
+  repeated int64 reportTag        = 3; // 上报标签
+  string         reportContent    = 4; // 上报内容
+  string         reportAttachment = 5; // 附件 图片#隔开
+  string         avatar           = 6;
+  string         nickName         = 7;
+  string         listenerAvatar   = 8;
+  string         listenerNickName = 9;
+}
+message ReportNeedHelpUserResp {
+}
+
+// 管理记录需要帮助的用户处理结果
+message AdminMarkNeedHelpUserReq {
+  int64  uid         = 1; // 需要帮助的人
+  int64  listenerUid = 2; // 上报人
+  string id          = 3;
+  int64  action      = 4;
+  string remark      = 5;
+}
+message AdminMarkNeedHelpUserResp {
+
+}
+
+// 获取上报用户列表
+message GetNeedHelpUserListReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+  int64 tag         = 3;
+  int64 state       = 4;
+  int64 pageNo      = 5;
+  int64 pageSize    = 6;
+}
+
+message NeedHelpUserData {
+  string         id               = 1;
+  int64          uid              = 2;
+  int64          listenerUid      = 3;
+  repeated int64 reportTag        = 4;
+  string         reportContent    = 5;
+  string         attachment       = 6;
+  string         remark           = 7;
+  int64          state            = 8;
+  string         createTime       = 9;
+  string         updateTime       = 10;
+  string         avatar           = 11;
+  string         nickName         = 12;
+  string         listenerAvatar   = 13;
+  string         listenerNickName = 14;
+}
+
+message GetNeedHelpUserListResp {
+  int64                     sum  = 1;
+  repeated NeedHelpUserData list = 2;
+}
+
+// 更新用户服务号的关注情况
+message UpdateUserWxFwhStateReq {
+  string openId  = 1;
+  string unionId = 2;
+  int64  state   = 3;
+}
+message UpdateUserWxFwhStateResp {
+
+}
+
+// 根据uid获取用户的公众号openid
+message GetUserWxOpenIdReq {
+  int64 uid = 1;
+}
+message GetUserWxOpenIdResp {
+  string fwhOpenId = 1;
+  string mpOpenId  = 2;
+  string unionId   = 3;
+}
+
+// 获取用户在线状态
+message GetUserOnlineStateReq {
+  int64 uid = 1;
+}
+
+message GetUserOnlineStateResp {
+  int64 uid         = 1;
+  int64 onlineState = 2; // 在线状态
+}
+
+// 删除用户账号
+message DeleteUserAccountReq {
+  int64 uid = 1;
+}
+message DeleteUserAccountResp {
+  int64 userType = 1;
+}
+
+// 获取用户的渠道上传地址
+message GetUserChannelCallbackReq {
+  int64 uid = 1;
+}
+message GetUserChannelCallbackResp {
+  string channel = 1;
+  string cb      = 2;
+}
+
+// 获取和更新用户与顾问对话记录
+message GetSetUserAndAdviserConversationReq {
+  int64           uid          = 1;
+  int64           step         = 2;         // 完成进度
+  repeated int64  selectSpec   = 3;  // 用户选择的标签
+  repeated string conversation = 4; // 会话记录 序号#用户uid#内容
+}
+message GetSetUserAndAdviserConversationResp {
+  int64           uid          = 1;
+  int64           step         = 2;         // 完成进度
+  repeated int64  selectSpec   = 3;  // 用户选择的标签
+  repeated string conversation = 4; // 会话记录 序号#用户uid#内容
+}
+
+//service
+service usercenter {
+  // 登陆
+  rpc login(LoginReq) returns(LoginResp);
+  // 管理后台登陆
+  rpc loginAdmin(LoginReq) returns(LoginResp);
+  // 注册用户
+  rpc register(RegisterReq) returns(RegisterResp);
+  // 获取用户资料
+  rpc getUserInfo(GetUserProfileReq) returns(GetUserProfileResp);
+  // 通过唯一识别号获取用户账户
+  rpc getUserAuthByAuthKey(GetUserAuthByAuthKeyReq) returns(GetUserAuthByAuthKeyResp);
+  // 通过用户uid获取用户账户
+  rpc getUserAuthByUserId(GetUserAuthByUserIdReq) returns(GetUserAuthyUserIdResp);
+  // 生成JWT token
+  rpc generateToken(GenerateTokenReq) returns(GenerateTokenResp);
+  // 编辑用户资料
+  rpc editUserProfile(EditUserProfileReq) returns(EditUserProfileResp);
+  // 更新用户账户类型
+  rpc updateUserType(UpdateUserTypeReq) returns(UpdateUserTypeResp);
+  // 更新用户登陆统计信息
+  rpc updateUserLoginState(UpdateUserLoginStateReq) returns(UpdateUserLoginStateResp);
+  // 更新用户平台使用情况统计信息
+  rpc updateUserStat(UpdateUserStatReq) returns (UpdateUserStatResp);
+  // 获取用户平台使用情况统计信息
+  rpc getUserStat(GetUserStatReq) returns (GetUserStatResp);
+  // 更新用户的优惠条件
+  rpc updateNoCondRefundCnt(UpdateNoCondRefundCntReq) returns (UpdateNoCondRefundCntResp);
+  // 拉黑操作
+  rpc blockUser(BlockUserReq) returns (BlockUserResp);
+  // 获取拉黑用户列表
+  rpc getUserBlockerList(GetUserBlockListReq) returns (GetUserBlockListResp);
+  // 上报用户
+  rpc reportUser(ReportUserReq) returns (ReportUserResp);
+  // 获取上报用户列表
+  rpc getReportUserList(GetReportUserListReq) returns (GetReportUserListResp);
+  // 处理上报用户
+  rpc processReportUser(AdminProcessReportUserReq) returns (AdminProcessReportUserResp);
+  // 上报需要帮助的用户
+  rpc reportNeedHelpUser(ReportNeedHelpUserReq) returns (ReportNeedHelpUserResp);
+  // 获取需要帮助用户列表
+  rpc getNeedHelpUserList(GetNeedHelpUserListReq) returns (GetNeedHelpUserListResp);
+  // 管理记录需要帮助的用户处理结果
+  rpc processNeedHelpUser(AdminMarkNeedHelpUserReq) returns (AdminMarkNeedHelpUserResp);
+  // 更新用户服务号的关注情况
+  rpc updateUserWxFwhState(UpdateUserWxFwhStateReq) returns (UpdateUserWxFwhStateResp);
+  // 根据uid获取用户的openid
+  rpc getUserWxOpenId(GetUserWxOpenIdReq) returns (GetUserWxOpenIdResp);
+  // 获取用户在线状态和用户类型
+  rpc getUserOnlineState(GetUserOnlineStateReq) returns (GetUserOnlineStateResp);
+  // 删除用户账户
+  rpc deleteUserAccount (DeleteUserAccountReq) returns (DeleteUserAccountResp);
+  // 获取用户渠道回调地址
+  rpc getUserChannelCallback(GetUserChannelCallbackReq) returns (GetUserChannelCallbackResp);
+  // 获取用户个人资料
+  rpc getUserShortProfile(GetUserShortProfileReq) returns (GetUserShortProfileResp);
+  // 获取和更新用户与顾问的对话
+  rpc getSetUserAndAdviserConversation(GetSetUserAndAdviserConversationReq) returns (GetSetUserAndAdviserConversationResp);
+}

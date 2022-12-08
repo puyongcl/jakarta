@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+message SendTextMsgReq {
+  int64  sync    = 1; //	Integer	选填	1：把消息同步到 From_Account 在线终端和漫游上 2：消息不同步至 From_Account；若不填写默认情况下会将消息存 From_Account 漫游
+  int64  fromUid = 2;
+  int64  toUid   = 3;
+  string text    = 4; //
+}
+
+message SendTextMsgResp {
+  string ActionStatus = 1;
+  string ErrorInfo    = 2;
+  int32  ErrorCode    = 3;
+  int64  MsgTime      = 4;
+  string MsgKey       = 5;
+}
+
+message SendDefineMsgReq {
+  int64  fromUid = 1;
+  int64  toUid   = 2;
+  int64  msgType = 3;
+  string title   = 4;
+  string text    = 5;
+  string val1    = 6;
+  string val2    = 7;
+  string val3    = 8;
+  string val4    = 9;
+  string val5    = 10;
+  string val6    = 11;
+  int64  sync    = 12;
+}
+
+message SendDefineMsgResp {
+  int64  errCode = 1;
+  string errMsg  = 2;
+}
+
+// 发送小程序订阅消息
+message SendMiniProgramSubscribeMsgReq {
+  string thing4     = 1;
+  string thing5     = 2;
+  string time3      = 3;
+  string time2      = 4;
+  string thing1     = 5;
+  string thing3     = 6;
+  string date4      = 7;
+  string templateId = 8;
+  string openId     = 9; // 小程序openid
+  string page       = 10;
+}
+
+message SendMiniProgramSubscribeMsgResp {
+
+}
+
+// 发送微信服务号模版消息
+message SendFwhTemplateMsgReq {
+  string templateId = 1; // 服务号消息模版id
+  string first      = 2;// 标题
+  string keyword1   = 3;
+  string keyword2   = 4;
+  string keyword3   = 5;
+  string keyword4   = 6;
+  string remark     = 7; // 提示
+  string openId     = 8; // 服务号openid
+  string path       = 9; // 跳转小程序的路径
+  string color      = 10;
+}
+
+message SendFwhTemplateMsgResp {
+
+}
+
+// 根据用户的服务号openid获取用户的unionId
+message GetUserUnionIdByFwhOpenIdReq {
+  string openId = 1;
+}
+
+message GetUserUnionIdByFwhOpenIdResp {
+  string unionId = 1;
+}
+
+// 生成小程序url link/schema
+message GenWxMpUrlReq {
+  string path               = 1;
+  string query              = 2;
+  int64  expireIntervalDays = 3;
+  int64  type               = 4;// 1 安卓 2 ios
+}
+message GenWxMpUrlResp {
+  string url = 1;
+}
+
+// im msg log
+message AddImMsgLogReq {
+  int64  fromUid    = 1;
+  int64  toUid      = 2;
+  int64  msgTime    = 3;
+  string msgId      = 4;
+  string msgType    = 5;
+  int64  msgSeq     = 7;
+  int64 fromUserType = 8;
+}
+
+message AddImMsgLogResp {
+
+}
+
+
+//service
+service im {
+  // 发送普通文字消息
+  rpc sendTextMsg(SendTextMsgReq) returns (SendTextMsgResp);
+  // 发送自定义消息
+  rpc sendDefineMsg(SendDefineMsgReq) returns (SendDefineMsgResp);
+  // 发送小程序订阅消息
+  rpc sendMiniProgramSubscribeMsg(SendMiniProgramSubscribeMsgReq) returns (SendMiniProgramSubscribeMsgResp);
+  // 发送微信服务号消息
+  rpc sendFwhTemplateMsg(SendFwhTemplateMsgReq) returns (SendFwhTemplateMsgResp);
+  // 根据用户的服务号openid获取用户的unionId
+  rpc getUserUnionIdByFwhOpenId(GetUserUnionIdByFwhOpenIdReq) returns (GetUserUnionIdByFwhOpenIdResp);
+  // 生成小程序url link/schema
+  rpc GenWxMpUrl(GenWxMpUrlReq) returns (GenWxMpUrlResp);
+
+  // im msg log
+  rpc AddImMsgLog(AddImMsgLogReq) returns (AddImMsgLogResp);
+}

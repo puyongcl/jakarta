@@ -1,0 +1,19 @@
+syntax = "v1"
+
+info(
+	title: "移动app"
+	desc: "移动app"
+	author: ""
+	email: ""
+	version: "v1"
+)
+
+import (
+	"user.api"
+	"chat.api"
+	"listener.api"
+	"order.api"
+	"wxmp.api"
+	"stat.api"
+	"bbs.api"
+)

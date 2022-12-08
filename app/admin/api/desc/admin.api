@@ -1,0 +1,197 @@
+syntax = "v1"
+
+info(
+	title: "管理员后台"
+	desc: "管理员后台"
+	author: ""
+	email: ""
+	version: "v1"
+)
+
+import (
+	"listener/listener.api"
+	"admin/admin.api"
+	"user/user.api"
+	"order/order.api"
+	"wx/wx.api"
+	"stat/stat.api"
+	"contract1021/contract.api"
+)
+
+//no need login
+@server(
+	prefix: admin/v1
+	group: admin
+)
+service admin {
+	@doc "登陆"
+	@handler login
+	post /user/login (AdminLoginReq) returns (AdminLoginResp)
+}
+
+// need login
+@server(
+	prefix: admin/v1
+	group: admin
+	jwt: JwtAuth
+)
+service admin {
+	@doc "注册管理员"
+	@handler register
+	post /admin/register (RegisterAdminReq) returns (RegisterAdminResp)
+	
+	@doc "新增管理员菜单权限"
+	@handler addAdminMenu
+	post /admin/menu/add (AddAdminMenuReq) returns (AddAdminMenuResp)
+	
+	@doc "删除管理员菜单权限"
+	@handler delAdminMenu
+	post /admin/menu/del (DelAdminMenuReq) returns (DelAdminMenuResp)
+	
+	@doc "查询管理员菜单权限"
+	@handler listAdminMenu
+	post /admin/menu/list (ListAdminMenuReq) returns (ListAdminMenuResp)
+}
+
+// need login
+@server(
+	prefix: admin/v1
+	group: listener
+	jwt: JwtAuth
+)
+service admin {
+	@doc "管理员获取XXX资料列表"
+	@handler listListenerProfile
+	post /listener/list (GetListenerProfileListReq) returns (GetListenerProfileListResp)
+	
+	@doc "管理员审核XXX资料"
+	@handler checkListenerProfile
+	post /listener/check (CheckListenerProfileReq) returns (CheckListenerProfileResp)
+	
+	@doc "获取字段取值配置"
+	@handler getDefineBusinessConfig
+	post /listener/business/config (GetBusinessConfigReq) returns (GetBusinessConfigResp)
+	
+	@doc "获取提现列表"
+	@handler getCashListReq
+	post /listener/cashlog/list (GetCashListReq) returns (GetCashListResp)
+	
+	@doc "提交转账"
+	@handler commitMoveCash
+	post /listener/movecash/commit (CommitMoveCashReq) returns (CommitMoveCashResp)
+	
+	@doc "生成XXX合同"
+	@handler genListenerContract
+	post /listener/contract/gen (GenListenerContractReq) returns (GenListenerContractResp)
+}
+
+// need login
+@server(
+	prefix: admin/v1
+	group: order
+	jwt: JwtAuth
+)
+service admin {
+	@doc "获取退款订单列表"
+	@handler getRefundOrderList
+	post /order/refundorder/list (GetRefundOrderListReq) returns (GetRefundOrderListResp)
+	
+	@doc "审核退款订单"
+	@handler checkRefundOrder
+	post /order/refundorder/check (CheckRefundOrderReq) returns (CheckRefundOrderResp)
+}
+
+// need login
+@server(
+	prefix: admin/v1
+	group: user
+	jwt: JwtAuth
+)
+service admin {
+	@doc "获取上报列表"
+	@handler getReportUserList
+	post /user/reportlist (GetReportUserListReq) returns (GetReportUserListResp)
+	
+	@doc "处理上报对象"
+	@handler processReportUser
+	post /user/report/process (AdminProcessReportUserReq) returns (AdminProcessReportUserResp)
+	
+	@doc "获取XX援助列表"
+	@handler getNeedHelpUserList
+	post /user/needhelp/list (GetNeedHelpUserListReq) returns (GetNeedHelpUserListResp)
+	
+	@doc "XX援助对象处理结果记录"
+	@handler processNeedHelpUser
+	post /user/needhelp/process (ProcessNeedHelpUserReq) returns (ProcessNeedHelpUserResp)
+	
+	@doc "用户列表"
+	@handler getUserList
+	post /user/list (GetUserListReq) returns (GetUserListResp)
+	
+	@doc "注销账号"
+	@handler deleteUserAccount
+	post /user/delete (AdminDeleteUserAccountReq) returns (AdminDeleteUserAccountResp)
+}
+
+// need login
+@server(
+	prefix: admin/v1
+	group: wx
+	jwt: JwtAuth
+)
+service admin {
+	@doc "生成小程序url"
+	@handler genMpUrl
+	post /wx/mp/url/gen (GenWxMpUrlReq) returns (GenWxMpUrlResp)
+}
+
+// need login
+@server(
+	prefix: admin/v1
+	group: stat
+	jwt: JwtAuth
+)
+service admin {
+	@doc "查询每日统计数据"
+	@handler getDailyStat
+	post /stat/daily/list (GetDailyStatListReq) returns (GetDailyStatListResp)
+	
+	@doc "查询渠道列表"
+	@handler getUserChannelList
+	post /stat/userchannel/list (GetUserChannelListReq) returns (GetUserChannelListResp)
+	
+	@doc "查询用户统计数据"
+	@handler getLTVStat
+	post /stat/ltv/list (GetLifeTimeValueStatReq) returns (GetLifeTimeValueStatResp)
+}
+
+// need login
+@server(
+	prefix: admin/v1
+	group: contract1021
+	jwt: JwtAuth
+)
+service admin {
+	@doc "生成合同"
+	@handler genContract1021
+	post /contract/c1021/gen (GenContract1021Req) returns (GenContract1021Resp)
+	
+	@doc "查询合同列表"
+	@handler getContract1021List
+	post /contract/c1021/list (ListContract1021Req) returns (ListContract1021Resp)
+}
+
+// no need login
+@server(
+	prefix: admin/v1
+	group: contract1021
+)
+service admin {
+	@doc "签名合同"
+	@handler signContract1021
+	post /contract/c1021/sign (SignContract1021Req) returns (SignContract1021Resp)
+	
+	@doc "查询合同"
+	@handler getContract1021ById
+	post /contract/c1021/id (QueryContract1021ByIdReq) returns (QueryContract1021ByIdResp)
+}

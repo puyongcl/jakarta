@@ -1,0 +1,104 @@
+Name: mobile-api
+Host: 0.0.0.0
+Port: 1005
+Mode: dev
+
+#jwtAuth
+JwtAuth:
+  AccessSecret: 1e4705b0-40d2-4075-a3b1-a2217f67d082
+  AccessExpire: 7200
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4013
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: mobile-api
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: mobile-api
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/mobile-api
+
+AppVerConf:
+  MinAppVer: 101011
+  LatestAppVer: 101011
+  StoryTabMaxVer: 101011
+
+#WxMiniConf
+WxMiniConf:
+  AppId: wx603c631232b9f3
+  Secret: 2ff44528359825663303e8b48b
+
+#腾讯云密钥
+TencentConf:
+  SecretId: AKIDmNiD7w7889538CNHuHM
+  SecretKey: thRxCBuR2852545eJjtnSr0t
+  AppId: "138951693"
+  Bucket: jakarta-138951693
+  Region: ap-guangzhou
+  Expire: 86400
+
+RedisCache:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+KqSendDefineMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-define-msg-send-topic
+
+KqSubscribeNotifyMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: subscribe-notify-msg-topic
+
+#rpc service
+UsercenterRpcConf:
+  Endpoints:
+    - usercenter-rpc:2009
+  NonBlock: true
+
+ListenerRpcConf:
+  Endpoints:
+    - listener-rpc:2004
+  NonBlock: true
+
+OrderRpcConf:
+  Endpoints:
+    - order-rpc:2007
+  NonBlock: true
+
+ChatRpcConf:
+  Endpoints:
+    - chat-rpc:2002
+  NonBlock: true
+
+PaymentRpcConf:
+  Endpoints:
+    - payment-rpc:2008
+  NonBlock: true
+
+StatRpcConf:
+  Endpoints:
+    - statistic-rpc:2010
+  NonBlock: true
+
+BbsRpcConf:
+  Endpoints:
+    - bbs-rpc:2011
+  NonBlock: true

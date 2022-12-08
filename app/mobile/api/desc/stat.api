@@ -1,0 +1,33 @@
+syntax = "v1"
+
+info(
+    title: "stat"
+    desc: "stat"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+import (
+    "stat/stat.api"
+)
+
+// need login
+@server(
+    prefix: mobile/v1
+    group: stat
+    jwt: JwtAuth
+)
+service mobile {
+    @doc "保存新用户选择的新手引导XX标签"
+    @handler saveNewUserSelectSpec
+    post /stat/newuser/selectspec/save (SaveNewUserSelectSpecReq) returns (SaveNewUserSelectSpecResp)
+
+    @doc "保存成人依恋量表测试结果"
+    @handler saveAdultQuizECR
+    post /stat/user/ecr/save (SaveAdultQuizECRReq) returns (SaveAdultQuizECRResp)
+
+    @doc "获取成人依恋量表测试结果"
+    @handler getAdultQuizECR
+    post /stat/user/ecr (GetAdultQuizECRReq) returns (GetAdultQuizECRResp)
+}

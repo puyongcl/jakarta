@@ -1,0 +1,190 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+message GetUserListReq {
+  int64  uid             = 1; // 查找uid
+  string createTimeStart = 2; // 注册时间开始
+  string createTimeEnd   = 3; // 注册时间结束
+  int64  isPaidUser      = 4; // 是否付费用户
+  int64  userType        = 5; // 用户类型
+  string channel         = 6; // 获客渠道
+  string authKey         = 7;
+  string authType        = 8;
+  int64  pageNo          = 9;
+  int64  pageSize        = 10;
+}
+
+message UserDetail {
+  int64  uid             = 1;
+  string nickname        = 2;
+  string avatar          = 3; //
+  string createTime      = 4; // 注册时间
+  string channel         = 5; // 获客渠道
+  string authType        = 6; // 登陆方式
+  int64  costAmountSum   = 7; // 支付成功总额
+  int64  refundAmountSum = 8; // 退款总额
+  int64  paidOrderCnt    = 9; // 支付成功订单数量
+  int64  refundOrderCnt  = 10;// 退款订单数
+  int64  noCondRefundCnt = 11;// 无条件退款机会
+  int64  gender          = 12; // 性别
+  string introduction    = 13; // 个人介绍
+  int64  constellation   = 14; // 星座
+  string birthday        = 15; // 生日
+  string freeTime        = 16; // 解封时间
+  string banReason       = 17; // 封禁原因
+  string openId          = 18;
+}
+
+message GetUserListResp {
+  int64               sum  = 1;
+  repeated UserDetail list = 2;
+}
+
+// 获取渠道
+message GetUserChannelListReq {
+  string createTimeStart = 1; // 注册时间开始
+  string createTimeEnd   = 2; // 注册时间结束
+}
+
+message GetUserChannelListResp {
+  repeated string channel = 1;
+}
+
+// 更新每日统计数据
+message UpdateStatisticDailyDataReq {
+  string startTime = 1;
+  string endTime   = 2;
+}
+message UpdateStatisticDailyDataResp {
+
+}
+
+// 获取每日统计
+message GetDailyStatListReq {
+  repeated string date    = 1; // 20220825,20220826
+  string          channel = 2;
+}
+
+message DailyStat {
+  string id                  = 1;
+  int64  newUserCnt          = 2; // 新增用户
+  int64  loginUserCnt        = 3; // 登陆用户
+  int64  paidUserCnt         = 4; // 今天下过单的用户
+  int64  loginListenerCnt    = 5; // 登陆过的XXX
+  int64  paidOrderCnt        = 6; // 支付订单总数
+  int64  paidAmount          = 7; // 支付订单总金额
+  int64  applyRefundAmount   = 8; // 申请退款总额
+  int64  refundSuccessAmount = 9; // 退款成功总金额
+  int64  confirmOrderAmount  = 10;// 确认完成订单总金额
+  int64  listenerAmount      = 11;// XXX收入总金额
+  int64  platformAmount      = 12;// 平台收入总金额
+  string channel             = 13;
+  string createTime          = 14;
+}
+message GetDailyStatListResp {
+  repeated DailyStat list = 1;
+}
+
+// 记录每日登陆时间
+message UpdateLoginLogReq {
+  int64  uid      = 1;
+  int64  state    = 2;
+  int64  userType = 3;
+  string channel  = 4;
+}
+
+message UpdateLoginLogResp {
+
+}
+
+// 统计近多少日的用户在昨日累计数据
+message GetLifeTimeValueStatReq {
+  string startDate = 1; // 开始日期 20220801
+  string endDate   = 2; // 结束日期 20220807
+  int64  userFlag  = 3; // 1 新用户 2 活跃用户
+  string channel   = 4; // 渠道
+}
+
+message LifeTimeValueStat {
+  string date              = 1;
+  int64  userCnt           = 2; // 用户数
+  int64  paidUserCnt       = 3; // 付费用户数
+  int64  refundOrderCnt    = 4; // 退款单数
+  int64  paidOrderCnt      = 5; // 下单数
+  int64  repeatPaidUserCnt = 6; // 复购用户数
+  int64  commentOrderCnt   = 7; // 评价订单数
+  int64  fiveStarOrderCnt  = 8; // 满意评价订单数
+  int64  threeStarOrderCnt = 9; // 一般评价订单数
+  int64  oneStarOrderCnt   = 10; // 不满意订单数
+  int64  textChatOrderCnt  = 11; // 文字订单数
+  int64  voiceChatOrderCnt = 12;// 语音订单数
+  int64  paidAmountSum     = 13; // 用户付费总金额
+  int64  ltv1Day           = 14;
+  int64  ltv3Day           = 15;
+  int64  ltv7Day           = 16;
+  int64  ltv14Day          = 17;
+  int64  ltv21Day          = 18;
+  int64  ltv30Day          = 19;
+  int64  ltv60Day          = 20;
+}
+
+message GetLifeTimeValueStatResp {
+  repeated LifeTimeValueStat list = 1;
+}
+
+// 新用户选择的标签
+message SaveNewUserSelectSpecReq {
+  int64          uid     = 1;
+  repeated int64 spec    = 2;
+  string         channel = 3;
+}
+message SaveNewUserSelectSpecResp {
+
+}
+
+// 定时统计XXX状态数据
+message UpdateUserStateStatReq {}
+message UpdateUserStateStatResp {}
+
+// 保存成人依恋量表评测结果
+message SaveAdultQuizEcrReq {
+  int64          uid    = 1;
+  int64          result = 2;
+  repeated int64 answer = 3;
+}
+message SaveAdultQuizEcrResp {}
+
+// 获取最新的成人依恋量表评测结果
+message GetAdultQuizEcrReq {
+  int64 uid = 1;
+}
+message GetAdultQuizEcrResp {
+  int64 result = 1;
+}
+
+// rpc服务
+service statistic {
+  // 获取用户列表
+  rpc getUserList(GetUserListReq) returns (GetUserListResp);
+  // 更新每日统计数据
+  rpc updateStatisticDailyData(UpdateStatisticDailyDataReq) returns (UpdateStatisticDailyDataResp);
+  // 获取每日统计数据
+  rpc getDailyStatList(GetDailyStatListReq) returns (GetDailyStatListResp);
+  // 更新每日登陆时间
+  rpc updateLoginLog(UpdateLoginLogReq) returns (UpdateLoginLogResp);
+  // 获取统计近多少日的用户在昨日累计数据
+  rpc getLifeTimeValueStat(GetLifeTimeValueStatReq) returns (GetLifeTimeValueStatResp);
+  // 获取用户渠道列表
+  rpc getUserChannelList(GetUserChannelListReq) returns (GetUserChannelListResp);
+  // 新用户选择的XX标签
+  rpc saveNewUserSelectSpec(SaveNewUserSelectSpecReq) returns (SaveNewUserSelectSpecResp);
+  // 定时统计用户和XXX状态数据
+  rpc updateUserStateStat(UpdateUserStateStatReq) returns (UpdateUserStateStatResp);
+  // 保存成人依恋量表测试结果
+  rpc saveAdultQuizECR(SaveAdultQuizEcrReq) returns (SaveAdultQuizEcrResp);
+  // 获取最新成人依恋量表测试结果
+  rpc getAdultQuizEcr(GetAdultQuizEcrReq) returns (GetAdultQuizEcrResp);
+}

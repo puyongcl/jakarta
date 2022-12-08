@@ -1,0 +1,65 @@
+syntax = "v1"
+
+info(
+    title: "社区"
+    desc: "社区"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+import (
+    "bbs/bbs.api"
+)
+
+// need login
+@server(
+    prefix: mobile/v1
+    group: bbs
+    jwt: JwtAuth
+)
+service mobile {
+    @doc "发布XX"
+    @handler addStory
+    post /bbs/story/add (AddStoryReq) returns (AddStoryResp)
+
+    @doc "回复XX"
+    @handler addStoryReply
+    post /bbs/story/reply/add (AddStoryReplyReq) returns (AddStoryReplyResp)
+
+    @doc "点赞回复"
+    @handler addStoryReplyLike
+    post /bbs/story/reply/like (AddLikeStoryReplyReq) returns (AddLikeStoryReplyResp)
+
+    @doc "获取XX回复列表"
+    @handler getStoryReplyList
+    post /bbs/story/reply/list (GetStoryReplyListReq) returns (GetStoryReplyListResp)
+
+    @doc "删除发布的XX"
+    @handler delStory
+    post /bbs/story/del (DelStoryReq) returns (DelStoryResp)
+
+    @doc "删除一条XX回复"
+    @handler delStoryReply
+    post /bbs/story/reply/del (DelStoryReplyReq) returns (DelStoryReplyResp)
+
+    @doc "推荐XX"
+    @handler recStory
+    post /bbs/story/rec (GetRecStoryListByUserReq) returns (GetRecStoryListByUserResp)
+
+    @doc "获取用户所有的XX列表"
+    @handler getStoryListByOwn
+    post /bbs/story/list (GetStoryListByOwnReq) returns (GetStoryListByOwnResp)
+
+    @doc "获取XXX所有的XX回复列表"
+    @handler getStoryReplyListByOwn
+    post /bbs/story/reply/mylist (GetStoryReplyListByOwnReq) returns (GetStoryReplyListByOwnResp)
+
+    @doc "获取XX根据id"
+    @handler getStoryById
+    post /bbs/story/get (GetStoryByIdReq) returns (GetStoryByIdResp)
+
+    @doc "获取一条XX回复根据id"
+    @handler getStoryReplyById
+    post /bbs/storyreply/get (GetStoryReplyReq) returns (GetStoryReplyResp)
+}

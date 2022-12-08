@@ -1,0 +1,155 @@
+syntax = "v1"
+
+info(
+    title: "管理员后台"
+    desc: "管理员后台"
+    author: ""
+    email: ""
+)
+
+// 获取用户上报列表
+type (
+    GetReportUserListReq {
+        Uid int64 `json:"uid"`             // 上报人
+        TargetUid int64 `json:"targetUid"` // 上报对象
+        Tag int64 `json:"tag"`             // 上报标签
+        State int64 `json:"state"`         // 状态
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    ReportUserData {
+        Id string `json:"id"`
+        Uid int64 `json:"uid"`                        // 上报人
+        TargetUid int64 `json:"targetUid"`            // 上报对象
+        ReportTag []int64 `json:"reportTag"`          // 上报标签
+        ReportContent string `json:"reportContent"`   // 上报内容
+        Attachment string `json:"attachment"`         // 附件
+        Remark string `json:"remark"`                 // 处理留言
+        State int64 `json:"state"`                    // 状态
+        CreateTime string `json:"createTime"`         // 上报时间
+        UpdateTime string `json:"updateTime"`         // 状态更新时间
+        Avatar string `json:"avatar"`                 // 上报人头像
+        NickName string `json:"nickName"`             // 上报人昵称
+        TargetAvatar string `json:"targetAvatar"`     // 上报对象头像
+        TargetNickName string `json:"targetNickName"` // 上报对象昵称
+    }
+    GetReportUserListResp {
+        Sum int64 `json:"sum"`
+        List []*ReportUserData `json:"list"`
+    }
+)
+
+// 处理上报用户
+type (
+    AdminProcessReportUserReq {
+        AdminUid int64 `json:"adminUid"`
+        Uid int64 `json:"uid"`
+        TargetUid int64 `json:"targetUid"`
+        Id string `json:"id"`
+        Action int64 `json:"action"`
+        Remark string `json:"remark"` // 管理员直接封号 封号原因
+        ReportContent string `json:"reportContent"`
+        ReportTag []int64 `json:"reportTag"`
+    }
+    AdminProcessReportUserResp {
+
+    }
+)
+
+// 获取XX援助列表
+type (
+    GetNeedHelpUserListReq {
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+        Tag int64 `json:"tag"`
+        State int64 `json:"state"`
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    NeedHelpUserData struct {
+        Id string `json:"id"`
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+        ReportTag []int64 `json:"reportTag"`
+        ReportContent string `json:"reportContent"`
+        Attachment string `json:"attachment"`
+        Remark string `json:"remark"`
+        State int64 `json:"state"`
+        CreateTime string `json:"createTime"`
+        UpdateTime string `json:"updateTime"`
+        Avatar string `json:"avatar"`
+        NickName string `json:"nickName"`
+        ListenerAvatar string `json:"listenerAvatar"`
+        ListenerNickName string `json:"listenerNickName"`
+    }
+    GetNeedHelpUserListResp {
+        Sum int64 `json:"sum"`
+        List []*NeedHelpUserData `json:"list"`
+    }
+)
+
+// 处理XX援助对象
+type (
+    ProcessNeedHelpUserReq {
+        AdminUid int64 `json:"adminUid"`
+        Uid int64 `json:"uid"`                 // 需要帮助的人
+        ListenerUid int64 `json:"listenerUid"` // 上报人
+        Id string `json:"id"`
+        Action int64 `json:"action"`
+        Remark string `json:"remark"`
+    }
+    ProcessNeedHelpUserResp {
+
+    }
+)
+
+// 用户列表
+type GetUserListReq {
+    Uid int64 `json:"uid,optional"`                            // 查找uid
+    AuthKey string `json:"authKey,optional"`             // openid或者手机号
+    AuthType string `json:"authType,optional"`   // wxMini
+    CreateTimeStart string `json:"createTimeStart,optional"`   // 注册时间开始
+    CreateTimeEnd string `json:"createTimeEnd,optional"`       // 注册时间结束
+    IsPaidUser int64 `json:"isPaidUser,optional"`              // 是否付费用户
+    UserType int64 `json:"userType,optional"`                  // 用户类型
+    Channel string `json:"channel,optional"`                   // 获客渠道
+    PageNo int64 `json:"pageNo"`
+    PageSize int64 `json:"pageSize"`
+}
+
+type UserDetail struct {
+    Uid int64 `json:"uid"`
+    Nickname string `json:"nickname"`
+    Avatar string `json:"avatar"`                     //
+    CreateTime string `json:"createTime"`             // 注册时间
+    Channel string `json:"channel"`                   // 获客渠道
+    AuthType string `json:"authType"`                 // 登陆方式
+    CostAmountSum int64 `json:"costAmountSum"`        // 支付成功总额
+    RefundAmountSum int64 `json:"refundAmountSum"`    // 退款总额
+    PaidOrderCnt int64 `json:"paidOrderCnt"`          // 支付成功订单数量
+    RefundOrderCnt int64 `json:"refundOrderCnt"`      // 退款订单数
+    NoCondRefundCnt int64 `json:"noCondRefundCnt"`    // 无条件退款机会
+    Gender int64 `json:"gender"`                      // 性别
+    Introduction string `json:"introduction"`         // 个人介绍
+    Constellation int64 `json:"constellation"`        // 星座
+    Birthday string `json:"birthday"`                 // 生日
+    FreeTime string `json:"freeTime"`                 // 解封时间
+    BanReason string `json:"banReason"`               // 封禁原因
+    OpenId string `json:"openId"`
+}
+
+type GetUserListResp {
+    Sum int64 `json:"sum"`
+    List []*UserDetail `json:"list"`
+}
+
+// 注销账号
+type (
+    AdminDeleteUserAccountReq {
+        AdminUid int64 `json:"adminUid"`
+        Uid int64 `json:"uid"`
+    }
+    AdminDeleteUserAccountResp {
+
+    }
+)

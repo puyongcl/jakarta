@@ -1,0 +1,3622 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "管理员后台",
+    "description": "管理员后台",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "admin/v1/admin/menu/add": {
+      "post": {
+        "summary": "新增管理员菜单权限",
+        "operationId": "addAdminMenu",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddAdminMenuResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddAdminMenuReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "admin/v1/admin/menu/del": {
+      "post": {
+        "summary": "删除管理员菜单权限",
+        "operationId": "delAdminMenu",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DelAdminMenuResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DelAdminMenuReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "admin/v1/admin/menu/list": {
+      "post": {
+        "summary": "查询管理员菜单权限",
+        "operationId": "listAdminMenu",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListAdminMenuResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ListAdminMenuReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "admin/v1/admin/register": {
+      "post": {
+        "summary": "注册管理员",
+        "operationId": "register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RegisterAdminResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterAdminReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "admin/v1/contract/c1021/gen": {
+      "post": {
+        "summary": "生成合同",
+        "operationId": "genContract1021",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GenContract1021Resp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GenContract1021Req"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "contract1021"
+        ]
+      }
+    },
+    "admin/v1/contract/c1021/id": {
+      "post": {
+        "summary": "查询合同",
+        "operationId": "getContract1021ById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryContract1021ByIdResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryContract1021ByIdReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "contract1021"
+        ]
+      }
+    },
+    "admin/v1/contract/c1021/list": {
+      "post": {
+        "summary": "查询合同列表",
+        "operationId": "getContract1021List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListContract1021Resp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ListContract1021Req"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "contract1021"
+        ]
+      }
+    },
+    "admin/v1/contract/c1021/sign": {
+      "post": {
+        "summary": "签名合同",
+        "operationId": "signContract1021",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SignContract1021Resp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SignContract1021Req"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "contract1021"
+        ]
+      }
+    },
+    "admin/v1/listener/business/config": {
+      "post": {
+        "summary": "获取字段取值配置",
+        "operationId": "getDefineBusinessConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetBusinessConfigResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetBusinessConfigReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "listener"
+        ]
+      }
+    },
+    "admin/v1/listener/cashlog/list": {
+      "post": {
+        "summary": "获取提现列表",
+        "operationId": "getCashListReq",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetCashListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetCashListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "listener"
+        ]
+      }
+    },
+    "admin/v1/listener/check": {
+      "post": {
+        "summary": "管理员审核XXX资料",
+        "operationId": "checkListenerProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CheckListenerProfileResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 审核XXX资料",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CheckListenerProfileReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "listener"
+        ]
+      }
+    },
+    "admin/v1/listener/contract/gen": {
+      "post": {
+        "summary": "生成XXX合同",
+        "operationId": "genListenerContract",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GenListenerContractResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GenListenerContractReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "listener"
+        ]
+      }
+    },
+    "admin/v1/listener/list": {
+      "post": {
+        "summary": "管理员获取XXX资料列表",
+        "operationId": "listListenerProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetListenerProfileListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 获取XXX列表",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetListenerProfileListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "listener"
+        ]
+      }
+    },
+    "admin/v1/listener/movecash/commit": {
+      "post": {
+        "summary": "提交转账",
+        "operationId": "commitMoveCash",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CommitMoveCashResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CommitMoveCashReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "listener"
+        ]
+      }
+    },
+    "admin/v1/order/refundorder/check": {
+      "post": {
+        "summary": "审核退款订单",
+        "operationId": "checkRefundOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CheckRefundOrderResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CheckRefundOrderReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "order"
+        ]
+      }
+    },
+    "admin/v1/order/refundorder/list": {
+      "post": {
+        "summary": "获取退款订单列表",
+        "operationId": "getRefundOrderList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetRefundOrderListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetRefundOrderListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "order"
+        ]
+      }
+    },
+    "admin/v1/stat/daily/list": {
+      "post": {
+        "summary": "查询每日统计数据",
+        "operationId": "getDailyStat",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetDailyStatListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetDailyStatListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "stat"
+        ]
+      }
+    },
+    "admin/v1/stat/ltv/list": {
+      "post": {
+        "summary": "查询用户统计数据",
+        "operationId": "getLTVStat",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetLifeTimeValueStatResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 统计近多少日的用户在昨日累计数据",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetLifeTimeValueStatReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "stat"
+        ]
+      }
+    },
+    "admin/v1/stat/userchannel/list": {
+      "post": {
+        "summary": "查询渠道列表",
+        "operationId": "getUserChannelList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserChannelListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserChannelListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "stat"
+        ]
+      }
+    },
+    "admin/v1/user/delete": {
+      "post": {
+        "summary": "注销账号",
+        "operationId": "deleteUserAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AdminDeleteUserAccountResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminDeleteUserAccountReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "admin/v1/user/list": {
+      "post": {
+        "summary": "用户列表",
+        "operationId": "getUserList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 用户列表",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "admin/v1/user/login": {
+      "post": {
+        "summary": "登陆",
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AdminLoginResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminLoginReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "admin/v1/user/needhelp/list": {
+      "post": {
+        "summary": "获取XX援助列表",
+        "operationId": "getNeedHelpUserList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetNeedHelpUserListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetNeedHelpUserListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "admin/v1/user/needhelp/process": {
+      "post": {
+        "summary": "XX援助对象处理结果记录",
+        "operationId": "processNeedHelpUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProcessNeedHelpUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProcessNeedHelpUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "admin/v1/user/report/process": {
+      "post": {
+        "summary": "处理上报对象",
+        "operationId": "processReportUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AdminProcessReportUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminProcessReportUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "admin/v1/user/reportlist": {
+      "post": {
+        "summary": "获取上报列表",
+        "operationId": "getReportUserList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetReportUserListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetReportUserListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "admin/v1/wx/mp/url/gen": {
+      "post": {
+        "summary": "生成小程序url",
+        "operationId": "genMpUrl",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GenWxMpUrlResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GenWxMpUrlReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "wx"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AddAdminMenuReq": {
+      "type": "object",
+      "properties": {
+        "superAdminUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 超级管理员"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 普通管理员"
+        },
+        "menu1Id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 一级菜单id"
+        },
+        "menu2Id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 二级菜单id"
+        },
+        "menuValue": {
+          "$ref": "#/definitions/AdminMenu",
+          "description": " 菜单对应的json结构"
+        }
+      },
+      "title": "AddAdminMenuReq",
+      "required": [
+        "superAdminUid",
+        "uid",
+        "menu1Id",
+        "menu2Id",
+        "menuValue"
+      ]
+    },
+    "AddAdminMenuResp": {
+      "type": "object",
+      "title": "AddAdminMenuResp"
+    },
+    "AdminDeleteUserAccountReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "AdminDeleteUserAccountReq",
+      "required": [
+        "adminUid",
+        "uid"
+      ]
+    },
+    "AdminDeleteUserAccountResp": {
+      "type": "object",
+      "title": "AdminDeleteUserAccountResp"
+    },
+    "AdminLoginReq": {
+      "type": "object",
+      "properties": {
+        "authKey": {
+          "type": "string"
+        },
+        "authType": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "title": "AdminLoginReq",
+      "required": [
+        "authKey",
+        "authType",
+        "password"
+      ]
+    },
+    "AdminLoginResp": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "accessExpire": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshAfter": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user": {
+          "$ref": "#/definitions/UserProfile"
+        },
+        "userSign": {
+          "type": "string",
+          "description": " tencent IM"
+        },
+        "accountState": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userType": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "AdminLoginResp",
+      "required": [
+        "accessToken",
+        "accessExpire",
+        "refreshAfter",
+        "user",
+        "userSign",
+        "accountState",
+        "userType"
+      ]
+    },
+    "AdminMenu": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "redirect": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaData"
+        },
+        "component": {
+          "type": "string"
+        }
+      },
+      "title": "AdminMenu",
+      "required": [
+        "path",
+        "name",
+        "redirect",
+        "meta",
+        "component"
+      ]
+    },
+    "AdminProcessReportUserReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "targetUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "string"
+        },
+        "action": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string",
+          "description": " 管理员直接封号 封号原因"
+        },
+        "reportContent": {
+          "type": "string"
+        },
+        "reportTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "title": "AdminProcessReportUserReq",
+      "required": [
+        "adminUid",
+        "uid",
+        "targetUid",
+        "id",
+        "action",
+        "remark",
+        "reportContent",
+        "reportTag"
+      ]
+    },
+    "AdminProcessReportUserResp": {
+      "type": "object",
+      "title": "AdminProcessReportUserResp"
+    },
+    "AdminSeeListenerProfile": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "nickName": {
+          "type": "string",
+          "description": "名字"
+        },
+        "listenerName": {
+          "type": "string",
+          "description": " 姓名"
+        },
+        "avatar": {
+          "type": "string",
+          "description": "大图头像"
+        },
+        "maritalStatus": {
+          "type": "integer",
+          "format": "int64",
+          "description": "婚姻状态"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "手机号"
+        },
+        "constellation": {
+          "type": "integer",
+          "format": "int64",
+          "description": "星座"
+        },
+        "province": {
+          "type": "string",
+          "description": "省级大区"
+        },
+        "city": {
+          "type": "string",
+          "description": "地区市"
+        },
+        "job": {
+          "type": "string",
+          "description": "工作"
+        },
+        "education": {
+          "type": "integer",
+          "format": "int64",
+          "description": "教育水平"
+        },
+        "gender": {
+          "type": "integer",
+          "format": "int64",
+          "description": "性别"
+        },
+        "birthday": {
+          "type": "string",
+          "description": "出生年-月-日"
+        },
+        "idNo": {
+          "type": "string",
+          "description": "身份证号"
+        },
+        "idPhoto1": {
+          "type": "string",
+          "description": "正面身份证（国徽）"
+        },
+        "idPhoto2": {
+          "type": "string",
+          "description": "反面身份证"
+        },
+        "idPhoto3": {
+          "type": "string",
+          "description": "手持身份证"
+        },
+        "specialties": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "擅长领域"
+        },
+        "introduction": {
+          "type": "string",
+          "description": "个人介绍"
+        },
+        "voiceFile": {
+          "type": "string",
+          "description": "声音文件"
+        },
+        "experience1": {
+          "type": "string",
+          "description": "个人经历1"
+        },
+        "experience2": {
+          "type": "string",
+          "description": "个人经历2"
+        },
+        "certType": {
+          "type": "integer",
+          "format": "int64",
+          "description": "资质类型 2 职业技能证书 4 其他平台从业记录"
+        },
+        "otherPlatformAccount": {
+          "type": "string",
+          "description": " 用户在其他平台的账户信息"
+        },
+        "certFiles1": {
+          "type": "string",
+          "description": "附加材料1 格式：名称#文件名"
+        },
+        "certFiles2": {
+          "type": "string",
+          "description": "附加材料2 格式：名称#文件名"
+        },
+        "certFiles3": {
+          "type": "string",
+          "description": "附加材料3 格式：名称#文件名"
+        },
+        "certFiles4": {
+          "type": "string",
+          "description": "附加材料4 格式：名称#文件名"
+        },
+        "certFiles5": {
+          "type": "string",
+          "description": "附加材料5 格式：名称#文件名"
+        },
+        "autoReplyNew": {
+          "type": "string",
+          "description": "新人 休息中自动回复"
+        },
+        "autoReplyProcessing": {
+          "type": "string",
+          "description": "服务中 休息中用户自动回复"
+        },
+        "autoReplyFinish": {
+          "type": "string",
+          "description": "服务结束 休息中自动回复"
+        },
+        "textChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "文字聊天价格"
+        },
+        "voiceChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "语音聊天价格"
+        },
+        "textChatSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 文字服务开关"
+        },
+        "voiceChatSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 语音服务开关"
+        },
+        "userCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 服务人数"
+        },
+        "chatDuration": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 累计服务时长分钟"
+        },
+        "ratingSum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 评价总数"
+        },
+        "fiveStar": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 好评数"
+        },
+        "workState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 工作状态"
+        },
+        "refundOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 退款完成次数"
+        },
+        "paidOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 支付订单总数"
+        }
+      },
+      "title": "AdminSeeListenerProfile",
+      "required": [
+        "createTime",
+        "updateTime",
+        "listenerUid",
+        "nickName",
+        "listenerName",
+        "avatar",
+        "maritalStatus",
+        "phoneNumber",
+        "constellation",
+        "province",
+        "city",
+        "job",
+        "education",
+        "gender",
+        "birthday",
+        "idNo",
+        "idPhoto1",
+        "idPhoto2",
+        "idPhoto3",
+        "specialties",
+        "introduction",
+        "voiceFile",
+        "experience1",
+        "experience2",
+        "certType",
+        "otherPlatformAccount",
+        "certFiles1",
+        "certFiles2",
+        "certFiles3",
+        "certFiles4",
+        "certFiles5",
+        "autoReplyNew",
+        "autoReplyProcessing",
+        "autoReplyFinish",
+        "textChatPrice",
+        "voiceChatPrice",
+        "textChatSwitch",
+        "voiceChatSwitch",
+        "userCount",
+        "chatDuration",
+        "ratingSum",
+        "fiveStar",
+        "workState",
+        "refundOrderCnt",
+        "paidOrderCnt"
+      ]
+    },
+    "AdminSeeListenerProfileDraft": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "nickName": {
+          "type": "string",
+          "description": "名字"
+        },
+        "listenerName": {
+          "type": "string",
+          "description": " 姓名"
+        },
+        "avatar": {
+          "type": "string",
+          "description": "大图头像"
+        },
+        "maritalStatus": {
+          "type": "integer",
+          "format": "int64",
+          "description": "婚姻状态"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "手机号"
+        },
+        "constellation": {
+          "type": "integer",
+          "format": "int64",
+          "description": "星座"
+        },
+        "province": {
+          "type": "string",
+          "description": "省级大区"
+        },
+        "city": {
+          "type": "string",
+          "description": "地区市"
+        },
+        "job": {
+          "type": "string",
+          "description": "工作"
+        },
+        "education": {
+          "type": "integer",
+          "format": "int64",
+          "description": "教育水平"
+        },
+        "gender": {
+          "type": "integer",
+          "format": "int64",
+          "description": "性别"
+        },
+        "birthday": {
+          "type": "string",
+          "description": "出生年-月-日"
+        },
+        "idNo": {
+          "type": "string",
+          "description": "身份证号"
+        },
+        "idPhoto1": {
+          "type": "string",
+          "description": "正面身份证（国徽）"
+        },
+        "idPhoto2": {
+          "type": "string",
+          "description": "反面身份证"
+        },
+        "idPhoto3": {
+          "type": "string",
+          "description": "手持身份证"
+        },
+        "specialties": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "擅长领域"
+        },
+        "introduction": {
+          "type": "string",
+          "description": "个人介绍"
+        },
+        "voiceFile": {
+          "type": "string",
+          "description": "声音文件"
+        },
+        "experience1": {
+          "type": "string",
+          "description": "个人经历1"
+        },
+        "experience2": {
+          "type": "string",
+          "description": "个人经历2"
+        },
+        "certType": {
+          "type": "integer",
+          "format": "int64",
+          "description": "资质类型 2 职业技能证书 4 其他平台从业记录"
+        },
+        "otherPlatformAccount": {
+          "type": "string",
+          "description": " 用户在其他平台的账户信息"
+        },
+        "certFiles1": {
+          "type": "string",
+          "description": "附加材料1 格式：名称#文件名"
+        },
+        "certFiles2": {
+          "type": "string",
+          "description": "附加材料2 格式：名称#文件名"
+        },
+        "certFiles3": {
+          "type": "string",
+          "description": "附加材料3 格式：名称#文件名"
+        },
+        "certFiles4": {
+          "type": "string",
+          "description": "附加材料4 格式：名称#文件名"
+        },
+        "certFiles5": {
+          "type": "string",
+          "description": "附加材料5 格式：名称#文件名"
+        },
+        "autoReplyNew": {
+          "type": "string",
+          "description": "新人 休息中自动回复"
+        },
+        "autoReplyProcessing": {
+          "type": "string",
+          "description": "服务中 休息中用户自动回复"
+        },
+        "autoReplyFinish": {
+          "type": "string",
+          "description": "服务结束 休息中自动回复"
+        },
+        "textChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "文字聊天价格"
+        },
+        "voiceChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "语音聊天价格"
+        },
+        "textChatSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 文字服务开关"
+        },
+        "voiceChatSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 语音服务开关"
+        },
+        "checkFailField": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "审核失败的字段"
+        },
+        "checkingField": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "审核中的字段"
+        },
+        "checkStatus": {
+          "type": "integer",
+          "format": "int64",
+          "description": "当前审核状态"
+        },
+        "draftVersion": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 草稿版本"
+        }
+      },
+      "title": "AdminSeeListenerProfileDraft",
+      "required": [
+        "createTime",
+        "updateTime",
+        "listenerUid",
+        "nickName",
+        "listenerName",
+        "avatar",
+        "maritalStatus",
+        "phoneNumber",
+        "constellation",
+        "province",
+        "city",
+        "job",
+        "education",
+        "gender",
+        "birthday",
+        "idNo",
+        "idPhoto1",
+        "idPhoto2",
+        "idPhoto3",
+        "specialties",
+        "introduction",
+        "voiceFile",
+        "experience1",
+        "experience2",
+        "certType",
+        "otherPlatformAccount",
+        "certFiles1",
+        "certFiles2",
+        "certFiles3",
+        "certFiles4",
+        "certFiles5",
+        "autoReplyNew",
+        "autoReplyProcessing",
+        "autoReplyFinish",
+        "textChatPrice",
+        "voiceChatPrice",
+        "textChatSwitch",
+        "voiceChatSwitch",
+        "checkFailField",
+        "checkingField",
+        "checkStatus",
+        "draftVersion"
+      ]
+    },
+    "Banner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pic": {
+          "type": "string"
+        },
+        "child": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pair"
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "Banner",
+      "required": [
+        "id",
+        "name",
+        "pic",
+        "child",
+        "url"
+      ]
+    },
+    "CashLogDetail": {
+      "type": "object",
+      "properties": {
+        "flowNo": {
+          "type": "string"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerName": {
+          "type": "string"
+        },
+        "idNo": {
+          "type": "string"
+        },
+        "bankCardNo": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "outId": {
+          "type": "string"
+        },
+        "settleType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "outTime": {
+          "type": "string"
+        }
+      },
+      "title": "CashLogDetail",
+      "required": [
+        "flowNo",
+        "listenerUid",
+        "listenerName",
+        "idNo",
+        "bankCardNo",
+        "amount",
+        "outId",
+        "settleType",
+        "remark",
+        "outTime"
+      ]
+    },
+    "CheckListenerProfile": {
+      "type": "object",
+      "properties": {
+        "draft": {
+          "$ref": "#/definitions/AdminSeeListenerProfileDraft"
+        },
+        "profile": {
+          "$ref": "#/definitions/AdminSeeListenerProfile"
+        }
+      },
+      "title": "CheckListenerProfile",
+      "required": [
+        "draft",
+        "profile"
+      ]
+    },
+    "CheckListenerProfileReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "nickName": {
+          "type": "string",
+          "description": "名字"
+        },
+        "listenerName": {
+          "type": "string",
+          "description": " 姓名"
+        },
+        "avatar": {
+          "type": "string",
+          "description": "大图头像"
+        },
+        "maritalStatus": {
+          "type": "integer",
+          "format": "int64",
+          "description": "婚姻状态"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "手机号"
+        },
+        "constellation": {
+          "type": "integer",
+          "format": "int64",
+          "description": "星座"
+        },
+        "province": {
+          "type": "string",
+          "description": "省级大区"
+        },
+        "city": {
+          "type": "string",
+          "description": "地区市"
+        },
+        "job": {
+          "type": "string",
+          "description": "工作"
+        },
+        "education": {
+          "type": "integer",
+          "format": "int64",
+          "description": "教育水平"
+        },
+        "gender": {
+          "type": "integer",
+          "format": "int64",
+          "description": "性别"
+        },
+        "birthday": {
+          "type": "string",
+          "description": "出生年-月-日"
+        },
+        "idNo": {
+          "type": "string",
+          "description": "身份证号"
+        },
+        "idPhoto1": {
+          "type": "string",
+          "description": "正面身份证（国徽）"
+        },
+        "idPhoto2": {
+          "type": "string",
+          "description": "反面身份证"
+        },
+        "idPhoto3": {
+          "type": "string",
+          "description": "手持身份证"
+        },
+        "specialties": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "擅长领域"
+        },
+        "introduction": {
+          "type": "string",
+          "description": "个人介绍"
+        },
+        "voiceFile": {
+          "type": "string",
+          "description": "声音文件"
+        },
+        "experience1": {
+          "type": "string",
+          "description": "个人经历1"
+        },
+        "experience2": {
+          "type": "string",
+          "description": "个人经历2"
+        },
+        "certType": {
+          "type": "integer",
+          "format": "int64",
+          "description": "资质类型 2 职业技能证书 4 其他平台从业记录"
+        },
+        "otherPlatformAccount": {
+          "type": "string",
+          "description": " 用户在其他平台的账户信息"
+        },
+        "certFiles1": {
+          "type": "string",
+          "description": "附加材料1 格式：名称#文件名"
+        },
+        "certFiles2": {
+          "type": "string",
+          "description": "附加材料2 格式：名称#文件名"
+        },
+        "certFiles3": {
+          "type": "string",
+          "description": "附加材料3 格式：名称#文件名"
+        },
+        "certFiles4": {
+          "type": "string",
+          "description": "附加材料4 格式：名称#文件名"
+        },
+        "certFiles5": {
+          "type": "string",
+          "description": "附加材料5 格式：名称#文件名"
+        },
+        "autoReplyNew": {
+          "type": "string",
+          "description": "新人 休息中自动回复"
+        },
+        "autoReplyProcessing": {
+          "type": "string",
+          "description": "服务中 休息中用户自动回复"
+        },
+        "autoReplyFinish": {
+          "type": "string",
+          "description": "服务结束 休息中自动回复"
+        },
+        "textChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "文字聊天价格"
+        },
+        "voiceChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "语音聊天价格"
+        },
+        "textChatSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 文字服务开关"
+        },
+        "voiceChatSwitch": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 语音服务开关"
+        },
+        "checkFailField": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "审核失败的字段"
+        },
+        "checkPassField": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "审核通过的字段"
+        },
+        "remark": {
+          "type": "string",
+          "description": " 审核留言"
+        },
+        "checkStatus": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前的审核状态 取返回值 用于判断是否首次申请 后续更新"
+        },
+        "draftVersion": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 草稿版本"
+        }
+      },
+      "title": "CheckListenerProfileReq",
+      "required": [
+        "adminUid",
+        "listenerUid",
+        "nickName",
+        "listenerName",
+        "avatar",
+        "maritalStatus",
+        "phoneNumber",
+        "constellation",
+        "province",
+        "city",
+        "job",
+        "education",
+        "gender",
+        "birthday",
+        "idNo",
+        "idPhoto1",
+        "idPhoto2",
+        "idPhoto3",
+        "specialties",
+        "introduction",
+        "voiceFile",
+        "experience1",
+        "experience2",
+        "certType",
+        "otherPlatformAccount",
+        "certFiles1",
+        "certFiles2",
+        "certFiles3",
+        "certFiles4",
+        "certFiles5",
+        "autoReplyNew",
+        "autoReplyProcessing",
+        "autoReplyFinish",
+        "textChatPrice",
+        "voiceChatPrice",
+        "textChatSwitch",
+        "voiceChatSwitch",
+        "checkFailField",
+        "checkPassField",
+        "checkStatus",
+        "draftVersion"
+      ]
+    },
+    "CheckListenerProfileResp": {
+      "type": "object",
+      "title": "CheckListenerProfileResp"
+    },
+    "CheckRefundOrderReq": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "action": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "CheckRefundOrderReq",
+      "required": [
+        "orderId",
+        "action",
+        "remark",
+        "adminUid"
+      ]
+    },
+    "CheckRefundOrderResp": {
+      "type": "object",
+      "title": "CheckRefundOrderResp"
+    },
+    "CommitMoveCashReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MoveCashData"
+          }
+        }
+      },
+      "title": "CommitMoveCashReq",
+      "required": [
+        "adminUid",
+        "data"
+      ]
+    },
+    "CommitMoveCashResp": {
+      "type": "object",
+      "title": "CommitMoveCashResp"
+    },
+    "Contract1021Data": {
+      "type": "object",
+      "properties": {
+        "contractId": {
+          "type": "string",
+          "description": " 合同编号"
+        },
+        "userName": {
+          "type": "string",
+          "description": " 姓名"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": " 手机号"
+        },
+        "startDate": {
+          "type": "string",
+          "description": " 开始日期 2022-10-21"
+        },
+        "endDate": {
+          "type": "string",
+          "description": " 结束日期 2022-11-21"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单位 分"
+        },
+        "idno": {
+          "type": "string",
+          "description": " 身份证号"
+        },
+        "signName": {
+          "type": "string",
+          "description": " 签名图片"
+        },
+        "signTime": {
+          "type": "string",
+          "description": " 签名时间"
+        }
+      },
+      "title": "Contract1021Data",
+      "required": [
+        "contractId",
+        "userName",
+        "phoneNumber",
+        "startDate",
+        "endDate",
+        "amount",
+        "idno",
+        "signName",
+        "signTime"
+      ]
+    },
+    "DailyStat": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "newUserCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 新增用户"
+        },
+        "loginUserCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 登陆用户"
+        },
+        "paidUserCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 今天下过单的用户"
+        },
+        "loginListenerCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 登陆过的XXX"
+        },
+        "paidOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 支付订单总数"
+        },
+        "paidAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 支付订单总金额"
+        },
+        "applyRefundAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 申请退款总额"
+        },
+        "refundSuccessAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 退款成功总金额"
+        },
+        "confirmOrderAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 确认完成订单总金额"
+        },
+        "listenerAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXX收入总金额"
+        },
+        "platformAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 平台收入总金额"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string"
+        }
+      },
+      "title": "DailyStat",
+      "required": [
+        "id",
+        "newUserCnt",
+        "loginUserCnt",
+        "paidUserCnt",
+        "loginListenerCnt",
+        "paidOrderCnt",
+        "paidAmount",
+        "applyRefundAmount",
+        "refundSuccessAmount",
+        "confirmOrderAmount",
+        "listenerAmount",
+        "platformAmount",
+        "channel",
+        "createTime"
+      ]
+    },
+    "DelAdminMenuReq": {
+      "type": "object",
+      "properties": {
+        "superAdminUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 超级管理员"
+        },
+        "adminUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 普通管理员"
+        },
+        "menu1Id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 一级菜单id"
+        },
+        "menu2Id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 二级菜单id"
+        }
+      },
+      "title": "DelAdminMenuReq",
+      "required": [
+        "superAdminUid",
+        "adminUid",
+        "menu1Id",
+        "menu2Id"
+      ]
+    },
+    "DelAdminMenuResp": {
+      "type": "object",
+      "title": "DelAdminMenuResp"
+    },
+    "GenContract1021Req": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "description": " 姓名"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": " 手机号"
+        },
+        "startDate": {
+          "type": "string",
+          "description": " 开始日期 2022-10-21"
+        },
+        "endDate": {
+          "type": "string",
+          "description": " 结束日期 2022-11-21"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单位 分"
+        },
+        "idno": {
+          "type": "string",
+          "description": " 身份证号"
+        }
+      },
+      "title": "GenContract1021Req",
+      "required": [
+        "userName",
+        "phoneNumber",
+        "startDate",
+        "endDate",
+        "amount",
+        "idno"
+      ]
+    },
+    "GenContract1021Resp": {
+      "type": "object",
+      "properties": {
+        "contractId": {
+          "type": "string",
+          "description": " 合同编号"
+        }
+      },
+      "title": "GenContract1021Resp",
+      "required": [
+        "contractId"
+      ]
+    },
+    "GenListenerContractReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerName": {
+          "type": "string"
+        },
+        "idNo": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "checkStatus": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "contractType": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GenListenerContractReq",
+      "required": [
+        "listenerUid",
+        "listenerName",
+        "idNo",
+        "phoneNumber",
+        "contractType"
+      ]
+    },
+    "GenListenerContractResp": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "contractType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uploadState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 状态 1 初始 2 成功 3 失败"
+        }
+      },
+      "title": "GenListenerContractResp",
+      "required": [
+        "file",
+        "contractType",
+        "uploadState"
+      ]
+    },
+    "GenWxMpUrlReq": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "query": {
+          "type": "string"
+        },
+        "expireIntervalDays": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 1 url link 2 url schema"
+        }
+      },
+      "title": "GenWxMpUrlReq",
+      "required": [
+        "path",
+        "query",
+        "expireIntervalDays",
+        "type"
+      ]
+    },
+    "GenWxMpUrlResp": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "GenWxMpUrlResp",
+      "required": [
+        "url"
+      ]
+    },
+    "GetBusinessConfigReq": {
+      "type": "object",
+      "title": "GetBusinessConfigReq"
+    },
+    "GetBusinessConfigResp": {
+      "type": "object",
+      "properties": {
+        "specialties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Banner"
+          },
+          "description": " 专业领域"
+        }
+      },
+      "title": "GetBusinessConfigResp",
+      "required": [
+        "specialties"
+      ]
+    },
+    "GetCashListReq": {
+      "type": "object",
+      "properties": {
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "settleType": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetCashListReq",
+      "required": [
+        "pageNo",
+        "pageSize",
+        "listenerUid",
+        "settleType"
+      ]
+    },
+    "GetCashListResp": {
+      "type": "object",
+      "properties": {
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CashLogDetail"
+          }
+        }
+      },
+      "title": "GetCashListResp",
+      "required": [
+        "sum",
+        "list"
+      ]
+    },
+    "GetDailyStatListReq": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": " 20220825,20220826"
+        },
+        "channel": {
+          "type": "string"
+        }
+      },
+      "title": "GetDailyStatListReq",
+      "required": [
+        "date",
+        "channel"
+      ]
+    },
+    "GetDailyStatListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DailyStat"
+          }
+        }
+      },
+      "title": "GetDailyStatListResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetLifeTimeValueStatReq": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": " 开始日期 20220801"
+        },
+        "endDate": {
+          "type": "string",
+          "description": " 结束日期 20220807"
+        },
+        "userFlag": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 1 新用户 2 活跃用户"
+        },
+        "channel": {
+          "type": "string",
+          "description": " 渠道"
+        }
+      },
+      "title": "GetLifeTimeValueStatReq",
+      "required": [
+        "startDate",
+        "endDate",
+        "userFlag",
+        "channel"
+      ]
+    },
+    "GetLifeTimeValueStatResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LifeTimeValueStat"
+          }
+        }
+      },
+      "title": "GetLifeTimeValueStatResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetListenerProfileListReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "checkStatus": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 审核状态"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXXuid"
+        },
+        "listenerName": {
+          "type": "string",
+          "description": " XXX名称"
+        },
+        "certType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 证书类型"
+        }
+      },
+      "title": "GetListenerProfileListReq",
+      "required": [
+        "adminUid",
+        "pageNo",
+        "pageSize",
+        "checkStatus",
+        "listenerUid",
+        "listenerName",
+        "certType"
+      ]
+    },
+    "GetListenerProfileListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CheckListenerProfile"
+          }
+        },
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetListenerProfileListResp",
+      "required": [
+        "list",
+        "sum"
+      ]
+    },
+    "GetNeedHelpUserListReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tag": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetNeedHelpUserListReq",
+      "required": [
+        "uid",
+        "listenerUid",
+        "tag",
+        "state",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetNeedHelpUserListResp": {
+      "type": "object",
+      "properties": {
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NeedHelpUserData"
+          }
+        }
+      },
+      "title": "GetNeedHelpUserListResp",
+      "required": [
+        "sum",
+        "list"
+      ]
+    },
+    "GetRefundOrderListReq": {
+      "type": "object",
+      "properties": {
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "orderId": {
+          "type": "string"
+        },
+        "orderType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "state": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "title": "GetRefundOrderListReq",
+      "required": [
+        "pageNo",
+        "pageSize",
+        "uid",
+        "listenerUid",
+        "orderId",
+        "orderType",
+        "state"
+      ]
+    },
+    "GetRefundOrderListResp": {
+      "type": "object",
+      "properties": {
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RefundChatOrder"
+          }
+        }
+      },
+      "title": "GetRefundOrderListResp",
+      "required": [
+        "sum",
+        "list"
+      ]
+    },
+    "GetReportUserListReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 上报人"
+        },
+        "targetUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 上报对象"
+        },
+        "tag": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 上报标签"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 状态"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetReportUserListReq",
+      "required": [
+        "uid",
+        "targetUid",
+        "tag",
+        "state",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetReportUserListResp": {
+      "type": "object",
+      "properties": {
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReportUserData"
+          }
+        }
+      },
+      "title": "GetReportUserListResp",
+      "required": [
+        "sum",
+        "list"
+      ]
+    },
+    "GetUserChannelListReq": {
+      "type": "object",
+      "properties": {
+        "createTimeStart": {
+          "type": "string",
+          "description": " 注册时间开始"
+        },
+        "createTimeEnd": {
+          "type": "string",
+          "description": " 注册时间结束"
+        }
+      },
+      "title": "GetUserChannelListReq",
+      "required": [
+        "createTimeStart",
+        "createTimeEnd"
+      ]
+    },
+    "GetUserChannelListResp": {
+      "type": "object",
+      "properties": {
+        "channel": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "GetUserChannelListResp",
+      "required": [
+        "channel"
+      ]
+    },
+    "GetUserListReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查找uid"
+        },
+        "authKey": {
+          "type": "string",
+          "description": " openid或者手机号"
+        },
+        "authType": {
+          "type": "string",
+          "description": " wxMini"
+        },
+        "createTimeStart": {
+          "type": "string",
+          "description": " 注册时间开始"
+        },
+        "createTimeEnd": {
+          "type": "string",
+          "description": " 注册时间结束"
+        },
+        "isPaidUser": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 是否付费用户"
+        },
+        "userType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户类型"
+        },
+        "channel": {
+          "type": "string",
+          "description": " 获客渠道"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetUserListReq",
+      "required": [
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetUserListResp": {
+      "type": "object",
+      "properties": {
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserDetail"
+          }
+        }
+      },
+      "title": "GetUserListResp",
+      "required": [
+        "sum",
+        "list"
+      ]
+    },
+    "LifeTimeValueStat": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "userCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户数"
+        },
+        "paidUserCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 付费用户数"
+        },
+        "refundOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 退款单数"
+        },
+        "paidOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 下单数"
+        },
+        "repeatPaidUserCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 复购用户数"
+        },
+        "commentOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 评价订单数"
+        },
+        "fiveStarOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 满意评价订单数"
+        },
+        "threeStarOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 一般评价订单数"
+        },
+        "oneStarOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 不满意订单数"
+        },
+        "textChatOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 文字订单数"
+        },
+        "voiceChatOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 语音订单数"
+        },
+        "paidAmountSum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户付费总金额"
+        },
+        "ltv1Day": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ltv3Day": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ltv7Day": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ltv14Day": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ltv21Day": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ltv30Day": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ltv60Day": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "LifeTimeValueStat",
+      "required": [
+        "date",
+        "userCnt",
+        "paidUserCnt",
+        "refundOrderCnt",
+        "paidOrderCnt",
+        "repeatPaidUserCnt",
+        "commentOrderCnt",
+        "fiveStarOrderCnt",
+        "threeStarOrderCnt",
+        "oneStarOrderCnt",
+        "textChatOrderCnt",
+        "voiceChatOrderCnt",
+        "paidAmountSum",
+        "ltv1Day",
+        "ltv3Day",
+        "ltv7Day",
+        "ltv14Day",
+        "ltv21Day",
+        "ltv30Day",
+        "ltv60Day"
+      ]
+    },
+    "ListAdminMenuReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 管理员id"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 要查询的管理员id"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "menu1Id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 一级菜单id 当菜单id 都为0 是查询1级菜单"
+        },
+        "menu2Id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 二级菜单id 当只有2级菜单为0 是查询1级菜单对应的2级菜单"
+        }
+      },
+      "title": "ListAdminMenuReq",
+      "required": [
+        "adminUid",
+        "uid",
+        "pageNo",
+        "pageSize",
+        "menu1Id",
+        "menu2Id"
+      ]
+    },
+    "ListAdminMenuResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdminMenu"
+          }
+        },
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "ListAdminMenuResp",
+      "required": [
+        "list",
+        "sum"
+      ]
+    },
+    "ListContract1021Req": {
+      "type": "object",
+      "properties": {
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "ListContract1021Req",
+      "required": [
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "ListContract1021Resp": {
+      "type": "object",
+      "properties": {
+        "sum": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contract1021Data"
+          }
+        }
+      },
+      "title": "ListContract1021Resp",
+      "required": [
+        "sum",
+        "list"
+      ]
+    },
+    "MetaData": {
+      "type": "object",
+      "properties": {
+        "keepAlive": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "title": {
+          "type": "string"
+        },
+        "role": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "icon": {
+          "type": "string"
+        }
+      },
+      "title": "MetaData",
+      "required": [
+        "keepAlive",
+        "title",
+        "role",
+        "icon"
+      ]
+    },
+    "MoveCashData": {
+      "type": "object",
+      "properties": {
+        "flowNo": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "MoveCashData",
+      "required": [
+        "flowNo",
+        "uid"
+      ]
+    },
+    "NeedHelpUserData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "reportTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "reportContent": {
+          "type": "string"
+        },
+        "attachment": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "createTime": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "listenerAvatar": {
+          "type": "string"
+        },
+        "listenerNickName": {
+          "type": "string"
+        }
+      },
+      "title": "NeedHelpUserData",
+      "required": [
+        "id",
+        "uid",
+        "listenerUid",
+        "reportTag",
+        "reportContent",
+        "attachment",
+        "remark",
+        "state",
+        "createTime",
+        "updateTime",
+        "avatar",
+        "nickName",
+        "listenerAvatar",
+        "listenerNickName"
+      ]
+    },
+    "Pair": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "Pair",
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "ProcessNeedHelpUserReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 需要帮助的人"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 上报人"
+        },
+        "id": {
+          "type": "string"
+        },
+        "action": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string"
+        }
+      },
+      "title": "ProcessNeedHelpUserReq",
+      "required": [
+        "adminUid",
+        "uid",
+        "listenerUid",
+        "id",
+        "action",
+        "remark"
+      ]
+    },
+    "ProcessNeedHelpUserResp": {
+      "type": "object",
+      "title": "ProcessNeedHelpUserResp"
+    },
+    "QueryContract1021ByIdReq": {
+      "type": "object",
+      "properties": {
+        "contractId": {
+          "type": "string",
+          "description": " 合同编号"
+        }
+      },
+      "title": "QueryContract1021ByIdReq",
+      "required": [
+        "contractId"
+      ]
+    },
+    "QueryContract1021ByIdResp": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "description": " 姓名"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": " 手机号"
+        },
+        "startDate": {
+          "type": "string",
+          "description": " 开始日期 2022-10-21"
+        },
+        "endDate": {
+          "type": "string",
+          "description": " 结束日期 2022-11-21"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单位 分"
+        },
+        "idno": {
+          "type": "string",
+          "description": " 身份证号"
+        },
+        "signTime": {
+          "type": "string",
+          "description": " 签名时间"
+        },
+        "signName": {
+          "type": "string",
+          "description": " 签名"
+        }
+      },
+      "title": "QueryContract1021ByIdResp",
+      "required": [
+        "userName",
+        "phoneNumber",
+        "startDate",
+        "endDate",
+        "amount",
+        "idno",
+        "signTime",
+        "signName"
+      ]
+    },
+    "RefundChatOrder": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerNickName": {
+          "type": "string"
+        },
+        "listenerAvatar": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "buyUnit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "chatUnitMinute": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unitPrice": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "actualAmount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "saveAmount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "orderState": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "orderType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "commentTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "commentTime": {
+          "type": "string"
+        },
+        "star": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "feedbackTime": {
+          "type": "string"
+        },
+        "feedback": {
+          "type": "string"
+        },
+        "usedChatMinute": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "startTime": {
+          "type": "string"
+        },
+        "endTime": {
+          "type": "string"
+        },
+        "expiryTime": {
+          "type": "string"
+        },
+        "applyRefundTime": {
+          "type": "string",
+          "description": " 首次申请退款时间"
+        },
+        "refundReason": {
+          "type": "string",
+          "description": " 退款原因"
+        },
+        "refundReasonTag": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 退款原因标签"
+        },
+        "additional": {
+          "type": "string",
+          "description": " 补充信息"
+        },
+        "attachment": {
+          "type": "string",
+          "description": " 附加图片 #分隔"
+        },
+        "userChannel": {
+          "type": "string",
+          "description": " 用户渠道"
+        }
+      },
+      "title": "RefundChatOrder",
+      "required": [
+        "orderId",
+        "createTime",
+        "listenerUid",
+        "listenerNickName",
+        "listenerAvatar",
+        "nickName",
+        "uid",
+        "avatar",
+        "buyUnit",
+        "chatUnitMinute",
+        "unitPrice",
+        "actualAmount",
+        "saveAmount",
+        "orderState",
+        "orderType",
+        "comment",
+        "commentTag",
+        "commentTime",
+        "star",
+        "feedbackTime",
+        "feedback",
+        "usedChatMinute",
+        "startTime",
+        "endTime",
+        "expiryTime",
+        "applyRefundTime",
+        "refundReason",
+        "refundReasonTag",
+        "additional",
+        "attachment",
+        "userChannel"
+      ]
+    },
+    "RegisterAdminReq": {
+      "type": "object",
+      "properties": {
+        "adminUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "authKey": {
+          "type": "string"
+        },
+        "authType": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "title": "RegisterAdminReq",
+      "required": [
+        "adminUid",
+        "authKey",
+        "authType",
+        "password"
+      ]
+    },
+    "RegisterAdminResp": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "RegisterAdminResp",
+      "required": [
+        "uid"
+      ]
+    },
+    "ReportUserData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 上报人"
+        },
+        "targetUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 上报对象"
+        },
+        "reportTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 上报标签"
+        },
+        "reportContent": {
+          "type": "string",
+          "description": " 上报内容"
+        },
+        "attachment": {
+          "type": "string",
+          "description": " 附件"
+        },
+        "remark": {
+          "type": "string",
+          "description": " 处理留言"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 状态"
+        },
+        "createTime": {
+          "type": "string",
+          "description": " 上报时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": " 状态更新时间"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 上报人头像"
+        },
+        "nickName": {
+          "type": "string",
+          "description": " 上报人昵称"
+        },
+        "targetAvatar": {
+          "type": "string",
+          "description": " 上报对象头像"
+        },
+        "targetNickName": {
+          "type": "string",
+          "description": " 上报对象昵称"
+        }
+      },
+      "title": "ReportUserData",
+      "required": [
+        "id",
+        "uid",
+        "targetUid",
+        "reportTag",
+        "reportContent",
+        "attachment",
+        "remark",
+        "state",
+        "createTime",
+        "updateTime",
+        "avatar",
+        "nickName",
+        "targetAvatar",
+        "targetNickName"
+      ]
+    },
+    "SignContract1021Req": {
+      "type": "object",
+      "properties": {
+        "contractId": {
+          "type": "string",
+          "description": " 合同编号"
+        },
+        "signName": {
+          "type": "string",
+          "description": " 签名图片"
+        }
+      },
+      "title": "SignContract1021Req",
+      "required": [
+        "contractId",
+        "signName"
+      ]
+    },
+    "SignContract1021Resp": {
+      "type": "object",
+      "title": "SignContract1021Resp"
+    },
+    "UserDetail": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "description": " 注册时间"
+        },
+        "channel": {
+          "type": "string",
+          "description": " 获客渠道"
+        },
+        "authType": {
+          "type": "string",
+          "description": " 登陆方式"
+        },
+        "costAmountSum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 支付成功总额"
+        },
+        "refundAmountSum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 退款总额"
+        },
+        "paidOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 支付成功订单数量"
+        },
+        "refundOrderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 退款订单数"
+        },
+        "noCondRefundCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 无条件退款机会"
+        },
+        "gender": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 性别"
+        },
+        "introduction": {
+          "type": "string",
+          "description": " 个人介绍"
+        },
+        "constellation": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 星座"
+        },
+        "birthday": {
+          "type": "string",
+          "description": " 生日"
+        },
+        "freeTime": {
+          "type": "string",
+          "description": " 解封时间"
+        },
+        "banReason": {
+          "type": "string",
+          "description": " 封禁原因"
+        },
+        "openId": {
+          "type": "string"
+        }
+      },
+      "title": "UserDetail",
+      "required": [
+        "uid",
+        "nickname",
+        "avatar",
+        "createTime",
+        "channel",
+        "authType",
+        "costAmountSum",
+        "refundAmountSum",
+        "paidOrderCnt",
+        "refundOrderCnt",
+        "noCondRefundCnt",
+        "gender",
+        "introduction",
+        "constellation",
+        "birthday",
+        "freeTime",
+        "banReason",
+        "openId"
+      ]
+    },
+    "UserProfile": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 头像大图"
+        },
+        "small_avatar": {
+          "type": "string",
+          "description": " 缩略头像"
+        },
+        "birthday": {
+          "type": "string",
+          "description": " 出生年月日 年-月-日"
+        },
+        "constellation": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 星座 1 2 3 4"
+        },
+        "gender": {
+          "type": "integer",
+          "format": "int32",
+          "description": " 性别"
+        },
+        "introduction": {
+          "type": "string",
+          "description": " 个人介绍"
+        }
+      },
+      "title": "UserProfile",
+      "required": [
+        "uid",
+        "nickname",
+        "avatar",
+        "small_avatar",
+        "birthday",
+        "constellation",
+        "gender",
+        "introduction"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

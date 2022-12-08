@@ -1,0 +1,72 @@
+syntax = "v1"
+
+info(
+    title: "type title here"
+    desc: "type desc here"
+    author: "type author here"
+    email: "type email here"
+    version: "type version here"
+)
+
+// 获取订单列表
+type (
+    RefundChatOrder {
+        OrderId string `json:"orderId"`
+        CreateTime string `json:"createTime"`
+        ListenerUid int64 `json:"listenerUid"`
+        ListenerNickName string `json:"listenerNickName"`
+        ListenerAvatar string `json:"listenerAvatar"`
+        NickName string `json:"nickName"`
+        Uid int64 `json:"uid"`
+        Avatar string `json:"avatar"`
+        BuyUnit int64 `json:"buyUnit"`
+        ChatUnitMinute int64 `json:"chatUnitMinute"`
+        UnitPrice int64 `json:"unitPrice"`
+        ActualAmount int64 `json:"actualAmount"`
+        SaveAmount int64 `json:"saveAmount"`
+        OrderState int64 `json:"orderState"`
+        OrderType int64 `json:"orderType"`
+        Comment string `json:"comment"`
+        CommentTag []int64 `json:"commentTag"`
+        CommentTime string `json:"commentTime"`
+        Star int64 `json:"star"`
+        FeedbackTime string `json:"feedbackTime"`
+        Feedback string `json:"feedback"`
+        UsedChatMinute int64 `json:"usedChatMinute"`
+        StartTime string `json:"startTime"`
+        EndTime string `json:"endTime"`
+        ExpiryTime string `json:"expiryTime"`
+        ApplyRefundTime string `json:"applyRefundTime"`       // 首次申请退款时间
+        RefundReason string `json:"refundReason"`             // 退款原因
+        RefundReasonTag int64 `json:"refundReasonTag"`        // 退款原因标签
+        Additional string `json:"additional"`                 // 补充信息
+        Attachment string `json:"attachment"`                 // 附加图片 #分隔
+        UserChannel string `json:"userChannel"` // 用户渠道
+    }
+    GetRefundOrderListReq {
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+        Uid int64 `json:"uid"`
+        ListenerUid int64 `json:"listenerUid"`
+        OrderId string `json:"orderId"`
+        OrderType int64 `json:"orderType"`
+        State []int64 `json:"state"`
+    }
+    GetRefundOrderListResp {
+        Sum int64 `json:"sum"`
+        List []*RefundChatOrder `json:"list"`
+    }
+)
+
+// 审核通过或者发起退款
+type (
+    CheckRefundOrderReq {
+        OrderId string `json:"orderId"`
+        Action int64 `json:"action"`
+        Remark string `json:"remark"`
+        AdminUid int64 `json:"adminUid"`
+    }
+    CheckRefundOrderResp {
+
+    }
+)

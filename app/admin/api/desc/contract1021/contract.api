@@ -1,0 +1,77 @@
+syntax = "v1"
+
+info(
+    title: "contract"
+    desc: "contract"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+// 生成新合同
+type (
+    GenContract1021Req {
+        UserName string `json:"userName"`       // 姓名
+        PhoneNumber string `json:"phoneNumber"` // 手机号
+        StartDate string `json:"startDate"`     // 开始日期 2022-10-21
+        EndDate string `json:"endDate"`         // 结束日期 2022-11-21
+        Amount int64 `json:"amount"`            // 单位 分
+        Idno string `json:"idno"`               // 身份证号
+    }
+
+    GenContract1021Resp {
+        ContractId string `json:"contractId"` // 合同编号
+    }
+)
+
+// 用户签名
+type (
+    SignContract1021Req {
+        ContractId string `json:"contractId"`   // 合同编号
+        SignName string `json:"signName"`       // 签名图片
+    }
+    SignContract1021Resp {
+
+    }
+)
+
+// 根据编号查询合同
+type (
+    QueryContract1021ByIdReq {
+        ContractId string `json:"contractId"`   // 合同编号
+    }
+    QueryContract1021ByIdResp {
+        UserName string `json:"userName"`       // 姓名
+        PhoneNumber string `json:"phoneNumber"` // 手机号
+        StartDate string `json:"startDate"`     // 开始日期 2022-10-21
+        EndDate string `json:"endDate"`         // 结束日期 2022-11-21
+        Amount int64 `json:"amount"`            // 单位 分
+        Idno string `json:"idno"`               // 身份证号
+        SignTime string `json:"signTime"`       // 签名时间
+        SignName string `json:"signName"`       // 签名
+    }
+)
+
+// 查询合同列表
+type (
+    ListContract1021Req {
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+    }
+    Contract1021Data {
+        ContractId string `json:"contractId"`   // 合同编号
+        UserName string `json:"userName"`       // 姓名
+        PhoneNumber string `json:"phoneNumber"` // 手机号
+        StartDate string `json:"startDate"`     // 开始日期 2022-10-21
+        EndDate string `json:"endDate"`         // 结束日期 2022-11-21
+        Amount int64 `json:"amount"`            // 单位 分
+        Idno string `json:"idno"`               // 身份证号
+        SignName string `json:"signName"`       // 签名图片
+        SignTime string `json:"signTime"`       // 签名时间
+    }
+    ListContract1021Resp {
+        Sum int64 `json:"sum"`
+        List []*Contract1021Data `json:"list"`
+    }
+)
+

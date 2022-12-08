@@ -1,0 +1,22 @@
+syntax = "v1"
+
+info(
+    title: "wx"
+    desc: "wx"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+// 生成小程序url link/schema
+type (
+    GenWxMpUrlReq {
+        Path string `json:"path"`
+        Query string `json:"query"`
+        ExpireIntervalDays int64 `json:"expireIntervalDays"`
+        Type int64 `json:"type"` // 1 url link 2 url schema
+    }
+    GenWxMpUrlResp {
+        Url string `json:"url"`
+    }
+)

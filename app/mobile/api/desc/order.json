@@ -1,0 +1,1603 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "订单",
+    "description": "订单",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "mobile/v1/chatorder/action": {
+      "post": {
+        "summary": "订单操作",
+        "operationId": "doChatOrderAction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DoChatOrderActionResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DoChatOrderActionReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/create": {
+      "post": {
+        "summary": "创建订单",
+        "operationId": "createChatOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateChatOrderResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateChatOrderReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/estimate": {
+      "post": {
+        "summary": "获取订单费用估算",
+        "operationId": "estimateChatOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EstimateOrderResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EstimateOrderReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/listenerdetail": {
+      "post": {
+        "summary": "XXX获取单个订单详情",
+        "operationId": "listenerChatOrderDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetListenerChatOrderDetailResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetListenerChatOrderDetailReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/listenerlist": {
+      "post": {
+        "summary": "XXX订单列表",
+        "operationId": "listenerChatOrderList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetListenerSeeChatOrderListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetListenerSeeChatOrderListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/price/current": {
+      "post": {
+        "summary": "获取当前XXX聊天实时价格",
+        "operationId": "getCurrentListenerChatPrice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetCurrentListenerChatPriceResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetCurrentListenerChatPriceReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/priceconfig": {
+      "post": {
+        "summary": "获取聊天服务的定价配置",
+        "operationId": "getBusinessChatPrice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetBusinessChatPricingPlanResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetBusinessChatPricingPlanReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/recentcomment": {
+      "post": {
+        "summary": "获取最近的好评",
+        "operationId": "getRecentGoodComment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetRecentGoodCommentResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetRecentGoodCommentReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/refundlog": {
+      "post": {
+        "summary": "获取单个订单退款进度",
+        "operationId": "getChatOrderRefundLog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatOrderRefundLogResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatOrderRefundLogReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/user/feedback/list": {
+      "post": {
+        "summary": "用户获取订单反馈列表",
+        "operationId": "getOrderFeedbackListByUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatOrderFeedbackListByUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatOrderFeedbackListByUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/userdetail": {
+      "post": {
+        "summary": "普通用户获取单个订单详情",
+        "operationId": "userChatOrderDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserChatOrderDetailResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserChatOrderDetailReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/userlist": {
+      "post": {
+        "summary": "普通用户订单列表",
+        "operationId": "userChatOrderList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserChatOrderListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserChatOrderListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    },
+    "mobile/v1/chatorder/userstatelog": {
+      "post": {
+        "summary": "获取单个订单状态记录",
+        "operationId": "userChatOrderStateLog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatOrderStateLogResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatOrderStateLogReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chatorder"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BusinessChatPricingPlan": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "taxRate": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 税率(千分之几)"
+        },
+        "nightAddPriceRate": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 夜间加收费率(千分之几)"
+        },
+        "shareRateStep1Star5": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 1阶段满意评价平台抽佣比率(千分之几)"
+        },
+        "shareRateStep1Star3": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 1阶段一般评价平台抽佣比率(千分之几)"
+        },
+        "shareRateStep1Star1": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 1阶段不满意评价平台抽佣比率(千分之几)"
+        },
+        "shareAmountStep1Unit": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 1阶段时长临界单位"
+        },
+        "shareRateStep2Star5": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 2阶段满意评价平台抽佣比率(千分之几)"
+        },
+        "shareRateStep2Star3": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 2阶段一般评价平台抽佣比率(千分之几)"
+        },
+        "shareRateStep2Star1": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 2阶段不满意评价平台抽佣比率(千分之几)"
+        },
+        "nightAddPriceHourStart": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 夜间服务加价开始时刻"
+        },
+        "nightAddPriceHourEnd": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 夜间加价结束时刻"
+        },
+        "chatUnitMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单位时长的分钟数"
+        },
+        "newUserDiscount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 新用户订单费用折扣(千分之几)"
+        },
+        "freeMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 免费分钟数"
+        },
+        "defaultTextChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 默认文字聊天价格(分)"
+        },
+        "defaultVoiceChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 默认语音聊天价格(分)"
+        },
+        "orderCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单数"
+        }
+      },
+      "title": "BusinessChatPricingPlan",
+      "required": [
+        "createTime",
+        "id",
+        "taxRate",
+        "nightAddPriceRate",
+        "shareRateStep1Star5",
+        "shareRateStep1Star3",
+        "shareRateStep1Star1",
+        "shareAmountStep1Unit",
+        "shareRateStep2Star5",
+        "shareRateStep2Star3",
+        "shareRateStep2Star1",
+        "nightAddPriceHourStart",
+        "nightAddPriceHourEnd",
+        "chatUnitMinute",
+        "newUserDiscount",
+        "freeMinute",
+        "defaultTextChatPrice",
+        "defaultVoiceChatPrice",
+        "orderCnt"
+      ]
+    },
+    "ChatOrderRefundLog": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operatorUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string"
+        }
+      },
+      "title": "ChatOrderRefundLog",
+      "required": [
+        "createTime",
+        "state",
+        "operatorUid",
+        "remark"
+      ]
+    },
+    "ChatOrderStateLog": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operatorUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string"
+        }
+      },
+      "title": "ChatOrderStateLog",
+      "required": [
+        "createTime",
+        "state",
+        "operatorUid",
+        "remark"
+      ]
+    },
+    "CreateChatOrderReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerNickName": {
+          "type": "string",
+          "description": " XXX昵称"
+        },
+        "listenerAvatar": {
+          "type": "string",
+          "description": " XXX头像"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户id"
+        },
+        "nickName": {
+          "type": "string",
+          "description": " 用户昵称"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 用户头像"
+        },
+        "openId": {
+          "type": "string",
+          "description": " 用户微信openid"
+        },
+        "buyUnit": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 服务时长分钟"
+        },
+        "pricingPlanId": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 价格方案id"
+        },
+        "orderType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单类型2文字4语音"
+        },
+        "channel": {
+          "type": "string",
+          "description": " 获客渠道"
+        }
+      },
+      "title": "CreateChatOrderReq",
+      "required": [
+        "listenerUid",
+        "listenerNickName",
+        "listenerAvatar",
+        "uid",
+        "nickName",
+        "avatar",
+        "openId",
+        "buyUnit",
+        "pricingPlanId",
+        "orderType"
+      ]
+    },
+    "CreateChatOrderResp": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "chatUnitMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 服务单价包含多少分钟"
+        },
+        "buyUnit": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 购买的时长，单价时间的整数倍"
+        },
+        "unitPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单价"
+        },
+        "baseAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 服务费"
+        },
+        "taxAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 税费"
+        },
+        "nightAddAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 夜间加收费用"
+        },
+        "saveAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 优惠减免金额"
+        },
+        "actualAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 实际总费用"
+        },
+        "appid": {
+          "type": "string"
+        },
+        "nonceStr": {
+          "type": "string"
+        },
+        "paySign": {
+          "type": "string"
+        },
+        "package": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "signType": {
+          "type": "string"
+        }
+      },
+      "title": "CreateChatOrderResp",
+      "required": [
+        "orderId",
+        "chatUnitMinute",
+        "buyUnit",
+        "unitPrice",
+        "baseAmount",
+        "taxAmount",
+        "nightAddAmount",
+        "saveAmount",
+        "actualAmount",
+        "appid",
+        "nonceStr",
+        "paySign",
+        "package",
+        "timestamp",
+        "signType"
+      ]
+    },
+    "DoChatOrderActionReq": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "operatorUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 操作人uid"
+        },
+        "action": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单状态（操作）"
+        },
+        "remark": {
+          "type": "string",
+          "description": " 例如 退款原因"
+        },
+        "tag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 例如 退款原因tag"
+        },
+        "additional": {
+          "type": "string",
+          "description": " 补充信息"
+        },
+        "attachment": {
+          "type": "string",
+          "description": " 附件 #分隔图片文件"
+        },
+        "orderType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单类型"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXXuid"
+        }
+      },
+      "title": "DoChatOrderActionReq",
+      "required": [
+        "operatorUid",
+        "action"
+      ]
+    },
+    "DoChatOrderActionResp": {
+      "type": "object",
+      "title": "DoChatOrderActionResp"
+    },
+    "EstimateOrderReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "buyUnit": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 服务时长分钟"
+        },
+        "chatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 每单位价格"
+        },
+        "pricingPlanId": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 价格方案id"
+        }
+      },
+      "title": "EstimateOrderReq",
+      "required": [
+        "listenerUid",
+        "uid",
+        "buyUnit",
+        "chatPrice",
+        "pricingPlanId"
+      ]
+    },
+    "EstimateOrderResp": {
+      "type": "object",
+      "properties": {
+        "chatUnitMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 服务单价包含多少分钟"
+        },
+        "buyUnit": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 购买的时长，单价时间的整数倍"
+        },
+        "unitPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单价"
+        },
+        "baseAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 服务费"
+        },
+        "taxAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 税费"
+        },
+        "nightAddAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 夜间加收费用"
+        },
+        "saveAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 优惠减免金额"
+        },
+        "actualAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 实际总费用"
+        }
+      },
+      "title": "EstimateOrderResp",
+      "required": [
+        "chatUnitMinute",
+        "buyUnit",
+        "unitPrice",
+        "baseAmount",
+        "taxAmount",
+        "nightAddAmount",
+        "saveAmount",
+        "actualAmount"
+      ]
+    },
+    "GetBusinessChatPricingPlanReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetBusinessChatPricingPlanReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "GetBusinessChatPricingPlanResp": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/BusinessChatPricingPlan"
+        }
+      },
+      "title": "GetBusinessChatPricingPlanResp",
+      "required": [
+        "config"
+      ]
+    },
+    "GetChatOrderFeedbackListByUserReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetChatOrderFeedbackListByUserReq",
+      "required": [
+        "uid",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetChatOrderFeedbackListByUserResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserSeeChatOrderFeedback"
+          }
+        }
+      },
+      "title": "GetChatOrderFeedbackListByUserResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetChatOrderRefundLogReq": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        }
+      },
+      "title": "GetChatOrderRefundLogReq",
+      "required": [
+        "orderId"
+      ]
+    },
+    "GetChatOrderRefundLogResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChatOrderRefundLog"
+          }
+        }
+      },
+      "title": "GetChatOrderRefundLogResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetChatOrderStateLogReq": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetChatOrderStateLogReq",
+      "required": [
+        "orderId",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetChatOrderStateLogResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChatOrderStateLog"
+          }
+        }
+      },
+      "title": "GetChatOrderStateLogResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetCurrentListenerChatPriceReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetCurrentListenerChatPriceReq",
+      "required": [
+        "listenerUid",
+        "uid"
+      ]
+    },
+    "GetCurrentListenerChatPriceResp": {
+      "type": "object",
+      "properties": {
+        "textChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "文字聊天单价格"
+        },
+        "voiceChatPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "语音聊天单价格"
+        },
+        "textChatActualPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "优惠后的文字单价格"
+        },
+        "voiceChatActualPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": "优惠后的语音单价格"
+        },
+        "nightAddFlag": {
+          "type": "string",
+          "description": " 夜间服务费加收提示"
+        },
+        "freeFlag": {
+          "type": "string",
+          "description": " 优惠标志"
+        },
+        "freeMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 优惠分钟数"
+        },
+        "newUserDiscount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 新用户订单费用折扣(千分之几)"
+        },
+        "pricingPlanId": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 价格方案id"
+        },
+        "chatUnitMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单位时长的分钟数"
+        }
+      },
+      "title": "GetCurrentListenerChatPriceResp",
+      "required": [
+        "textChatPrice",
+        "voiceChatPrice",
+        "textChatActualPrice",
+        "voiceChatActualPrice",
+        "nightAddFlag",
+        "freeFlag",
+        "freeMinute",
+        "newUserDiscount",
+        "pricingPlanId",
+        "chatUnitMinute"
+      ]
+    },
+    "GetListenerChatOrderDetailReq": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        }
+      },
+      "title": "GetListenerChatOrderDetailReq",
+      "required": [
+        "orderId"
+      ]
+    },
+    "GetListenerChatOrderDetailResp": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/ListenerSeeChatOrder"
+        }
+      },
+      "title": "GetListenerChatOrderDetailResp",
+      "required": [
+        "info"
+      ]
+    },
+    "GetListenerSeeChatOrderListReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 列表类型 0 全部 1 需要完成 服务 反馈 同意退款"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetListenerSeeChatOrderListReq",
+      "required": [
+        "listenerUid",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetListenerSeeChatOrderListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ListenerSeeChatOrder"
+          }
+        }
+      },
+      "title": "GetListenerSeeChatOrderListResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetRecentGoodCommentReq": {
+      "type": "object",
+      "properties": {
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetRecentGoodCommentReq",
+      "required": [
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetRecentGoodCommentResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecentGoodComment"
+          }
+        }
+      },
+      "title": "GetRecentGoodCommentResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetUserChatOrderDetailReq": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        }
+      },
+      "title": "GetUserChatOrderDetailReq",
+      "required": [
+        "orderId"
+      ]
+    },
+    "GetUserChatOrderDetailResp": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/UserSeeChatOrder"
+        }
+      },
+      "title": "GetUserChatOrderDetailResp",
+      "required": [
+        "info"
+      ]
+    },
+    "GetUserChatOrderListReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetUserChatOrderListReq",
+      "required": [
+        "uid",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetUserChatOrderListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserSeeChatOrder"
+          }
+        }
+      },
+      "title": "GetUserChatOrderListResp",
+      "required": [
+        "list"
+      ]
+    },
+    "ListenerSeeChatOrder": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string",
+          "description": "单号"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "description": " 下单时间"
+        },
+        "buyUnit": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 购买多少单位"
+        },
+        "chatUnitMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 一单位多少分钟"
+        },
+        "usedChatMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 已使用时长"
+        },
+        "startTime": {
+          "type": "string",
+          "description": " 服务开始时间"
+        },
+        "endTime": {
+          "type": "string",
+          "description": " 最近一次服务结束时间"
+        },
+        "expiryTime": {
+          "type": "string",
+          "description": " 到期时间"
+        },
+        "saveAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 优惠金额"
+        },
+        "actualAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 实际支付金额"
+        },
+        "orderState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单状态"
+        },
+        "orderType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单类型"
+        },
+        "unitPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单价"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "commentTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "commentTime": {
+          "type": "string"
+        },
+        "star": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "reply": {
+          "type": "string"
+        },
+        "replyTime": {
+          "type": "string"
+        },
+        "feedbackTime": {
+          "type": "string"
+        },
+        "feedback": {
+          "type": "string"
+        },
+        "statusMark": {
+          "type": "string",
+          "description": " 根据不通状态确定下一个状态的倒数计时提示语"
+        },
+        "platformShareAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 平台收益金额（分）"
+        },
+        "listenerAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXX收益"
+        }
+      },
+      "title": "ListenerSeeChatOrder",
+      "required": [
+        "orderId",
+        "nickName",
+        "uid",
+        "avatar",
+        "createTime",
+        "buyUnit",
+        "chatUnitMinute",
+        "usedChatMinute",
+        "startTime",
+        "endTime",
+        "expiryTime",
+        "saveAmount",
+        "actualAmount",
+        "orderState",
+        "orderType",
+        "unitPrice",
+        "comment",
+        "commentTag",
+        "commentTime",
+        "star",
+        "reply",
+        "replyTime",
+        "feedbackTime",
+        "feedback",
+        "statusMark",
+        "platformShareAmount",
+        "listenerAmount"
+      ]
+    },
+    "RecentGoodComment": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "RecentGoodComment",
+      "required": [
+        "text",
+        "listenerUid",
+        "uid"
+      ]
+    },
+    "UserSeeChatOrder": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string",
+          "description": "单号"
+        },
+        "createTime": {
+          "type": "string",
+          "description": " 下单时间"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXXuid"
+        },
+        "listenerNickName": {
+          "type": "string",
+          "description": " XXX名称"
+        },
+        "listenerAvatar": {
+          "type": "string",
+          "description": " XXX缩略头像"
+        },
+        "buyUnit": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 购买多少单位"
+        },
+        "chatUnitMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 一单位多少分钟"
+        },
+        "usedChatMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 已使用时长"
+        },
+        "startTime": {
+          "type": "string",
+          "description": " 服务开始时间"
+        },
+        "endTime": {
+          "type": "string",
+          "description": " 最近一次服务结束时间"
+        },
+        "expiryTime": {
+          "type": "string",
+          "description": " 到期时间"
+        },
+        "saveAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 优惠金额"
+        },
+        "actualAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 实际支付金额"
+        },
+        "orderState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单状态"
+        },
+        "orderType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 订单类型"
+        },
+        "unitPrice": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 单价"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "commentTag": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "commentTime": {
+          "type": "string"
+        },
+        "star": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "reply": {
+          "type": "string"
+        },
+        "replyTime": {
+          "type": "string"
+        },
+        "feedbackTime": {
+          "type": "string"
+        },
+        "feedback": {
+          "type": "string"
+        },
+        "statusMark": {
+          "type": "string",
+          "description": " 根据不通状态确定下一个状态的倒数计时提示语"
+        }
+      },
+      "title": "UserSeeChatOrder",
+      "required": [
+        "orderId",
+        "createTime",
+        "listenerUid",
+        "listenerNickName",
+        "listenerAvatar",
+        "buyUnit",
+        "chatUnitMinute",
+        "usedChatMinute",
+        "startTime",
+        "endTime",
+        "expiryTime",
+        "saveAmount",
+        "actualAmount",
+        "orderState",
+        "orderType",
+        "unitPrice",
+        "comment",
+        "commentTag",
+        "commentTime",
+        "star",
+        "reply",
+        "replyTime",
+        "feedbackTime",
+        "feedback",
+        "statusMark"
+      ]
+    },
+    "UserSeeChatOrderFeedback": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string",
+          "description": "单号"
+        },
+        "createTime": {
+          "type": "string",
+          "description": " 下单时间"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXXuid"
+        },
+        "listenerNickName": {
+          "type": "string",
+          "description": " XXX名称"
+        },
+        "listenerAvatar": {
+          "type": "string",
+          "description": " XXX缩略头像"
+        },
+        "feedbackTime": {
+          "type": "string",
+          "description": " 反馈时间"
+        },
+        "feedback": {
+          "type": "string",
+          "description": " 反馈内容"
+        }
+      },
+      "title": "UserSeeChatOrderFeedback",
+      "required": [
+        "orderId",
+        "createTime",
+        "listenerUid",
+        "listenerNickName",
+        "listenerAvatar",
+        "feedbackTime",
+        "feedback"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

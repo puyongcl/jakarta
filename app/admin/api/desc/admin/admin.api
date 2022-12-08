@@ -1,0 +1,77 @@
+syntax = "v1"
+
+info(
+    title: "管理员后台"
+    desc: "管理员后台"
+    author: ""
+    email: ""
+)
+
+
+type (
+    RegisterAdminReq {
+        AdminUid int64 `json:"adminUid"`
+        AuthKey string `json:"authKey"`
+        AuthType string `json:"authType"`
+        Password string `json:"password"`
+    }
+    RegisterAdminResp {
+        Uid int64 `json:"uid"`
+    }
+)
+
+// 新增用户菜单权限
+type (
+    MetaData {
+        KeepAlive bool `json:"keepAlive"`
+        Title string `json:"title"`
+        Role []string `json:"role"`
+        Icon string `json:"icon"`
+    }
+    AdminMenu {
+        Path string `json:"path"`
+        Name string `json:"name"`
+        Redirect string `json:"redirect"`
+        Meta MetaData `json:"meta"`
+        Component string `json:"component"`
+    }
+    AddAdminMenuReq {
+        SuperAdminUid int64 `json:"superAdminUid"` // 超级管理员
+        Uid int64 `json:"uid"`                     // 普通管理员
+        Menu1Id int64 `json:"menu1Id"`             // 一级菜单id
+        Menu2Id int64 `json:"menu2Id"`             // 二级菜单id
+        MenuValue AdminMenu `json:"menuValue"`     // 菜单对应的json结构
+    }
+    AddAdminMenuResp {
+
+    }
+)
+
+// 删除用户菜单权限
+type (
+    DelAdminMenuReq {
+        SuperAdminUid int64 `json:"superAdminUid"` // 超级管理员
+        Uid int64 `json:"adminUid"`                // 普通管理员
+        Menu1Id int64 `json:"menu1Id"`             // 一级菜单id
+        Menu2Id int64 `json:"menu2Id"`             // 二级菜单id
+    }
+    DelAdminMenuResp {
+
+    }
+)
+
+// 查询菜单
+type (
+    ListAdminMenuReq {
+        AdminUid int64 `json:"adminUid"`       // 管理员id
+        Uid int64 `json:"uid"`                 // 要查询的管理员id
+        PageNo int64 `json:"pageNo"`
+        PageSize int64 `json:"pageSize"`
+        Menu1Id int64 `json:"menu1Id"`         // 一级菜单id 当菜单id 都为0 是查询1级菜单
+        Menu2Id int64 `json:"menu2Id"`         // 二级菜单id 当只有2级菜单为0 是查询1级菜单对应的2级菜单
+    }
+    ListAdminMenuResp {
+        List []*AdminMenu `json:"list"`
+        Sum int64 `json:"sum"`
+    }
+)

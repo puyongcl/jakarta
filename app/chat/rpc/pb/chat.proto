@@ -1,0 +1,209 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+// ------------------------------------
+// Messages
+// ------------------------------------
+
+//--------------------------------XXX--------------------------------
+
+// 同步免费聊天和购买的聊天服务状态
+message SyncListenerFreeChatCntReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+  int64 action      = 3;
+}
+message SyncListenerFreeChatCntResp {
+  int64  freeChatCnt        = 1;      // 免费聊天次数
+  string textChatExpiryTime = 2; // 文字聊天到期时间
+  int64  voiceChatMinute    = 3; // 语音聊天当前剩余时长
+}
+
+// 同步聊天过程状态
+message SyncChatStateReq {
+  int64 uid         = 1;// 普通用户
+  int64 listenerUid = 2;// XXX
+  int64 action      = 3;// 操作 参考api定义文档
+}
+message SyncChatStateResp {
+  int64  freeChatCnt           = 1;      // 免费聊天次数
+  string textChatExpiryTime    = 2; // 文字聊天到期时间
+  int64  voiceChatMinute       = 3; // 语音聊天当前剩余时长
+  int64  usedVoiceChatMinute   = 4; // 已经使用过的通话时间
+  int64  chatState             = 5; // 1 新用户 未付费 2 服务中用户 3 老用户 已完成用户
+  int64  listenerChatState     = 6; // 1 2、通话中 3、不在通话中
+  int64  uid                   = 7;// 普通用户
+  int64  listenerUid           = 8;// XXX
+  int64  currentVoiceChatState = 9; // 当前通话状态
+  int64  isFirstEnterChat      = 10; // 2 是
+}
+
+// 更新用户聊天可用时间
+message UpdateUserChatBalanceReq {
+  int64  uid            = 1;
+  int64  listenerUid    = 2;
+  int64  orderType      = 3;
+  int64  addMinute      = 4;
+  string orderId        = 5;
+  int64  eventType      = 6;
+  int64  action         = 7;
+  string textExpireTime = 8;
+}
+
+message UpdateUserChatBalanceResp {
+  int64  freeChatCnt        = 1;      // 免费聊天次数
+  string textChatExpiryTime = 2; // 文字聊天到期时间
+  int64  voiceChatMinute    = 3; // 语音聊天当前剩余时长
+}
+
+// 更新聊天统计
+message UpdateVoiceChatStatReq {
+  int64  uid         = 1;
+  int64  listenerUid = 2;
+  int64  usedMinute  = 3;
+  string chatLogId   = 4;
+}
+
+message UpdateVoiceChatStatResp {
+  int64  freeChatCnt        = 1;      // 免费聊天次数
+  string textChatExpiryTime = 2; // 文字聊天到期时间
+  int64  voiceChatMinute    = 3; // 语音聊天当前剩余时长
+}
+
+// 获取时间快结束的通话
+message GetUseOutVoiceChatReq {
+  int64  state      = 1;
+  string expiryTime = 2;
+  int64  pageNo     = 3;
+  int64  pageSize   = 4;
+}
+message VoiceChatUser {
+  int64  uid              = 1;
+  int64  listenerUid      = 2;
+  string currentChatLogId = 3;
+}
+message GetUseOutVoiceChatResp {
+  repeated VoiceChatUser list = 1;
+}
+
+// 获取时间快结束的文字聊天
+message GetUseOutTextChatReq {
+  string expiryTime = 1;
+  int64  pageNo     = 2;
+  int64  pageSize   = 3;
+}
+message TextChatUser {
+  int64  uid              = 1;
+  int64  listenerUid      = 2;
+  string currentChatLogId = 3;
+}
+message GetUseOutTextChatResp {
+  repeated TextChatUser list = 1;
+}
+
+// 重置免费聊天次数
+message ResetFreeTextChatCntReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+  int64 freeCnt     = 3;
+}
+
+message ResetFreeTextChatCntResp {
+
+}
+
+// 更新统计进入XXX聊天页面用户数
+message UpdateTodayEnterChatUserCntReq {
+  repeated int64 listenerUid = 1;
+}
+
+message UpdateTodayEnterChatUserCntResp {
+
+}
+
+// 更新统计进入XXX聊天页面用户数
+message UpdateLastDaysEnterChatUserCntReq {
+  repeated int64 listenerUid = 1;
+}
+
+message UpdateLastDaysEnterChatUserCntResp {
+
+}
+
+// 更新文字聊天时间用完
+message UpdateTextChatOverReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+}
+message UpdateTextChatOverResp {
+  int64 state = 1;
+}
+
+// 初始化XXX通话状态
+message CreateListenerVoiceChatStateReq {
+  int64 listenerUid = 1;
+}
+message CreateListenerVoiceChatStateResp {
+
+}
+
+// 用户和XXX互动事件
+message SendUserListenerRelationEventReq {
+  int64 uid         = 1;
+  int64 listenerUid = 2;
+  int64 eventType   = 3;
+}
+
+message SendUserListenerRelationEventResp {
+
+}
+
+// 获取交互最频繁的几位XXX
+message GetTopUserAndListenerRelationReq {
+  int64 uid      = 1;
+  int64 pageNo   = 2;
+  int64 pageSize = 3;
+}
+
+message UserAndListenerRelation {
+  int64 listenerUid = 1;
+  int64 score       = 2;
+}
+
+message GetTopUserAndListenerRelationResp {
+  repeated UserAndListenerRelation list = 1;
+}
+
+// ------------------------------------
+// Rpc Func
+// ------------------------------------
+
+service chat {
+  // 同步聊天状态过程
+  rpc syncChatState(SyncChatStateReq) returns (SyncChatStateResp);
+  // 更新用户聊天可用时间
+  rpc updateUserChatBalance(UpdateUserChatBalanceReq) returns (UpdateUserChatBalanceResp);
+  // 结算当前通话记录
+  rpc updateVoiceChatStat(UpdateVoiceChatStatReq) returns (UpdateVoiceChatStatResp);
+  // 获取时间快结束的语音通话
+  rpc getUseOutVoiceChat(GetUseOutVoiceChatReq) returns (GetUseOutVoiceChatResp);
+  // 获取时间快结束的文字通话
+  rpc getUseOutTextChat(GetUseOutTextChatReq) returns (GetUseOutTextChatResp);
+  // 重置免费聊天次数
+  rpc resetFreeTextChatCnt(ResetFreeTextChatCntReq) returns (ResetFreeTextChatCntResp);
+  // 更新统计进入XXX聊天页面用户数
+  rpc updateTodayEnterChatUserCnt(UpdateTodayEnterChatUserCntReq) returns(UpdateTodayEnterChatUserCntResp);
+  // 更新统计近几天进入XXX页面用户数
+  rpc updateLastDaysEnterChatUserCnt(UpdateLastDaysEnterChatUserCntReq) returns (UpdateLastDaysEnterChatUserCntResp);
+  // 更新文字聊天时间用完
+  rpc updateTextChatOver(UpdateTextChatOverReq) returns (UpdateTextChatOverResp);
+  // 初始化XXX通话状态
+  rpc createListenerVoiceChatState(CreateListenerVoiceChatStateReq) returns (CreateListenerVoiceChatStateResp);
+  // 用户和XXX交互事件
+  rpc sendUserListenerRelationEvent(SendUserListenerRelationEventReq) returns (SendUserListenerRelationEventResp);
+  // 获取交互最频繁的几位XXX
+  rpc GetTopUserAndListenerRelation(GetTopUserAndListenerRelationReq) returns (GetTopUserAndListenerRelationResp);
+}

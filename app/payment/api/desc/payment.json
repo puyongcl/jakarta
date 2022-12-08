@@ -1,0 +1,156 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "支付服务",
+    "description": "支付服务",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "payment/v1/payment/wxpay": {
+      "post": {
+        "summary": "third payment：wechat pay",
+        "operationId": "thirdPaymentwxPay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ThirdPaymentWxPayResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ThirdPaymentWxPayReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "payment/v1/third/wxcallback": {
+      "post": {
+        "summary": "third payment：wechat pay callback",
+        "operationId": "thirdPaymentWxPayCallback",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ThirdPaymentWxPayCallbackResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ThirdPaymentWxPayCallbackReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "third"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ThirdPaymentWxPayCallbackReq": {
+      "type": "object",
+      "title": "ThirdPaymentWxPayCallbackReq"
+    },
+    "ThirdPaymentWxPayCallbackResp": {
+      "type": "object",
+      "properties": {
+        "return_code": {
+          "type": "string"
+        }
+      },
+      "title": "ThirdPaymentWxPayCallbackResp",
+      "required": [
+        "return_code"
+      ]
+    },
+    "ThirdPaymentWxPayReq": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "orderType": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "ThirdPaymentWxPayReq",
+      "required": [
+        "orderId",
+        "orderType"
+      ]
+    },
+    "ThirdPaymentWxPayResp": {
+      "type": "object",
+      "properties": {
+        "appid": {
+          "type": "string"
+        },
+        "nonceStr": {
+          "type": "string"
+        },
+        "paySign": {
+          "type": "string"
+        },
+        "package": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "signType": {
+          "type": "string"
+        }
+      },
+      "title": "ThirdPaymentWxPayResp",
+      "required": [
+        "appid",
+        "nonceStr",
+        "paySign",
+        "package",
+        "timestamp",
+        "signType"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

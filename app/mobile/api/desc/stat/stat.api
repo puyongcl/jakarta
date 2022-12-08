@@ -1,0 +1,42 @@
+syntax = "v1"
+
+info(
+    title: "stat"
+    desc: "stat"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+// 保存新用户选择的XX标签
+type (
+    SaveNewUserSelectSpecReq {
+        Uid int64 `json:"uid"`
+        Spec []int64 `json:"spec"`
+        Channel string `json:"channel,optional"`
+    }
+    SaveNewUserSelectSpecResp {
+
+    }
+)
+
+// 保存成人依恋量表测试结果
+type (
+    SaveAdultQuizECRReq {
+        Uid int64 `json:"uid"`
+        Answer []int64 `json:"answer"`
+        Result int64 `json:"result"`
+    }
+    SaveAdultQuizECRResp {
+    }
+)
+
+// 获取最新成人依恋量表测试结果
+type (
+    GetAdultQuizECRReq {
+        Uid int64 `json:"uid"`
+    }
+    GetAdultQuizECRResp {
+        Result int64 `json:"result"`
+    }
+)

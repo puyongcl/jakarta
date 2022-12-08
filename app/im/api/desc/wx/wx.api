@@ -1,0 +1,28 @@
+syntax = "v1"
+
+info(
+    title: "wx"
+    desc: "wx"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+// 生成小程序url link/schema
+type (
+    GenBaiduWxMpUrlReq {
+        OriginId string `json:"originId"`
+        currentTime int64 `json:"currentTime"`
+        Sign string `json:"sign"`
+        Path string `json:"path"`
+        Query string `json:"query"`
+    }
+    BaiduWxMpUrl {
+        Scheme string `json:"scheme"`
+    }
+    GenBaiduWxMpUrlResp {
+        Code int64 `json:"code"`
+        Msg string `json:"msg"`
+        Result BaiduWxMpUrl `json:"result"`
+    }
+)

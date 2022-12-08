@@ -1,0 +1,151 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+//req 、resp
+message CreatePaymentReq {
+  int64  uid = 1;
+  string payModel = 2;
+  int64  payAmount = 3; //（分）
+  string orderId = 4;
+  int64 orderType = 5;
+  string description = 6;
+  string openId = 7;
+}
+message CreatePaymentResp {
+  string appid = 1;
+  string nonceStr = 2;
+  string paySign = 3;
+  string package = 4;
+  string timestamp = 5;
+  string signType = 6;
+}
+
+message PaymentDetail{
+  string flowNo = 2;
+  int64  uid = 3;       // 用户id
+  string payMode = 4;      // 支付方式 WECHAT_PAY:微信支付
+  string tradeType = 5;    // 第三方支付类型Jsapi\App等
+  int64  tradeState = 6;   // 交易状态
+  int64  payAmount = 7;     // 支付总金额(分)
+  string transactionId = 8; // 第三方支付单号
+  string tradeStateDesc = 9; // 支付状态描述
+  string orderId = 10;      // 业务单号
+  int64  orderType = 11;  // 订单类型
+  int64  createTime = 12;
+  int64  updateTime = 13;
+  int64  payStatus = 14; //平台内交易状态  0:未支付 1:支付成功 2:已退款 -1:支付失败
+  int64  payTime = 15; //支付成功时间
+}
+
+message GetPaymentByFlowNoReq {
+  string flowNo = 1;
+}
+message GetPaymentByFlowNoResp {
+  PaymentDetail paymentDetail = 1;
+}
+
+message GetSuccessPaymentFlowByOrderIdReq {
+  string orderId = 1;
+}
+message GetSuccessPaymentFlowByOrderIdResp {
+  PaymentDetail paymentDetail = 1;
+}
+
+//更新交易状态
+message UpdateTradeStateReq {
+  string flowNo = 1;
+  string tradeState = 2;
+  string transactionId = 3;
+  string tradeType = 4;
+  string tradeStateDesc = 5;
+  string bankType = 6;
+  int64 payTime = 7;
+  int64 payAmount = 8;
+}
+message UpdateTradeStateResp {
+  int64 payStatus = 1;
+  string orderId = 2;
+  int64  orderType = 3;  // 订单类型
+}
+
+// 发起退款
+message RequestRefundReq {
+  string orderId = 1;
+  string reason = 2;
+}
+message RequestRefundResp {
+
+}
+
+// 更新退款流水
+message UpdateRefundReq {
+  string flowNo = 1;
+  string payFlowNo = 2;
+  string transactionId = 3;
+  string receivedAccount = 4;
+  int64 successTime = 5;
+  string Status = 6;
+  int64 amount = 7;
+}
+
+message UpdateRefundResp {
+  int64 refundStatus = 1;
+  string orderId = 2;
+}
+
+// 提现
+message MoveCashReq {
+  string flowNo = 1;
+  int64 amount = 2;
+  string phoneNumber = 3;
+  string name = 4;
+  string IdNo = 5;
+  string bankCardNo = 6;
+  int64 uid = 7;
+}
+
+message MoveCashResp {
+  string cashFlowNo = 1;
+  int64 code = 2;
+  string msg = 3;
+}
+
+// 更新转账状态
+message UpdateMoveCashStatusReq {
+  string workNumber = 1; // 任务编号
+  int64 companyId = 2; //
+  string transactionNumber = 3; // 打款流水号
+  int64 payStatus = 4; // 打款状态 见hfbf定义
+  string flowNo = 5; // 自定义流水号(内部提现流水号)
+  string errMsg = 6; // 支付失败原因
+  string payTime = 7; // 支付时间/作废时间 格式2020-10-10 12:00:00
+}
+
+message UpdateMoveCashStatusResp {
+  int64 uid = 1;
+  string walletFlowNo = 2;
+}
+
+
+//service
+service payment {
+  // 创建微信支付预处理订单
+  rpc createPayment(CreatePaymentReq) returns (CreatePaymentResp);
+  // 根据流水号查询流水记录
+  rpc getPaymentByFlowNo(GetPaymentByFlowNoReq) returns (GetPaymentByFlowNoResp);
+  // 更新交易状态
+  rpc updateTradeState(UpdateTradeStateReq) returns (UpdateTradeStateResp);
+  // 根据订单id查询流水记录
+  rpc getSuccessPaymentFlowByOrderIdReq(GetSuccessPaymentFlowByOrderIdReq) returns (GetSuccessPaymentFlowByOrderIdResp);
+  // 发起退款
+  rpc requestRefund(RequestRefundReq) returns (RequestRefundResp);
+  // 更新退款状态
+  rpc updateRefundState(UpdateRefundReq) returns (UpdateRefundResp);
+  // 银行卡转账
+  rpc moveCash(MoveCashReq) returns (MoveCashResp);
+  // 更新转账状态
+  rpc updateMoveCashStatus(UpdateMoveCashStatusReq) returns (UpdateMoveCashStatusResp);
+}

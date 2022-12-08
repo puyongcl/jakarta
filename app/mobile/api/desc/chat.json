@@ -1,0 +1,223 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "聊天",
+    "description": "聊天",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "mobile/v1/chatstate/sync": {
+      "post": {
+        "summary": "聊天过程状态同步",
+        "operationId": "syncListenerChatState",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SyncListenerChatStateResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SyncListenerChatStateReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chat"
+        ]
+      }
+    },
+    "mobile/v1/im/sendtextmsg": {
+      "post": {
+        "summary": "发送文本消息",
+        "operationId": "sendTextMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SendTextMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendTextMsgReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "chat"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "SendTextMsgReq": {
+      "type": "object",
+      "properties": {
+        "fromUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "toUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "text": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "msgType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 文本消息类型"
+        }
+      },
+      "title": "SendTextMsgReq",
+      "required": [
+        "fromUid",
+        "toUid",
+        "text",
+        "msgType"
+      ]
+    },
+    "SendTextMsgResp": {
+      "type": "object",
+      "title": "SendTextMsgResp"
+    },
+    "SyncListenerChatStateReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 普通用户"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXX"
+        },
+        "action": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 操作 参考api定义文档"
+        },
+        "openId1": {
+          "type": "string",
+          "description": " 拨打方"
+        },
+        "openId2": {
+          "type": "string",
+          "description": " 接收方"
+        }
+      },
+      "title": "SyncListenerChatStateReq",
+      "required": [
+        "uid",
+        "listenerUid",
+        "action",
+        "openId1",
+        "openId2"
+      ]
+    },
+    "SyncListenerChatStateResp": {
+      "type": "object",
+      "properties": {
+        "workState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXX工作状态"
+        },
+        "onlineState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXX在线状态"
+        },
+        "freeChatCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 免费聊天次数"
+        },
+        "textChatExpiryTime": {
+          "type": "string",
+          "description": " 文字聊天到期时间"
+        },
+        "voiceChatMinute": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 语音聊天当前剩余时长"
+        },
+        "chatState": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 1 新用户 未付费 2 服务中用户 3 老用户 已完成用户"
+        },
+        "listenerChatState": {
+          "type": "integer",
+          "format": "int64",
+          "description": "  1 2 通话中 3 不在通话中"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 普通用户"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XXX"
+        }
+      },
+      "title": "SyncListenerChatStateResp",
+      "required": [
+        "workState",
+        "onlineState",
+        "freeChatCnt",
+        "textChatExpiryTime",
+        "voiceChatMinute",
+        "chatState",
+        "listenerChatState",
+        "uid",
+        "listenerUid"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

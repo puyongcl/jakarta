@@ -1,0 +1,74 @@
+syntax = "v1"
+
+info(
+    title: "订单"
+    desc: "订单"
+    author: ""
+    email: ""
+    version: "v1"
+)
+
+import (
+    "order/order.api"
+)
+
+//========================> order v1 <========================
+//need login
+@server(
+    prefix: mobile/v1
+    group: chatorder
+    jwt: JwtAuth
+)
+service mobile {
+    @doc "获取订单费用估算"
+    @handler estimateChatOrder
+    post /chatorder/estimate (EstimateOrderReq) returns (EstimateOrderResp)
+
+    @doc "获取当前XXX聊天实时价格"
+    @handler getCurrentListenerChatPrice
+    post /chatorder/price/current (GetCurrentListenerChatPriceReq) returns (GetCurrentListenerChatPriceResp)
+
+    @doc "创建订单"
+    @handler createChatOrder
+    post /chatorder/create (CreateChatOrderReq) returns (CreateChatOrderResp)
+
+    @doc "普通用户订单列表"
+    @handler userChatOrderList
+    post /chatorder/userlist (GetUserChatOrderListReq) returns (GetUserChatOrderListResp)
+
+    @doc "普通用户获取单个订单详情"
+    @handler userChatOrderDetail
+    post /chatorder/userdetail (GetUserChatOrderDetailReq) returns (GetUserChatOrderDetailResp)
+
+    @doc "XXX订单列表"
+    @handler listenerChatOrderList
+    post /chatorder/listenerlist (GetListenerSeeChatOrderListReq) returns (GetListenerSeeChatOrderListResp)
+
+    @doc "XXX获取单个订单详情"
+    @handler listenerChatOrderDetail
+    post /chatorder/listenerdetail (GetListenerChatOrderDetailReq) returns (GetListenerChatOrderDetailResp)
+
+    @doc "获取单个订单状态记录"
+    @handler userChatOrderStateLog
+    post /chatorder/userstatelog (GetChatOrderStateLogReq) returns (GetChatOrderStateLogResp)
+
+    @doc "获取单个订单退款进度"
+    @handler getChatOrderRefundLog
+    post /chatorder/refundlog (GetChatOrderRefundLogReq) returns (GetChatOrderRefundLogResp)
+
+    @doc "订单操作"
+    @handler doChatOrderAction
+    post /chatorder/action (DoChatOrderActionReq) returns (DoChatOrderActionResp)
+
+    @doc "获取聊天服务的定价配置"
+    @handler getBusinessChatPrice
+    post /chatorder/priceconfig (GetBusinessChatPricingPlanReq) returns (GetBusinessChatPricingPlanResp)
+
+    @doc "获取最近的好评"
+    @handler getRecentGoodComment
+    post /chatorder/recentcomment (GetRecentGoodCommentReq) returns (GetRecentGoodCommentResp)
+
+    @doc "用户获取订单反馈列表"
+    @handler getOrderFeedbackListByUser
+    post /chatorder/user/feedback/list (GetChatOrderFeedbackListByUserReq) returns (GetChatOrderFeedbackListByUserResp)
+}

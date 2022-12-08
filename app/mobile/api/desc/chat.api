@@ -1,0 +1,29 @@
+syntax = "v1"
+
+info(
+	title: "聊天"
+	desc: "聊天"
+	author: ""
+	email: ""
+	version: "v1"
+)
+
+import (
+	"chat/chat.api"
+)
+
+// need login
+@server(
+	prefix: mobile/v1
+	group: chat
+	jwt: JwtAuth
+)
+service mobile {
+	@doc "聊天过程状态同步"
+	@handler syncListenerChatState
+	post /chatstate/sync (SyncListenerChatStateReq) returns (SyncListenerChatStateResp)
+
+	@doc "发送文本消息"
+	@handler sendTextMsg
+	post /im/sendtextmsg (SendTextMsgReq) returns (SendTextMsgResp)
+}

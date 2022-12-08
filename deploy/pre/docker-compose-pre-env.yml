@@ -1,0 +1,94 @@
+version: '3'
+
+######## 项目依赖的环境，启动项目之前要先启动此环境 #######
+
+services:
+  #asynqmon asynq延迟队列、定时队列的webui
+  asynqmon:
+    image: hibiken/asynqmon:latest
+    container_name: asynqmon
+    ports:
+      - 8980:8080
+    command:
+      - '--redis-addr=10.0.0.5:6379'
+      - '--redis-password=h18js0iwoxafaws'
+    restart: always
+    networks:
+      - jakarta_net
+
+  #收集业务数据
+  filebeat:
+    image: elastic/filebeat:7.17.6
+    container_name: filebeat
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    user: root
+    restart: always
+    entrypoint: "filebeat -e -strict.perms=false"  #解决配置文件权限问题
+    volumes:
+      - ./jakarta/deploy/pre/filebeat/conf/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      # 此处需指定docker的containers目录，取决于你docker的配置
+      # 如snap安装的docker，则为/var/snap/docker/common/var-lib-docker/containers
+      # - /var/snap/docker/common/var-lib-docker/containers:/var/lib/docker/containers
+      - /var/lib/docker/containers:/var/lib/docker/containers
+    networks:
+      - jakarta_net
+
+  nginx-gateway:
+    image: nginx:1.21.6
+    container_name: nginx-gateway
+    restart: always
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 443:443
+    volumes:
+      - ./jakarta/deploy/pre/nginx/conf:/etc/nginx/conf.d/:ro
+      - ./data/nginx/log/:/var/log/nginx/:rw
+      - ./jakarta/deploy/pre/nginx/ssl/:/etc/nginx/ssl/:ro
+      - ./jakarta/deploy/pre/nginx/root/:/etc/nginx/root/:ro
+    networks:
+      - jakarta_net
+
+  nginx-gateway-tim:
+    image: nginx:1.21.6
+    container_name: nginx-gateway-tim
+    restart: always
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 8887:443
+    volumes:
+      - ./jakarta/deploy/pre/nginx-tim/conf:/etc/nginx/conf.d/:ro
+      - ./data/nginx-tim/log/:/var/log/nginx/:rw
+      - ./jakarta/deploy/pre/nginx-tim/ssl/:/etc/nginx/ssl/:ro
+    networks:
+      - jakarta_net
+
+  nginx-gateway-third:
+    image: nginx:1.21.6
+    container_name: nginx-gateway-third
+    restart: always
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 8888:443
+    volumes:
+      - ./jakarta/deploy/pre/nginx-third/conf:/etc/nginx/conf.d/:ro
+      - ./data/nginx-third/log/:/var/log/nginx/:rw
+      - ./jakarta/deploy/pre/nginx-third/ssl/:/etc/nginx/ssl/:ro
+    networks:
+      - jakarta_net
+
+
+networks:
+  jakarta_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16
+

@@ -1,0 +1,96 @@
+Name: chat-mq
+Host: 0.0.0.0
+Port: 3002
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4005
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: chat-mq
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: chat-mq
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/chat-mq
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+#kq
+UpdateChatStatConf:
+  Name: UpdateChatStat
+  Brokers:
+    - kafka:9092
+  Group: update-chat-stat-group
+  Topic: update-chat-stat-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+CheckChatStateConf:
+  Name: CheckChatState
+  Brokers:
+    - kafka:9092
+  Group: check-chat-state-group
+  Topic: check-chat-state-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+FirstEnterChatConf:
+  Name: FirstEnterChat
+  Brokers:
+    - kafka:9092
+  Group: enter-chat-group
+  Topic: enter-chat-topic
+  Offset: first
+  Consumers: 1
+  Processors: 5
+
+RedisAsynq:
+  Host: redis-asynq:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+#rpc
+ImRpcConf:
+  Endpoints:
+    - im-rpc:2003
+  NonBlock: true
+
+UsercenterRpcConf:
+  Endpoints:
+    - usercenter-rpc:2009
+  NonBlock: true
+
+ChatRpcConf:
+  Endpoints:
+    - chat-rpc:2002
+  NonBlock: true
+
+OrderRpcConf:
+  Endpoints:
+    - order-rpc:2007
+  NonBlock: true
+
+ListenerRpcConf:
+  Endpoints:
+    - listener-rpc:2004
+  NonBlock: true
+
+KqSendDefineMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-define-msg-send-topic

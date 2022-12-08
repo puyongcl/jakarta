@@ -1,0 +1,868 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "社区",
+    "description": "社区",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "mobile/v1/bbs/story/add": {
+      "post": {
+        "summary": "发布XX",
+        "operationId": "addStory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddStoryResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 发布XX",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddStoryReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/del": {
+      "post": {
+        "summary": "删除发布的XX",
+        "operationId": "delStory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DelStoryResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 删除发布的XX",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DelStoryReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/get": {
+      "post": {
+        "summary": "获取XX根据id",
+        "operationId": "getStoryById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetStoryByIdResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 获取XX",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetStoryByIdReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/list": {
+      "post": {
+        "summary": "获取用户所有的XX列表",
+        "operationId": "getStoryListByOwn",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetStoryListByOwnResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 获取个人所有的XX",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetStoryListByOwnReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/rec": {
+      "post": {
+        "summary": "推荐XX",
+        "operationId": "recStory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetRecStoryListByUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 推荐",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetRecStoryListByUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/reply/add": {
+      "post": {
+        "summary": "回复XX",
+        "operationId": "addStoryReply",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddStoryReplyResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 回复XX",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddStoryReplyReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/reply/del": {
+      "post": {
+        "summary": "删除一条XX回复",
+        "operationId": "delStoryReply",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DelStoryReplyResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 删除XX的回复",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DelStoryReplyReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/reply/like": {
+      "post": {
+        "summary": "点赞回复",
+        "operationId": "addStoryReplyLike",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddLikeStoryReplyResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 点赞",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddLikeStoryReplyReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/reply/list": {
+      "post": {
+        "summary": "获取XX回复列表",
+        "operationId": "getStoryReplyList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetStoryReplyListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 浏览详情（用户获取XX回复列表）",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetStoryReplyListReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/story/reply/mylist": {
+      "post": {
+        "summary": "获取XXX所有的XX回复列表",
+        "operationId": "getStoryReplyListByOwn",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetStoryReplyListByOwnResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 获取个人所有回复",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetStoryReplyListByOwnReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    },
+    "mobile/v1/bbs/storyreply/get": {
+      "post": {
+        "summary": "获取一条XX回复根据id",
+        "operationId": "getStoryReplyById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetStoryReplyResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " 获取XX回复",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetStoryReplyReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "bbs"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AddLikeStoryReplyReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyReplyId": {
+          "type": "string"
+        }
+      },
+      "title": "AddLikeStoryReplyReq",
+      "required": [
+        "uid",
+        "storyReplyId"
+      ]
+    },
+    "AddLikeStoryReplyResp": {
+      "type": "object",
+      "properties": {
+        "likeCnt": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "AddLikeStoryReplyResp",
+      "required": [
+        "likeCnt"
+      ]
+    },
+    "AddStoryReplyReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyId": {
+          "type": "string"
+        },
+        "replyText": {
+          "type": "string"
+        },
+        "replyVoice": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        }
+      },
+      "title": "AddStoryReplyReq",
+      "required": [
+        "listenerUid",
+        "storyId",
+        "replyText",
+        "replyVoice",
+        "nickname"
+      ]
+    },
+    "AddStoryReplyResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "AddStoryReplyResp",
+      "required": [
+        "id"
+      ]
+    },
+    "AddStoryReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 发布XX类型 1 XX"
+        },
+        "spec": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 发布内容对应的擅长领域一级分类"
+        },
+        "tittle": {
+          "type": "string",
+          "description": " 标题"
+        },
+        "content": {
+          "type": "string",
+          "description": " 文字内容"
+        },
+        "nickname": {
+          "type": "string"
+        }
+      },
+      "title": "AddStoryReq",
+      "required": [
+        "uid",
+        "storyType",
+        "spec",
+        "tittle",
+        "content",
+        "nickname"
+      ]
+    },
+    "AddStoryResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "AddStoryResp",
+      "required": [
+        "id"
+      ]
+    },
+    "DelStoryReplyReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyReplyId": {
+          "type": "string"
+        }
+      },
+      "title": "DelStoryReplyReq",
+      "required": [
+        "listenerUid",
+        "storyReplyId"
+      ]
+    },
+    "DelStoryReplyResp": {
+      "type": "object",
+      "title": "DelStoryReplyResp"
+    },
+    "DelStoryReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyId": {
+          "type": "string"
+        }
+      },
+      "title": "DelStoryReq",
+      "required": [
+        "uid",
+        "storyId"
+      ]
+    },
+    "DelStoryResp": {
+      "type": "object",
+      "title": "DelStoryResp"
+    },
+    "GetRecStoryListByUserReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "spec": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetRecStoryListByUserReq",
+      "required": [
+        "uid",
+        "storyType",
+        "spec",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetRecStoryListByUserResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Story"
+          }
+        }
+      },
+      "title": "GetRecStoryListByUserResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetStoryByIdReq": {
+      "type": "object",
+      "properties": {
+        "storyId": {
+          "type": "string"
+        }
+      },
+      "title": "GetStoryByIdReq",
+      "required": [
+        "storyId"
+      ]
+    },
+    "GetStoryByIdResp": {
+      "type": "object",
+      "properties": {
+        "story": {
+          "$ref": "#/definitions/Story"
+        }
+      },
+      "title": "GetStoryByIdResp",
+      "required": [
+        "story"
+      ]
+    },
+    "GetStoryListByOwnReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetStoryListByOwnReq",
+      "required": [
+        "uid",
+        "storyType",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetStoryListByOwnResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Story"
+          }
+        }
+      },
+      "title": "GetStoryListByOwnResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetStoryReplyListByOwnReq": {
+      "type": "object",
+      "properties": {
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetStoryReplyListByOwnReq",
+      "required": [
+        "listenerUid",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetStoryReplyListByOwnResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StoryReply"
+          }
+        }
+      },
+      "title": "GetStoryReplyListByOwnResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetStoryReplyListReq": {
+      "type": "object",
+      "properties": {
+        "storyId": {
+          "type": "string"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetStoryReplyListReq",
+      "required": [
+        "storyId",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "GetStoryReplyListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StoryReply"
+          }
+        }
+      },
+      "title": "GetStoryReplyListResp",
+      "required": [
+        "list"
+      ]
+    },
+    "GetStoryReplyReq": {
+      "type": "object",
+      "properties": {
+        "storyReplyId": {
+          "type": "string"
+        }
+      },
+      "title": "GetStoryReplyReq",
+      "required": [
+        "storyReplyId"
+      ]
+    },
+    "GetStoryReplyResp": {
+      "type": "object",
+      "properties": {
+        "reply": {
+          "$ref": "#/definitions/StoryReply"
+        }
+      },
+      "title": "GetStoryReplyResp",
+      "required": [
+        "reply"
+      ]
+    },
+    "Story": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "storyType": {
+          "type": "integer",
+          "format": "int64",
+          "description": " XX类型"
+        },
+        "spec": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 擅长领域一级分类"
+        },
+        "tittle": {
+          "type": "string",
+          "description": " 标题"
+        },
+        "content": {
+          "type": "string",
+          "description": " 发布内容"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 状态"
+        },
+        "viewCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 浏览次数"
+        },
+        "replyCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 回复人数"
+        },
+        "nickname": {
+          "type": "string",
+          "description": " 昵称"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 头像"
+        }
+      },
+      "title": "Story",
+      "required": [
+        "createTime",
+        "Id",
+        "uid",
+        "storyType",
+        "spec",
+        "tittle",
+        "content",
+        "state",
+        "viewCnt",
+        "replyCnt",
+        "nickname",
+        "avatar"
+      ]
+    },
+    "StoryReply": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "storyId": {
+          "type": "string"
+        },
+        "listenerUid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "replyText": {
+          "type": "string"
+        },
+        "replyVoice": {
+          "type": "string"
+        },
+        "likeCnt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "listenerNickname": {
+          "type": "string"
+        },
+        "listenerAvatar": {
+          "type": "string"
+        },
+        "intro": {
+          "type": "string"
+        },
+        "isLike": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "StoryReply",
+      "required": [
+        "createTime",
+        "id",
+        "storyId",
+        "listenerUid",
+        "replyText",
+        "replyVoice",
+        "likeCnt",
+        "state",
+        "uid",
+        "listenerNickname",
+        "listenerAvatar",
+        "intro",
+        "isLike"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

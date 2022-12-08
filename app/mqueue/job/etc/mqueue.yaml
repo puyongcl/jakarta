@@ -1,0 +1,75 @@
+Name: mqueue-job
+Host: 0.0.0.0
+Port: 3006
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4016
+  Path: /metrics
+
+#Link Tracking
+Telemetry:
+  Name: mqueue-job
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: mqueue-job
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/mqueue-job
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+RedisAsynq:
+  Host: redis-asynq:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+#rpc service.
+OrderRpcConf:
+  Endpoints:
+    - order-rpc:2007
+  NonBlock: true
+
+UsercenterRpcConf:
+  Endpoints:
+    - usercenter-rpc:2009
+  NonBlock: true
+
+ChatRpcConf:
+  Endpoints:
+    - chat-rpc:2002
+  NonBlock: true
+
+ListenerRpcConf:
+  Endpoints:
+    - listener-rpc:2004
+  NonBlock: true
+
+KqSendDefineMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-define-msg-send-topic
+
+KqCheckChatStateConf:
+  Brokers:
+    - kafka:9092
+  Topic: check-chat-state-topic
+
+KqUpdateChatStatConf:
+  Brokers:
+    - kafka:9092
+  Topic: update-chat-stat-topic
+
+StatRpcConf:
+  Endpoints:
+    - statistic-rpc:2010
+  NonBlock: true

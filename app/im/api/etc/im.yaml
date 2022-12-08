@@ -1,0 +1,71 @@
+Name: im-api
+Host: 0.0.0.0
+Port: 1003
+Mode: dev
+
+#jwtAuth
+JwtAuth:
+  AccessSecret: 1e4705b0-40d2-4075-a3b1-a2217f67d082
+  AccessExpire: 7200
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4007
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: im-api
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: im-api
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/im-api
+
+RedisCache:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+#WxFwhConf
+WxFwhConf:
+  AppID: wxc9a45478545421
+  AppSecret: 1274bdsasasa454212
+  Token: jc45421211D1qz
+  EncodingAESKey: CQZWtyuEgPCETsaNVD3xsbWvpiTgokNw3jXV382h8AG
+
+#WxMiniConf
+WxMiniConf:
+  AppId: wx603sdadda4524
+  Secret: 2ff445454553bfc303e8b48b
+  Token: vXStm46Qef9y
+  EncodingAESKey: vXStm46Qef9yLElr7Pa6B78WQHW2HAUtXVJ6vjFb0kY
+
+#kafka
+KqImStateChangeMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-state-change-msg-topic
+
+#kafka
+KqImAfterSendMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-after-send-msg-topic
+
+WxFwhCallbackEventConf:
+  Brokers:
+    - kafka:9092
+  Topic: wxfwh-callback-event-topic
+
+#rpc service
+IMRpcConf:
+  Endpoints:
+    - im-rpc:2003
+  NonBlock: true

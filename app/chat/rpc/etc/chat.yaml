@@ -1,0 +1,54 @@
+Name: chat-rpc
+ListenOn: 0.0.0.0:2002
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4004
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: chat-rpc
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: chat-rpc
+  Level: info
+  #Mode: file
+  #Encoding: plain
+  #Path: data/logs/chat-rpc
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+DB:
+  DataSource: postgres://jakarta:postgres@postgresql:5432/jakarta_chat?sslmode=disable&timezone=Asia/Shanghai
+
+DBRO:
+  DataSource: postgres://jakarta:postgres@postgresql:5432/jakarta_chat?sslmode=disable&timezone=Asia/Shanghai
+
+Cache:
+  - Host: redis-cache:6379
+    Pass: G62m50oigInC30sf
+
+KqUpdateChatStatConf:
+  Brokers:
+    - kafka:9092
+  Topic: update-chat-stat-topic
+
+KqSendDefineMsgConf:
+  Brokers:
+    - kafka:9092
+  Topic: im-define-msg-send-topic
+
+KqFirstEnterChatConf:
+  Brokers:
+    - kafka:9092
+  Topic: enter-chat-topic
+

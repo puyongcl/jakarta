@@ -1,0 +1,56 @@
+Clusters:
+  - Input:
+      Kafka:
+        Name: go-stash
+        Brokers:
+          - "kafka:9092"
+        Topics:
+          - jakarta-log
+        Group: stash
+        Conns: 2
+        Consumers: 10
+        Processors: 10
+        MinBytes: 1048576
+        MaxBytes: 10485760
+        Offset: first
+    Filters:
+      - Action: drop
+        Conditions:
+          - Key: level
+            Value: info
+            Type: match
+            Op: and
+      - Action: remove_field
+        Fields:
+          # - message
+          - _source
+          - _type
+          - _score
+          - _id
+          - "@version"
+          - topic
+          - index
+          - beat
+          - docker_container
+          - offset
+          - prospector
+          - ecs
+          - log
+          - fields
+          - source
+          - stream
+          - "@metadata"
+      - Action: transfer
+        Field: message
+        Target: data
+    Output:
+      ElasticSearch:
+        Hosts:
+          - "http://elasticsearch:9200"
+        Username: elastic
+        Password: jakarta2022
+        Index: "jakarta-{{yyyy-MM-dd}}"
+        MaxChunkBytes: 5242880
+        GracePeriod: 10s
+        Compress: false
+        TimeZone: UTC
